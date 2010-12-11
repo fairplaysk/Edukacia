@@ -2,7 +2,22 @@
 
 %p
   %b Name:
-  = @quiz.name
+  %p= @quiz.name
+  %p= @quiz.comment
+  %ul
+    - @quiz.categories.each do |category|
+      %li= category.name
+  %p= @quiz.sponsor
+  %ul
+    - @quiz.placement_comments.each do |placement_comment|
+      %li= placement_comment.content
+  %p= @quiz.funny_comment
+  / %ul
+  / - @quiz.questions.each do |question|
+  /   %li= question.content
+  /   %ul
+  /     - question.answers.each do |answer|
+  /       %li= answer.content
 
 = link_to 'Edit', edit_quiz_path(@quiz)
 \|

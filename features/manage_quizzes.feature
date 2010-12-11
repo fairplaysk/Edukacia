@@ -4,10 +4,35 @@ Feature: Manage quizzes
   wants [behaviour]
   
   Scenario: Register new quiz
-    Given I am on the new quiz page
+    Given the following "category" factory_girl models:
+		 | name       |
+		 | category 1 |
+		 | category 2 |
+		And I am on the new quiz page
     When I fill in "Name" with "name 1"
+		And I fill in "Comment" with "comment 1"
+		And I select "category 1" from "Categories"
+		And I fill in "Sponsor" with "sponsor 1"
+		And I fill in "Content" with "placement comment 1" within "/html/body/form/fieldset/ol/fieldset[1]"
+		And I fill in "Content" with "placement comment 2" within "/html/body/form/fieldset/ol/fieldset[2]"
+		And I fill in "Content" with "placement comment 3" within "/html/body/form/fieldset/ol/fieldset[3]"
+		And I fill in "Content" with "placement comment 4" within "/html/body/form/fieldset/ol/fieldset[4]"
+		And I fill in "Funny comment" with "something funny for the wize guy."
+		# And I fill in "Question" with "question 1"
+		# And I fill in "Answer" with "answer 1"
     And I press "Save"
     Then I should see "name 1"
+		And I should see "comment 1"
+		And I should see "category 1"
+		And I should see "sponsor 1"
+		And I should see "placement comment 1"
+		And I should see "placement comment 2"
+		And I should see "placement comment 3"
+		And I should see "placement comment 4"
+		And I should see "something funny for the wize guy."
+		
+		# And I should see "question 1"
+		# And I should see "answer 1"
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).
@@ -34,14 +59,14 @@ Feature: Manage quizzes
   #
   Scenario: Delete quiz
     Given the following quizzes:
-      |name|
-      |name 1|
-      |name 2|
-      |name 3|
-      |name 4|
+      | name   |
+      | name 1 |
+      | name 2 |
+      | name 3 |
+      | name 4 |
     When I delete the 3rd quiz
     Then I should see the following quizzes:
-      |Name|
-      |name 1|
-      |name 2|
-      |name 4|
+      | Name   |
+      | name 1 |
+      | name 2 |
+      | name 4 |

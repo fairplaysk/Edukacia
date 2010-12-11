@@ -2,9 +2,15 @@ Given /^the following quizzes:$/ do |quizzes|
   Quiz.create!(quizzes.hashes)
 end
 
+Given /^the following "([^"]*)" factory_girl models:$/ do |factory_name, models|
+  models.hashes.each do |model_hash|
+      Factory(factory_name.to_sym, model_hash)
+  end
+end
+
 When /^I delete the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
   visit quizzes_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
+  within("//table//tr[#{pos.to_i+1}]") do
     click_link "Destroy"
   end
 end

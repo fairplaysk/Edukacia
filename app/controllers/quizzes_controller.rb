@@ -25,6 +25,8 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new.xml
   def new
     @quiz = Quiz.new
+    #@quiz.questions.build.answers.build
+    4.times { @quiz.placement_comments.build }
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,0 +1,6 @@
+= f.input :content, :label => 'Question'
+= f.input :_destroy, :as => :hidden
+= link_to 'remove', nil, :class => 'remove'
+= f.inputs :name => 'Answers', :for => :answers do |answers_form|
+  = render 'answer_fields', :f =>  answers_form
+= link_to_add_fields "Add Answer", f, :answers
