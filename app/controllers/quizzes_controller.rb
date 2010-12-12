@@ -49,7 +49,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
     if session[:quiz] && session[:quiz][:id] == params[:id]
       @quiz.placement_comments = []
-      session[:quiz][:placement_comments_attributes].each { |key, value| @quiz.placement_comments.build(value) } if session[:quiz][:placement_comments_attributes]
+      session[:quiz][:placement_comments_attributes].each { |key, value| @quiz.placement_comments.build(:content => value[:content]) } if session[:quiz][:placement_comments_attributes]
       if session[:add_placement_comment] && @quiz.placement_comments.length < 6
         @quiz.placement_comments.build
         session[:add_placement_comment] = nil

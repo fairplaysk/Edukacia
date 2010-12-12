@@ -7,6 +7,11 @@ $(function() {
 			$(this).parent().hide();
 			return false;
 		});
+		$(".remove_placement_comment").click(function() {
+			$(this).parent().prev().children("input[type=hidden]").val("1");
+			$(this).parent().parent().hide();
+			return false;
+		});
 });
 
 

@@ -73,6 +73,20 @@ Feature: Manage quizzes
 		When I press "Remove placement comment"
 		Then I should not see "Placement comment 4"
 		
+	@javascript
+	Scenario: Remove additional placement comments
+		Given I am on the new quiz page
+		When I fill in "Placement comment 1" with "placement comment 1"
+		And I fill in "Placement comment 2" with "placement comment 2"
+		And I fill in "Placement comment 3" with "placement comment 3"
+		And I fill in "Placement comment 4" with "placement comment 4"
+		And I press "Remove placement comment"
+		And I press "Save"
+		Then I should not see "Placement comment 4"
+		And I should see "placement comment 1"
+		And I should see "placement comment 2"
+		And I should see "placement comment 3"
+		
 		# And I should see "question 1"
 		# And I should see "answer 1"
 

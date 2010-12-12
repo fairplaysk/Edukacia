@@ -1,0 +1,3 @@
+= placement_comment.input :content, :label => "Placement comment #{index}"
+= placement_comment.input :_destroy, :as => :hidden
+= f.commit_button 'Remove placement comment', :button_html => {:name => 'remove_placement_comment', :class => 'remove_placement_comment'} if index > 3
