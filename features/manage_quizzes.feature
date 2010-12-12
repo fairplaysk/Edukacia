@@ -49,11 +49,29 @@ Feature: Manage quizzes
 		Given I am on the new quiz page
 		When I press "Remove placement comment"
 		Then I should not see "Placement comment 4"
-	
+		
 	Scenario: Cannot remove and have less than 3 placement comments
 		Given I am on the new quiz page
 		When I press "Remove placement comment"
 		Then I should not see "Remove placement comment"
+	
+	Scenario: Add additional placement comment while editing quiz
+		Given the following "quiz" factory_girl models:
+		 | name   |
+		 | quiz 1 |
+		When I edit the 1st quiz
+		And I press "Add placement comment"
+		And I fill in "Placement comment 5" with "placement comment 5"
+		And I press "Save"
+		Then I should see "placement comment 5"
+		
+	Scenario: Remove additional placement comments
+		Given the following "quiz" factory_girl models:
+		 | name   |
+		 | quiz 1 |
+		When I edit the 1st quiz
+		When I press "Remove placement comment"
+		Then I should not see "Placement comment 4"
 		
 		# And I should see "question 1"
 		# And I should see "answer 1"

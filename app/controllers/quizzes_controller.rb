@@ -26,10 +26,12 @@ class QuizzesController < ApplicationController
   def new
     @quiz = Quiz.new(session[:quiz])
     if session[:quiz]
-      session[:quiz][:placement_comments_attributes].each { @quiz.placement_comments.build }
-      @quiz.placement_comments.build if !session[:remove_placement_comment] && @quiz.placement_comments.length < 6
-      if session[:remove_placement_comment]
-        @quiz.placement_comments.pop 
+      session[:quiz][:placement_comments_attributes].each { |key,value| @quiz.placement_comments.build if value[:content].empty? }
+      if session[:add_placement_comment] && @quiz.placement_comments.length < 6
+        @quiz.placement_comments.build
+        session[:add_placement_comment] = nil
+      elsif session[:remove_placement_comment]
+        @quiz.placement_comments.pop
         session[:remove_placement_comment] = nil
       end
     else
@@ -45,6 +47,17 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1/edit
   def edit
     @quiz = Quiz.find(params[:id])
+    if session[:quiz] && session[:quiz][:id] == params[:id]
+      @quiz.placement_comments = []
+      session[:quiz][:placement_comments_attributes].each { |key, value| @quiz.placement_comments.build(value) } if session[:quiz][:placement_comments_attributes]
+      if session[:add_placement_comment] && @quiz.placement_comments.length < 6
+        @quiz.placement_comments.build
+        session[:add_placement_comment] = nil
+      elsif session[:remove_placement_comment]
+        @quiz.placement_comments.pop
+        session[:remove_placement_comment] = nil
+      end
+    end
   end
 
   # POST /quizzes
@@ -54,9 +67,10 @@ class QuizzesController < ApplicationController
     if params[:add_placement_comment] || params[:remove_placement_comment]
       session[:quiz] = params[:quiz]
       session[:remove_placement_comment] = 1 if params[:remove_placement_comment]
+      session[:add_placement_comment] = 1 if params[:add_placement_comment]
       redirect_to :action => 'new'
     else
-
+      session[:quiz] = nil
       respond_to do |format|
         if @quiz.save
           format.html { redirect_to(@quiz, :notice => 'Quiz was successfully created.') }
@@ -73,14 +87,22 @@ class QuizzesController < ApplicationController
   # PUT /quizzes/1.xml
   def update
     @quiz = Quiz.find(params[:id])
-
-    respond_to do |format|
-      if @quiz.update_attributes(params[:quiz])
-        format.html { redirect_to(@quiz, :notice => 'Quiz was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @quiz.errors, :status => :unprocessable_entity }
+    if params[:add_placement_comment] || params[:remove_placement_comment]
+      session[:quiz] = params[:quiz]
+      session[:quiz][:id] = params[:id]
+      session[:remove_placement_comment] = 1 if params[:remove_placement_comment]
+      session[:add_placement_comment] = 1 if params[:add_placement_comment]
+      redirect_to :action => 'edit'
+    else
+      session[:quiz] = nil
+      respond_to do |format|
+        if @quiz.update_attributes(params[:quiz])
+          format.html { redirect_to(@quiz, :notice => 'Quiz was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @quiz.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
