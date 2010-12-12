@@ -73,6 +73,15 @@ Feature: Manage quizzes
 		When I press "Remove placement comment"
 		Then I should not see "Placement comment 4"
 		
+	Scenario: Submit with validation failures should not disrupt placement comments
+		Given I am on the new quiz page
+		When I press "Save"
+		Then I should see "Placement comment 1"
+		And I should see "Placement comment 2"
+		And I should see "Placement comment 3"
+		And I should see "Placement comment 4"
+		
+		
 	@javascript
 	Scenario: Remove additional placement comments
 		Given I am on the new quiz page
@@ -114,7 +123,7 @@ Feature: Manage quizzes
   # see how in http://github.com/jnicklas/capybara/issues#issue/12
   #
   Scenario: Delete quiz
-    Given the following quizzes:
+    Given the following "quiz" factory_girl models:
       | name   |
       | name 1 |
       | name 2 |

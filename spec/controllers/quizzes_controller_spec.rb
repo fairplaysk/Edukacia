@@ -66,7 +66,7 @@ describe QuizzesController do
       it "re-renders the 'new' template" do
         Quiz.stub(:new) { mock_quiz(:save => false) }
         post :create, :quiz => {}
-        response.should render_template("new")
+        response.should redirect_to(new_quiz_path)
       end
     end
 

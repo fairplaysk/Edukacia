@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101211195338) do
+ActiveRecord::Schema.define(:version => 20101212204507) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(:version => 20101211195338) do
     t.text     "comment"
     t.string   "sponsor"
     t.text     "funny_comment"
+    t.string   "graphic_file_name"
+    t.string   "graphic_content_type"
+    t.integer  "graphic_file_size"
+    t.datetime "graphic_updated_at"
   end
 
 end

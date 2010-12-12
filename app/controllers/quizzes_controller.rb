@@ -76,7 +76,8 @@ class QuizzesController < ApplicationController
           format.html { redirect_to(@quiz, :notice => 'Quiz was successfully created.') }
           format.xml  { render :xml => @quiz, :status => :created, :location => @quiz }
         else
-          format.html { render :action => "new" }
+          session[:quiz] = params[:quiz]
+          format.html { redirect_to :action => "new" }
           format.xml  { render :xml => @quiz.errors, :status => :unprocessable_entity }
         end
       end

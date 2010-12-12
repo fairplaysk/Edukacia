@@ -100,6 +100,9 @@ GEM
       rake
     mysql2 (0.2.6)
     nokogiri (1.4.4)
+    paperclip (2.3.6)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     progressbar (0.9.0)
     rack (1.2.1)
@@ -182,6 +185,7 @@ DEPENDENCIES
   launchy
   mocha
   mysql2
+  paperclip
   rails (= 3.0.3)
   rails-erd
   rails_best_practices

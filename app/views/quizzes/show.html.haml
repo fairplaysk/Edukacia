@@ -12,6 +12,7 @@
     - @quiz.placement_comments.each do |placement_comment|
       %li= placement_comment.content
   %p= @quiz.funny_comment
+  %p= image_tag @quiz.graphic.url(:thumb)
   / %ul
   / - @quiz.questions.each do |question|
   /   %li= question.content

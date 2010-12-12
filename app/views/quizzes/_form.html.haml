@@ -1,4 +1,4 @@
-= semantic_form_for @quiz do |f|
+= semantic_form_for @quiz, :html => {:multipart => true} do |f|
   -if @quiz.errors.any?
     #error_explanation
       %h2= "#{pluralize(@quiz.errors.count, "error")} prohibited this quiz from being saved:"
@@ -11,6 +11,7 @@
     = f.input :comment
     = f.input :categories, :label => 'Categories'#, :include_blank => true, :multiple => false, :input_html => { :size => 1 }
     = f.input :sponsor
+    = f.input :graphic, :as => :file
     - index = 1
     = f.inputs :for => :placement_comments do |placement_comment|
       = render 'placement_comment_fields', :placement_comment => placement_comment, :index => index, :f => f
