@@ -24,9 +24,17 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new
   # GET /quizzes/new.xml
   def new
-    @quiz = Quiz.new
-    #@quiz.questions.build.answers.build
-    4.times { @quiz.placement_comments.build }
+    @quiz = Quiz.new(session[:quiz])
+    if session[:quiz]
+      session[:quiz][:placement_comments_attributes].each { @quiz.placement_comments.build }
+      @quiz.placement_comments.build if !session[:remove_placement_comment] && @quiz.placement_comments.length < 6
+      if session[:remove_placement_comment]
+        @quiz.placement_comments.pop 
+        session[:remove_placement_comment] = nil
+      end
+    else
+      4.times { @quiz.placement_comments.build } 
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,14 +51,20 @@ class QuizzesController < ApplicationController
   # POST /quizzes.xml
   def create
     @quiz = Quiz.new(params[:quiz])
+    if params[:add_placement_comment] || params[:remove_placement_comment]
+      session[:quiz] = params[:quiz]
+      session[:remove_placement_comment] = 1 if params[:remove_placement_comment]
+      redirect_to :action => 'new'
+    else
 
-    respond_to do |format|
-      if @quiz.save
-        format.html { redirect_to(@quiz, :notice => 'Quiz was successfully created.') }
-        format.xml  { render :xml => @quiz, :status => :created, :location => @quiz }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @quiz.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @quiz.save
+          format.html { redirect_to(@quiz, :notice => 'Quiz was successfully created.') }
+          format.xml  { render :xml => @quiz, :status => :created, :location => @quiz }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @quiz.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

@@ -1,7 +1,7 @@
 Feature: Manage quizzes
-  In order to [goal]
-  [stakeholder]
-  wants [behaviour]
+  In order to have quizzes defined
+  An administrator 
+  wants to be able to login and manage quizzes
   
   Scenario: Register new quiz
     Given the following "category" factory_girl models:
@@ -13,10 +13,10 @@ Feature: Manage quizzes
 		And I fill in "Comment" with "comment 1"
 		And I select "category 1" from "Categories"
 		And I fill in "Sponsor" with "sponsor 1"
-		And I fill in "Content" with "placement comment 1" within "/html/body/form/fieldset/ol/fieldset[1]"
-		And I fill in "Content" with "placement comment 2" within "/html/body/form/fieldset/ol/fieldset[2]"
-		And I fill in "Content" with "placement comment 3" within "/html/body/form/fieldset/ol/fieldset[3]"
-		And I fill in "Content" with "placement comment 4" within "/html/body/form/fieldset/ol/fieldset[4]"
+		And I fill in "Placement comment 1" with "placement comment 1"
+		And I fill in "Placement comment 2" with "placement comment 2"
+		And I fill in "Placement comment 3" with "placement comment 3"
+		And I fill in "Placement comment 4" with "placement comment 4"
 		And I fill in "Funny comment" with "something funny for the wize guy."
 		# And I fill in "Question" with "question 1"
 		# And I fill in "Answer" with "answer 1"
@@ -30,6 +30,30 @@ Feature: Manage quizzes
 		And I should see "placement comment 3"
 		And I should see "placement comment 4"
 		And I should see "something funny for the wize guy."
+		
+	Scenario: Add additional placement comment
+		Given I am on the new quiz page
+		When I press "Add placement comment"
+		And I fill in "Placement comment 5" with "placement comment 5"
+		And I press "Save"
+		Then I should see "placement comment 5"
+		
+	Scenario: Cannot add more than 6 placement comments
+		Given I am on the new quiz page
+		When I press "Add placement comment"
+		And I press "Add placement comment"
+		And I press "Add placement comment"
+		Then I should not see "Placement comment 7"
+		
+	Scenario: Remove additional placement comments
+		Given I am on the new quiz page
+		When I press "Remove placement comment"
+		Then I should not see "Placement comment 4"
+	
+	Scenario: Cannot remove and have less than 3 placement comments
+		Given I am on the new quiz page
+		When I press "Remove placement comment"
+		Then I should not see "Remove placement comment"
 		
 		# And I should see "question 1"
 		# And I should see "answer 1"
