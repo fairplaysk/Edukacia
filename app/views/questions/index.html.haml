@@ -1,0 +1,6 @@
+%h1 Questions
+
+= semantic_form_for @quiz do |form|
+  = form.inputs :class => 'question_container', :for => :questions do |q|
+    = render 'question_fields', :f => q
+  = link_to_add_fields("Add Question", form, :questions)

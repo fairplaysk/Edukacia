@@ -25,3 +25,8 @@
 
 @import "partials/formtastic";
 @import "partials/scaffold";
+
+form.formtastic fieldset {
+	padding: 10px;
+	border: 1px solid black;
+}

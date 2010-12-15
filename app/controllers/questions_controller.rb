@@ -2,7 +2,11 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.xml
   def index
-    @questions = Question.where(params[:quiz_id])
+    @quiz = Quiz.find(params[:quiz_id])
+    @quiz.questions.build if @quiz.questions.empty?
+    @quiz.questions.each do |q| 
+      4.times { q.answers.build  } if q.answers.empty?
+    end
 
     respond_to do |format|
       format.html # index.html.erb

@@ -7,7 +7,7 @@ $(function() {
 		$(this).parent().parent().parent().hide();
 		return false;
 	});
-	$('.add_element').click(function () { 
+	$('.add_element').live('click', function () { 
 		if($('.placement_comment_container:visible').length < 6) {
 			var content = $(this).attr("data-element");
 		  var new_id = new Date().getTime();

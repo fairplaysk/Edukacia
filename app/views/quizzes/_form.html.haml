@@ -16,11 +16,7 @@
     = form.inputs :class => 'placement_comment_container', :for => :placement_comments do |f|
       = render 'placement_comment_fields', :index => index, :f => f
       - index += 1
-    / = form.commit_button 'Add placement comment', :button_html => {:name => 'add_placement_comment', :class => 'add_placement_comment'}
     = link_to_add_fields("Add placement comment", form, :placement_comments)
     = form.input :funny_comment
-  / = f.inputs :name => 'Questions', :for => :questions do |questions_form|
-  /   = render 'question_fields', :f => questions_form
-  /   = link_to_add_fields "Add Question", f, :questions
   .actions
     = form.submit 'Save'

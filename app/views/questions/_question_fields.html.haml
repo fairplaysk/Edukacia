@@ -1,0 +1,6 @@
+= f.input :content, :label => 'Question'
+= f.input :_destroy, :as => :hidden
+= f.inputs :class => 'answer_container', :for => :answers do |a|
+  = render 'answer_fields', :f => a
+= link_to_add_fields("Add answer", f, :answers)
+= f.commit_button 'Remove question', :button_html => {:name => 'remove_question', :class => 'remove'}
