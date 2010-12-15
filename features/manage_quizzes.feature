@@ -18,25 +18,25 @@ Feature: Manage quizzes
 		And I fill in "Placement comment" with "placement comment 3" within "//fieldset[@class='placement_comment_container'][3]"
 		And I fill in "Placement comment" with "placement comment 4" within "//fieldset[@class='placement_comment_container'][4]"
 		And I fill in "Funny comment" with "something funny for the wize guy."
-		# And I fill in "Question" with "question 1"
-		# And I fill in "Answer" with "answer 1"
     And I press "Save"
-    Then I should see "name 1"
-		And I should see "comment 1"
-		And I should see "category 1"
-		And I should see "sponsor 1"
-		And I should see "placement comment 1"
-		And I should see "placement comment 2"
-		And I should see "placement comment 3"
-		And I should see "placement comment 4"
-		And I should see "something funny for the wize guy."
+		Then I should see "Successfully saved quiz. Please fill out questions for the quiz next."
+		And I should see "Question"
+		
+  Scenario: Edit a quiz should take me to questions edit page
+		Given the following "quiz" factory_girl models:
+			|name|
+			|quiz1|
+		When I edit the 1st quiz
+		And I press "Save"
+		Then I should see "Successfully saved quiz. Please fill out questions for the quiz next."
+		And I should see "Question"
 		
 	Scenario: Add additional placement comment
 		Given I am on the new quiz page
 		When I press "Add placement comment"
-		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][1]"
+		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][4]"
 		And I press "Save"
-		Then I should see "placement comment 5"
+		Then the "Placement comment" field within "//fieldset[@class='placement_comment_container'][1]" should contain "placement comment 5"
 		
 	Scenario: Cannot add more than 6 placement comments
 		Given I am on the new quiz page
@@ -62,8 +62,9 @@ Feature: Manage quizzes
 		When I edit the 1st quiz
 		And I press "Add placement comment"
 		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][5]"
+		And I fill in "Name" with ""
 		And I press "Save"
-		Then I should see "placement comment 5"
+		Then the "Placement comment" field within "//fieldset[@class='placement_comment_container'][5]" should contain "placement comment 5"
 		
 	Scenario: Remove additional placement comments
 		Given the following "quiz" factory_girl models:
@@ -99,8 +100,6 @@ Feature: Manage quizzes
 		And I should see "placement comment 2"
 		And I should see "placement comment 3"
 		
-		# And I should see "question 1"
-		# And I should see "answer 1"
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).

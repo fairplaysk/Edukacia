@@ -73,7 +73,7 @@ class QuizzesController < ApplicationController
       session[:quiz] = nil
       respond_to do |format|
         if @quiz.save
-          format.html { redirect_to(@quiz, :notice => 'Quiz was successfully created.') }
+          format.html { redirect_to(quiz_questions_path(@quiz), :notice => 'Successfully saved quiz. Please fill out questions for the quiz next.') }
           format.xml  { render :xml => @quiz, :status => :created, :location => @quiz }
         else
           @quiz.placement_comments.build while @quiz.placement_comments.length < 3
@@ -98,7 +98,7 @@ class QuizzesController < ApplicationController
       session[:quiz] = nil
       respond_to do |format|
         if @quiz.update_attributes(params[:quiz])
-          format.html { redirect_to(@quiz, :notice => 'Quiz was successfully updated.') }
+          format.html { redirect_to(quiz_questions_path(@quiz), :notice => 'Successfully saved quiz. Please fill out questions for the quiz next.') }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
