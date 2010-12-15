@@ -25,3 +25,8 @@ end
 Then /^I should see the following quizzes:$/ do |expected_quizzes_table|
   expected_quizzes_table.diff!(tableish('table tr', 'td,th'))
 end
+
+Then /^The page should not contain xpath "([^"]*)"$/ do |xpath|
+  page.should_not have_xpath(xpath)
+end
+

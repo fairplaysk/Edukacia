@@ -13,10 +13,10 @@ Feature: Manage quizzes
 		And I fill in "Comment" with "comment 1"
 		And I select "category 1" from "Categories"
 		And I fill in "Sponsor" with "sponsor 1"
-		And I fill in "Placement comment 1" with "placement comment 1"
-		And I fill in "Placement comment 2" with "placement comment 2"
-		And I fill in "Placement comment 3" with "placement comment 3"
-		And I fill in "Placement comment 4" with "placement comment 4"
+		And I fill in "Placement comment" with "placement comment 1" within "//fieldset[@class='placement_comment_container'][1]"
+		And I fill in "Placement comment" with "placement comment 2" within "//fieldset[@class='placement_comment_container'][2]"
+		And I fill in "Placement comment" with "placement comment 3" within "//fieldset[@class='placement_comment_container'][3]"
+		And I fill in "Placement comment" with "placement comment 4" within "//fieldset[@class='placement_comment_container'][4]"
 		And I fill in "Funny comment" with "something funny for the wize guy."
 		# And I fill in "Question" with "question 1"
 		# And I fill in "Answer" with "answer 1"
@@ -34,7 +34,7 @@ Feature: Manage quizzes
 	Scenario: Add additional placement comment
 		Given I am on the new quiz page
 		When I press "Add placement comment"
-		And I fill in "Placement comment 5" with "placement comment 5"
+		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][1]"
 		And I press "Save"
 		Then I should see "placement comment 5"
 		
@@ -43,12 +43,12 @@ Feature: Manage quizzes
 		When I press "Add placement comment"
 		And I press "Add placement comment"
 		And I press "Add placement comment"
-		Then I should not see "Placement comment 7"
+		Then The page should not contain xpath "//fieldset[@class='placement_comment_container'][7]"
 		
 	Scenario: Remove additional placement comments
 		Given I am on the new quiz page
 		When I press "Remove placement comment"
-		Then I should not see "Placement comment 4"
+		Then The page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Cannot remove and have less than 3 placement comments
 		Given I am on the new quiz page
@@ -61,7 +61,7 @@ Feature: Manage quizzes
 		 | quiz 1 |
 		When I edit the 1st quiz
 		And I press "Add placement comment"
-		And I fill in "Placement comment 5" with "placement comment 5"
+		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][5]"
 		And I press "Save"
 		Then I should see "placement comment 5"
 		
@@ -71,27 +71,26 @@ Feature: Manage quizzes
 		 | quiz 1 |
 		When I edit the 1st quiz
 		When I press "Remove placement comment"
-		Then I should not see "Placement comment 4"
+		Then The page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Submit with validation failures should not disrupt placement comments
 		Given I am on the new quiz page
 		When I press "Save"
-		Then I should see "Placement comment 1"
-		And I should see "Placement comment 2"
-		And I should see "Placement comment 3"
-		And I should see "Placement comment 4"
-		
+		Then I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][1]"
+		And I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][2]"
+		And I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][3]"
+		And I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][4]"
 		
 	@javascript
 	Scenario: Remove additional placement comments
 		Given I am on the new quiz page
-		When I fill in "Placement comment 1" with "placement comment 1"
-		And I fill in "Placement comment 2" with "placement comment 2"
-		And I fill in "Placement comment 3" with "placement comment 3"
-		And I fill in "Placement comment 4" with "placement comment 4"
+		When I fill in "Placement comment" with "placement comment 1" within "//fieldset[@class='placement_comment_container'][1]"
+		And I fill in "Placement comment" with "placement comment 2" within "//fieldset[@class='placement_comment_container'][2]"
+		And I fill in "Placement comment" with "placement comment 3" within "//fieldset[@class='placement_comment_container'][3]"
+		And I fill in "Placement comment" with "placement comment 4" within "//fieldset[@class='placement_comment_container'][4]"
 		And I press "Remove placement comment"
 		And I press "Save"
-		Then I should not see "Placement comment 4"
+		Then I should not see "placement comment 4"
 		And I should see "placement comment 1"
 		And I should see "placement comment 2"
 		And I should see "placement comment 3"
