@@ -79,7 +79,11 @@ Feature: Manage quizzes
 		Then I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][1]"
 		And I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][2]"
 		And I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][3]"
-		And I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][4]"
+		
+	Scenario: Show errors when a blank form is submitted
+	  Given I am on the new quiz page
+		When I press "Save"
+		Then I should see "Name can't be blank"
 		
 	@javascript
 	Scenario: Remove additional placement comments

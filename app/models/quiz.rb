@@ -10,6 +10,5 @@ class Quiz < ActiveRecord::Base
   
   has_attached_file :graphic, :styles => { :thumb => "150x150#" }
   
-  
   validates :name, :categories, :placement_comments, :presence => true
 end

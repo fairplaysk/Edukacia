@@ -76,8 +76,8 @@ class QuizzesController < ApplicationController
           format.html { redirect_to(@quiz, :notice => 'Quiz was successfully created.') }
           format.xml  { render :xml => @quiz, :status => :created, :location => @quiz }
         else
-          session[:quiz] = params[:quiz]
-          format.html { redirect_to :action => "new" }
+          @quiz.placement_comments.build while @quiz.placement_comments.length < 3
+          format.html { render 'new' }
           format.xml  { render :xml => @quiz.errors, :status => :unprocessable_entity }
         end
       end

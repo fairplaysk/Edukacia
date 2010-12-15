@@ -58,15 +58,15 @@ describe QuizzesController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved quiz as @quiz" do
-        Quiz.stub(:new).with({'these' => 'params'}) { mock_quiz(:save => false) }
+        Quiz.stub(:new).with({'these' => 'params'}) { mock_quiz(:save => false, :placement_comments => [1,2,3,4]) }
         post :create, :quiz => {'these' => 'params'}
         assigns(:quiz).should be(mock_quiz)
       end
-
+    
       it "re-renders the 'new' template" do
-        Quiz.stub(:new) { mock_quiz(:save => false) }
+        Quiz.stub(:new) { mock_quiz(:save => false, :placement_comments => [1,2,3,4]) }
         post :create, :quiz => {}
-        response.should redirect_to(new_quiz_path)
+        response.should render_template('new')
       end
     end
 
@@ -96,13 +96,13 @@ describe QuizzesController do
 
     describe "with invalid params" do
       it "assigns the quiz as @quiz" do
-        Quiz.stub(:find) { mock_quiz(:update_attributes => false) }
+        Quiz.stub(:find) { mock_quiz(:update_attributes => false, :placement_comments => [1,2,3,4]) }
         put :update, :id => "1"
         assigns(:quiz).should be(mock_quiz)
       end
-
+    
       it "re-renders the 'edit' template" do
-        Quiz.stub(:find) { mock_quiz(:update_attributes => false) }
+        Quiz.stub(:find) { mock_quiz(:update_attributes => false, :placement_comments => [1,2,3,4]) }
         put :update, :id => "1"
         response.should render_template("edit")
       end
