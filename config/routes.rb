@@ -1,9 +1,15 @@
 Kwizzer::Application.routes.draw do
-  resources :quizzes do
-    resources :questions do
-      put 'save_all', :on => :collection
+  devise_for :users
+
+  namespace :admin do
+    resources :quizzes do
+      resources :questions do
+        put 'save_all', :on => :collection
+      end
     end
   end
+  
+  root :to => 'answers#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -20,6 +20,6 @@
       - question.answers.each_with_index do |answer, a_index|
         %li= "Answer #{a_index+1}: #{answer.content}"
 
-= link_to 'Edit', edit_quiz_path(@quiz)
+= link_to 'Edit', edit_admin_quiz_path(@quiz)
 \|
-= link_to 'Back', quizzes_path
+= link_to 'Back', admin_quizzes_path

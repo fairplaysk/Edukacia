@@ -1,4 +1,4 @@
-= semantic_form_for @quiz, :html => {:multipart => true} do |form|
+= semantic_form_for [:admin, @quiz], :html => {:multipart => true} do |form|
   -if @quiz.errors.any?
     #error_explanation
       %h2= "#{pluralize(@quiz.errors.count, "error")} prohibited this quiz from being saved:"

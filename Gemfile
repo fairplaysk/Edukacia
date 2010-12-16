@@ -12,6 +12,8 @@ gem "formtastic", ">= 1.1.0.beta"
 gem 'compass', ">= 0.10.4"
 gem 'haml-rails'
 gem 'paperclip'
+gem 'devise'
+gem 'hpricot'
 
 # pretty up the rails console
 gem 'awesome_print', :require => 'ap'

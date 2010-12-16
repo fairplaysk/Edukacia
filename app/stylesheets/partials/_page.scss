@@ -39,6 +39,9 @@ input:invalid, textarea:invalid {
 
 @include blueprint-typography;
 
+#usernav{
+	@include float-right;}
+
 body {}
 
 #container {
