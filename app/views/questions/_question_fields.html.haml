@@ -1,5 +1,7 @@
-= f.input :content, :label => 'Question'
+= f.input :content, :label => 'Question', :input_html => {:rows => 3}
 = f.input :_destroy, :as => :hidden
+= f.input :comment
+= link_to 'Show/Hide answers', nil, :class => 'hide_following_containers', 'data-container' => 'answer_container'
 = f.inputs :class => 'answer_container', :for => :answers do |a|
   = render 'answer_fields', :f => a
 = link_to_add_fields("Add answer", f, :answers)

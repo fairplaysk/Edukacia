@@ -53,6 +53,6 @@ group :development, :test do
 	gem 'spork'
 	gem 'launchy'    # So you can do Then show me the page
 	gem 'rspec-rails'
-	gem 'factory_girl_rails'
+	gem 'factory_girl_rails', '>= 1.1.beta1'
 	gem 'mocha'
 end

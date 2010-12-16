@@ -43,12 +43,12 @@ Feature: Manage quizzes
 		When I press "Add placement comment"
 		And I press "Add placement comment"
 		And I press "Add placement comment"
-		Then The page should not contain xpath "//fieldset[@class='placement_comment_container'][7]"
+		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][7]"
 		
 	Scenario: Remove additional placement comments
 		Given I am on the new quiz page
 		When I press "Remove placement comment"
-		Then The page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
+		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Cannot remove and have less than 3 placement comments
 		Given I am on the new quiz page
@@ -72,7 +72,7 @@ Feature: Manage quizzes
 		 | quiz 1 |
 		When I edit the 1st quiz
 		When I press "Remove placement comment"
-		Then The page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
+		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Submit with validation failures should not disrupt placement comments
 		Given I am on the new quiz page
@@ -99,7 +99,39 @@ Feature: Manage quizzes
 		And I should see "placement comment 1"
 		And I should see "placement comment 2"
 		And I should see "placement comment 3"
+	
+  @javascript
+	Scenario: Show and hide answers for quiz question
+		Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		And I am editing question for the first quiz
+		And I follow "Show/Hide answers"
+		Then the page should not contain xpath "//fieldset[style!='display:none']"
 		
+	@javascript
+	Scenario: Add questions and answers saves everything
+	  Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		And I am editing question for the first quiz
+		And I press "Add question"
+		And I fill in "Question" with "question 1" within "//fieldset[@class='question_container'][1]"
+		And I fill in "Comment" with "comment 1" within "//fieldset[@class='question_container'][1]"
+		And I fill in "Answer" with "answer 1" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][1]"
+		And I fill in "Answer" with "answer 2" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][2]"
+		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][3]"
+		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][4]"
+		And I fill in "Question" with "question 1" within "//fieldset[@class='question_container'][2]"
+		And I fill in "Comment" with "comment 1" within "//fieldset[@class='question_container'][2]"
+		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I fill in "Answer" with "answer 1" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][1]"
+		And I fill in "Answer" with "answer 2" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][2]"
+		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][3]"
+		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][4]"
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).

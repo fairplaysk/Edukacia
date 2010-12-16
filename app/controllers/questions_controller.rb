@@ -84,4 +84,18 @@ class QuestionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def save_all
+    @quiz = Quiz.find(params[:quiz_id])
+    
+    respond_to do |format|
+      if @quiz.update_attributes(params[:quiz])
+        format.html { redirect_to(@quiz, :notice => 'Successfully updated questions for this quiz.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "index" }
+        format.xml  { render :xml => @quiz.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 end

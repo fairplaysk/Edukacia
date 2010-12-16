@@ -8,7 +8,7 @@
 
   = form.inputs :name => 'Quiz' do
     = form.input :name
-    = form.input :comment
+    = form.input :comment, :input_html => {:rows => 3}
     = form.input :categories, :label => 'Categories'#, :include_blank => true, :multiple => false, :input_html => { :size => 1 }
     = form.input :sponsor
     = form.input :graphic, :as => :file
@@ -17,6 +17,6 @@
       = render 'placement_comment_fields', :index => index, :f => f
       - index += 1
     = link_to_add_fields("Add placement comment", form, :placement_comments)
-    = form.input :funny_comment
+    = form.input :funny_comment, :input_html => {:rows => 3}
   .actions
     = form.submit 'Save'

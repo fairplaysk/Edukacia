@@ -1,6 +1,8 @@
 Kwizzer::Application.routes.draw do
   resources :quizzes do
-    resources :questions
+    resources :questions do
+      put 'save_all', :on => :collection
+    end
   end
 
   # The priority is based upon order of creation:

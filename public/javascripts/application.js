@@ -2,6 +2,13 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(function() {
+	$('.hide_following_containers').live('click', function () { 
+		var containers = $(this).parent().find('.'+$(this).attr('data-container'))
+		containers.each(function(index, domElem) {
+		  $(domElem).toggle('medium');
+		});
+		return false;
+	});
 	$('.remove').live('click', function () { 
 		$(this).parent().prev().children("input[type=hidden]").val("1");
 		$(this).parent().parent().parent().hide();

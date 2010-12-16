@@ -1,4 +1,4 @@
-%p#notice= notice
+/ %p#notice= notice
 
 %p
   %b Name:
@@ -13,12 +13,12 @@
       %li= placement_comment.content
   %p= @quiz.funny_comment
   %p= image_tag @quiz.graphic.url(:thumb)
-  / %ul
-  / - @quiz.questions.each do |question|
-  /   %li= question.content
-  /   %ul
-  /     - question.answers.each do |answer|
-  /       %li= answer.content
+  %ul
+  - @quiz.questions.each_with_index do |question, q_index|
+    %li= "Question #{q_index+1}: #{question.content}"
+    %ul
+      - question.answers.each_with_index do |answer, a_index|
+        %li= "Answer #{a_index+1}: #{answer.content}"
 
 = link_to 'Edit', edit_quiz_path(@quiz)
 \|
