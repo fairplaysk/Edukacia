@@ -7,6 +7,7 @@ Kwizzer::Application.routes.draw do
         put 'save_all', :on => :collection
       end
     end
+    resources :users
   end
   
   root :to => 'answers#index'
