@@ -1,1 +1,15 @@
 %h1 Index
+
+%table
+  %tr
+    %th Name
+    %th
+
+  - @quizzes.each do |quiz|
+    %tr
+      %td= quiz.name
+      %td= link_to 'take quiz', nil
+
+%br
+
+= link_to 'New Quiz', new_admin_quiz_path
