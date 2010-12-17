@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'paperclip'
 gem 'devise'
 gem 'hpricot'
+gem 'html5-boilerplate'
 
 # pretty up the rails console
 gem 'awesome_print', :require => 'ap'
@@ -45,7 +46,6 @@ group :development do
 	gem 'bullet', '>= 2.0.0.rc3'
 	gem 'rails_best_practices'
 	gem "rails-erd"
-	gem 'html5-boilerplate'
 end
 
 group :development, :test do
