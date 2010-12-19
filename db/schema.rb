@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101219121021) do
+ActiveRecord::Schema.define(:version => 20101219161625) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(:version => 20101219121021) do
   create_table "categorizations", :force => true do |t|
     t.integer  "quiz_id"
     t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "choises", :force => true do |t|
+    t.integer  "submission_id"
+    t.integer  "answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,6 +80,14 @@ ActiveRecord::Schema.define(:version => 20101219121021) do
     t.string   "graphic_content_type"
     t.integer  "graphic_file_size"
     t.datetime "graphic_updated_at"
+  end
+
+  create_table "submissions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "quiz_id"
+    t.boolean  "is_repeated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

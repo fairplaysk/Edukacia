@@ -51,14 +51,11 @@ end
 
 group :development, :test do
 	gem 'cucumber-rails'
-end
-
-group :test do
+	gem 'rspec-rails'
+	gem 'mocha'
 	gem 'capybara'
 	gem 'database_cleaner'
 	gem 'spork'
 	gem 'launchy'    # So you can do Then show me the page
-	gem 'rspec-rails'
 	gem 'factory_girl_rails', '>= 1.1.beta1'
-	gem 'mocha'
 end

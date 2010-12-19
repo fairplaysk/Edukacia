@@ -7,4 +7,8 @@ FactoryGirl.define do
     placement_comments (1..4).collect { Factory(:placement_comment) }
     categories [Factory(:category)]
   end
+  
+  factory :quiz_with_questions, :parent => :quiz do
+    questions [Factory(:question_with_answers)]
+  end
 end

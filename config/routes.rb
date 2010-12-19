@@ -1,6 +1,8 @@
 Kwizzer::Application.routes.draw do
   devise_for :users
 
+  resources :submissions
+
   namespace :kwizzer do
     resources :quizzes do
       resources :questions do
@@ -10,9 +12,7 @@ Kwizzer::Application.routes.draw do
     resources :users
   end
   
-  resources :answers
-  
-  root :to => 'answers#index'
+  root :to => 'submissions#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

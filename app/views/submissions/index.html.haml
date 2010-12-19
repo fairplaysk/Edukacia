@@ -8,7 +8,7 @@
   - @quizzes.each do |quiz|
     %tr
       %td= quiz.name
-      %td= link_to 'take quiz', nil
+      %td= link_to 'take quiz', new_submission_path(:quiz_id => quiz.id)
 
 %br
 
