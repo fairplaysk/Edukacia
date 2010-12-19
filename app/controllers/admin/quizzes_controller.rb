@@ -1,4 +1,4 @@
-module Admin
+module Kwizzer
   class QuizzesController < ApplicationController
     # GET /quizzes
     # GET /quizzes.xml
@@ -74,7 +74,7 @@ module Admin
         session[:quiz] = nil
         respond_to do |format|
           if @quiz.save
-            format.html { redirect_to(admin_quiz_questions_path(@quiz), :notice => 'Successfully saved quiz. Please fill out questions for the quiz next.') }
+            format.html { redirect_to(kwizzer_quiz_questions_path(@quiz), :notice => 'Successfully saved quiz. Please fill out questions for the quiz next.') }
             format.xml  { render :xml => @quiz, :status => :created, :location => @quiz }
           else
             @quiz.placement_comments.build while @quiz.placement_comments.length < 3
@@ -99,7 +99,7 @@ module Admin
         session[:quiz] = nil
         respond_to do |format|
           if @quiz.update_attributes(params[:quiz])
-            format.html { redirect_to(admin_quiz_questions_path(@quiz), :notice => 'Successfully saved quiz. Please fill out questions for the quiz next.') }
+            format.html { redirect_to(kwizzer_quiz_questions_path(@quiz), :notice => 'Successfully saved quiz. Please fill out questions for the quiz next.') }
             format.xml  { head :ok }
           else
             format.html { render :action => "edit" }
@@ -116,7 +116,7 @@ module Admin
       @quiz.destroy
 
       respond_to do |format|
-        format.html { redirect_to(admin_quizzes_url) }
+        format.html { redirect_to(kwizzer_quizzes_url) }
         format.xml  { head :ok }
       end
     end

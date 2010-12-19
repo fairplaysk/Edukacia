@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/sferik/rails_admin.git
+  revision: f7a277a8122c3c179e66a20782afbf49ad65f9a1
+  specs:
+    rails_admin (0.0.1)
+      builder (~> 2.1.0)
+      rails (~> 3.0.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -200,6 +208,7 @@ DEPENDENCIES
   paperclip
   rails (= 3.0.3)
   rails-erd
+  rails_admin!
   rails_best_practices
   rspec-rails
   spork

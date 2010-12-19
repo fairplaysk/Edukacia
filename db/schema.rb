@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101216193930) do
+ActiveRecord::Schema.define(:version => 20101219121021) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(:version => 20101216193930) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "histories", :force => true do |t|
+    t.string   "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
 
   create_table "placement_comments", :force => true do |t|
     t.integer  "quiz_id"

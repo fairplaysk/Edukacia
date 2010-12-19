@@ -10,10 +10,10 @@
   - @quizzes.each do |quiz|
     %tr
       %td= quiz.name
-      %td= link_to 'Show', admin_quiz_path(quiz)
-      %td= link_to 'Edit', edit_admin_quiz_path(quiz)
-      %td= link_to 'Destroy', admin_quiz_path(quiz), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', kwizzer_quiz_path(quiz)
+      %td= link_to 'Edit', edit_kwizzer_quiz_path(quiz)
+      %td= link_to 'Destroy', kwizzer_quiz_path(quiz), :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Quiz', new_admin_quiz_path
+= link_to 'New Quiz', new_kwizzer_quiz_path

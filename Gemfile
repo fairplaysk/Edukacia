@@ -15,6 +15,7 @@ gem 'paperclip'
 gem 'devise'
 gem 'hpricot'
 gem 'html5-boilerplate'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 # pretty up the rails console
 gem 'awesome_print', :require => 'ap'

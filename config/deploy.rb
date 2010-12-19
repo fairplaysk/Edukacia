@@ -33,7 +33,12 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
   
+  desc 'Add seed data'
+  task :seed, :roles => :app do
+    run "cd #{release_path}; rake db:seed RAILS_ENV=production"
+  end
+  
 end
 
 after 'deploy:update_code', 'deploy:symlink_shared'
-
+after 'deploy:migrate', 'deploy:seed'

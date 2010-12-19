@@ -1,6 +1,8 @@
-module Kwizzer
+require "rails_admin/application_controller"
+
+module RailsAdmin
   class ApplicationController < ::ApplicationController
-    before_filter :authenticate_user!
+    before_filter :super_user!
     
     private
     def super_user!

@@ -1,7 +1,7 @@
 Kwizzer::Application.routes.draw do
   devise_for :users
 
-  namespace :admin do
+  namespace :kwizzer do
     resources :quizzes do
       resources :questions do
         put 'save_all', :on => :collection

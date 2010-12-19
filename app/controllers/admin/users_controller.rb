@@ -1,4 +1,4 @@
-module Admin
+module Kwizzer
   class UsersController < ApplicationController
     before_filter :super_user!
     # GET /users
@@ -46,7 +46,7 @@ module Admin
 
       respond_to do |format|
         if @user.save
-          format.html { redirect_to(admin_user_path(@user), :notice => 'User was successfully created.') }
+          format.html { redirect_to(kwizzer_user_path(@user), :notice => 'User was successfully created.') }
           format.xml  { render :xml => @user, :status => :created, :location => @user }
         else
           format.html { render :action => "new" }
@@ -62,7 +62,7 @@ module Admin
 
       respond_to do |format|
         if @user.update_attributes(params[:user])
-          format.html { redirect_to(admin_user_path(@user), :notice => 'User was successfully updated.') }
+          format.html { redirect_to(kwizzer_user_path(@user), :notice => 'User was successfully updated.') }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }

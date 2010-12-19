@@ -1,4 +1,4 @@
-module Admin
+module Kwizzer
   class QuestionsController < ApplicationController
     # GET /questions
     # GET /questions.xml
@@ -91,7 +91,7 @@ module Admin
     
       respond_to do |format|
         if @quiz.update_attributes(params[:quiz])
-          format.html { redirect_to(admin_quiz_path(@quiz), :notice => 'Successfully updated questions for this quiz.') }
+          format.html { redirect_to(kwizzer_quiz_path(@quiz), :notice => 'Successfully updated questions for this quiz.') }
           format.xml  { head :ok }
         else
           format.html { render :action => "index" }
