@@ -11,10 +11,13 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     when /the new question page/
-      new_question_path
+      new_kwizzer_question_path
 
     when /the new quiz page/
-      new_quiz_path
+      new_kwizzer_quiz_path
+    
+    when /login/
+      new_user_session_path
 
 
     # Add more mappings here.

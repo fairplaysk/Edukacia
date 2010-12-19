@@ -7,6 +7,7 @@ Feature: Manage questions
 		Given the following "quiz" factory_girl models:
 		 | name                         |
 		 | Chalenging history questions |
+		And I am a new, authenticated user
 		And I am editing question for the first quiz
 		Then I should see "Chalenging history questions"
 
@@ -14,6 +15,7 @@ Feature: Manage questions
     Given the following "quiz" factory_girl models:
 		 | name |
 		 | quiz |
+		And I am a new, authenticated user
 		And I am editing question for the first quiz
 		And I fill in "Question" with "question 1"
 		And I fill in "Answer" with "answer 1" within "//fieldset[@class='answer_container'][1]"

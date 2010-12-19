@@ -50,9 +50,12 @@ group :development do
 end
 
 group :development, :test do
+	gem 'cucumber-rails'
+end
+
+group :test do
 	gem 'capybara'
 	gem 'database_cleaner'
-	gem 'cucumber-rails'
 	gem 'spork'
 	gem 'launchy'    # So you can do Then show me the page
 	gem 'rspec-rails'

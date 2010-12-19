@@ -8,6 +8,7 @@ Feature: Manage quizzes
 		 | name       |
 		 | category 1 |
 		 | category 2 |
+		And I am a new, authenticated user
 		And I am on the new quiz page
     When I fill in "Name" with "name 1"
 		And I fill in "Comment" with "comment 1"
@@ -26,32 +27,37 @@ Feature: Manage quizzes
 		Given the following "quiz" factory_girl models:
 			|name|
 			|quiz1|
+		And I am a new, authenticated user
 		When I edit the 1st quiz
 		And I press "Save"
 		Then I should see "Successfully saved quiz. Please fill out questions for the quiz next."
 		And I should see "Question"
 		
 	Scenario: Add additional placement comment
-		Given I am on the new quiz page
+		Given I am a new, authenticated user
+		And I am on the new quiz page
 		When I press "Add placement comment"
 		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][4]"
 		And I press "Save"
 		Then the "Placement comment" field within "//fieldset[@class='placement_comment_container'][1]" should contain "placement comment 5"
 		
 	Scenario: Cannot add more than 6 placement comments
-		Given I am on the new quiz page
+		Given I am a new, authenticated user
+		And I am on the new quiz page
 		When I press "Add placement comment"
 		And I press "Add placement comment"
 		And I press "Add placement comment"
 		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][7]"
 		
 	Scenario: Remove additional placement comments
-		Given I am on the new quiz page
+		Given I am a new, authenticated user
+		And I am on the new quiz page
 		When I press "Remove placement comment"
 		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Cannot remove and have less than 3 placement comments
-		Given I am on the new quiz page
+		Given I am a new, authenticated user
+		And I am on the new quiz page
 		When I press "Remove placement comment"
 		Then I should not see "Remove placement comment"
 	
@@ -59,6 +65,7 @@ Feature: Manage quizzes
 		Given the following "quiz" factory_girl models:
 		 | name   |
 		 | quiz 1 |
+		And I am a new, authenticated user
 		When I edit the 1st quiz
 		And I press "Add placement comment"
 		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][5]"
@@ -70,25 +77,29 @@ Feature: Manage quizzes
 		Given the following "quiz" factory_girl models:
 		 | name   |
 		 | quiz 1 |
+		And I am a new, authenticated user
 		When I edit the 1st quiz
 		When I press "Remove placement comment"
 		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Submit with validation failures should not disrupt placement comments
-		Given I am on the new quiz page
+		Given I am a new, authenticated user
+		And I am on the new quiz page
 		When I press "Save"
 		Then I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][1]"
 		And I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][2]"
 		And I should see "Placement comment" within "//fieldset[@class='placement_comment_container'][3]"
 		
 	Scenario: Show errors when a blank form is submitted
-	  Given I am on the new quiz page
+	  Given I am a new, authenticated user
+	  And I am on the new quiz page
 		When I press "Save"
 		Then I should see "Name can't be blank"
 		
 	@javascript
 	Scenario: Remove additional placement comments
-		Given I am on the new quiz page
+		Given I am a new, authenticated user
+		And I am on the new quiz page
 		When I fill in "Placement comment" with "placement comment 1" within "//fieldset[@class='placement_comment_container'][1]"
 		And I fill in "Placement comment" with "placement comment 2" within "//fieldset[@class='placement_comment_container'][2]"
 		And I fill in "Placement comment" with "placement comment 3" within "//fieldset[@class='placement_comment_container'][3]"
@@ -105,6 +116,7 @@ Feature: Manage quizzes
 		Given the following "quiz" factory_girl models:
 		 | name |
 		 | quiz |
+		And I am a new, authenticated user
 		And I am editing question for the first quiz
 		And I follow "Show/Hide answers"
 		Then the page should not contain xpath "//fieldset[style!='display:none']"
@@ -114,6 +126,7 @@ Feature: Manage quizzes
 	  Given the following "quiz" factory_girl models:
 		 | name |
 		 | quiz |
+		And I am a new, authenticated user
 		And I am editing question for the first quiz
 		And I press "Add question"
 		And I fill in "Question" with "question 1" within "//fieldset[@class='question_container'][1]"
@@ -163,6 +176,7 @@ Feature: Manage quizzes
       | name 2 |
       | name 3 |
       | name 4 |
+		And I am a new, authenticated user
     When I delete the 3rd quiz
     Then I should see the following quizzes:
       | Name   |

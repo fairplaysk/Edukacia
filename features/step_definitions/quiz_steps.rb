@@ -9,14 +9,14 @@ Given /^the following "([^"]*)" factory_girl models:$/ do |factory_name, models|
 end
 
 When /^I edit the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
-  visit quizzes_path
+  visit kwizzer_quizzes_path
   within("//table//tr[#{pos.to_i+1}]") do
     click_link "Edit"
   end
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
-  visit quizzes_path
+  visit kwizzer_quizzes_path
   within("//table//tr[#{pos.to_i+1}]") do
     click_link "Destroy"
   end

@@ -3,12 +3,12 @@ Given /^the following questions:$/ do |questions|
 end
 
 Given /^I am editing question for the first quiz$/ do
-  visit quiz_questions_path(Quiz.first)
+  visit kwizzer_quiz_questions_path(Quiz.first)
 end
 
 
 When /^I delete the (\d+)(?:st|nd|rd|th) question$/ do |pos|
-  visit questions_path
+  visit kwizzer_questions_path
   within("table tr:nth-child(#{pos.to_i+1})") do
     click_link "Destroy"
   end

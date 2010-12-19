@@ -10,6 +10,8 @@ Kwizzer::Application.routes.draw do
     resources :users
   end
   
+  resources :answers
+  
   root :to => 'answers#index'
 
   # The priority is based upon order of creation:
