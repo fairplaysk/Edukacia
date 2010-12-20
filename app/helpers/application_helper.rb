@@ -1,10 +1,11 @@
 module ApplicationHelper
-  def link_to_add_fields(name, f, association, index=5)
+  def link_to_add_fields(name, f, association, subassociation = nil)
     new_object = f.object.class.reflect_on_association(association).klass.new
+    (1..subassociation[1]).each { new_object.send(subassociation[0]).build } if subassociation.present?
+    
     fields = f.fields_for association, new_object, :child_index => "new_#{association}" do |builder|
-      "<fieldset class=\"#{association.to_s.singularize}_container\"><ol>".html_safe + render(association.to_s.singularize + "_fields", :f => builder, :index => index) + "</ol></fieldset>".html_safe
+      "<fieldset class=\"#{association.to_s.singularize}_container\"><ol>".html_safe + render(association.to_s.singularize + "_fields", :f => builder, :index => 5) + "</ol></fieldset>".html_safe
     end
-    # link_to_function(name, ("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")").html_safe)
-    f.commit_button name, :button_html => {:name => 'add_placement_comment', :class => 'add_element', 'data-element' => "#{fields}", 'data-association' => association}
+    f.commit_button name, :button_html => {:name => "add_#{association.to_s.singularize}", :class => 'add_element', 'data-element' => "#{fields}", 'data-association' => association}
   end
 end

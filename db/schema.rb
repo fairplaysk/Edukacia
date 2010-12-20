@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101219161625) do
+ActiveRecord::Schema.define(:version => 20101220115613) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20101219161625) do
     t.boolean  "is_repeated"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "session_id"
   end
 
   create_table "users", :force => true do |t|
