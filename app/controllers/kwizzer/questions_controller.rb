@@ -88,7 +88,7 @@ module Kwizzer
   
     def save_all
       @quiz = Quiz.find(params[:quiz_id])
-    
+      
       respond_to do |format|
         if @quiz.update_attributes(params[:quiz])
           format.html { redirect_to(kwizzer_quiz_path(@quiz), :notice => 'Successfully updated questions for this quiz.') }

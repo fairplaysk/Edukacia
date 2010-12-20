@@ -4,13 +4,14 @@
 
 - @submission.quiz.questions.each do |question|
 	%div.result_container
+		%p= question.content
 		%ul
 			- question.answers.each do |answer|
 				- if @submission.answers.include?(answer)
 					%li
 						= answer.content 
-						= (answer.is_correct? ? ' correct' : ' incorrect')
-						= (answer.is_funny? ? ' funny' : ' funny')
+						= answer.is_correct? ? ' correct' : ' incorrect'
+						= ' funny' if answer.is_funny?
 				- else
 					%li= answer.content
 				

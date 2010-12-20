@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.includes(:submissions)
+    @session_id = session[:session_id]
   end
   
   def new
@@ -9,6 +10,7 @@ class SubmissionsController < ApplicationController
   
   def create
     submission = Submission.new(:quiz_id => params[:quiz_id])
+    submission.session_id = session[:session_id]
     params[:submission][:questions_attributes].each do |question_id, answer|
       submission.answers << Answer.find(answer[:answer_ids])
     end
