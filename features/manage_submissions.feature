@@ -17,5 +17,7 @@ Feature: Manage submissions
 		Given a quiz with 2 questions and 4 answers for each question was created
 		When I fill in and submit the 1st quiz
 		Then I should see "2 correct answer(s)"
+		And I should see "answer 1 correct" within "//div[@class='result_container'][1]"
+		And I should see "answer 2 incorrect" within "//div[@class='result_container'][2]"
 		
 		

@@ -28,6 +28,6 @@ When /^I fill in and submit the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
     click_link "take quiz"
   end
   And %{I choose "answer 1" within "//fieldset[@class='quiz_question_container'][1]"}
-  And %{I choose "answer 1" within "//fieldset[@class='quiz_question_container'][2]"}
+  And %{I choose "answer 2" within "//fieldset[@class='quiz_question_container'][2]"}
   And %{I press "Submit"}
 end

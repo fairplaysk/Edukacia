@@ -1,3 +1,17 @@
 %h1= "Results for quiz #{@submission.quiz.name}"
 
 %p= "#{@submission.correct_answers_count} correct answer(s)"
+
+- @submission.quiz.questions.each do |question|
+	%div.result_container
+		%ul
+			- question.answers.each do |answer|
+				- if @submission.answers.include?(answer)
+					%li
+						= answer.content 
+						= (answer.is_correct? ? ' correct' : ' incorrect')
+						= (answer.is_funny? ? ' funny' : ' funny')
+				- else
+					%li= answer.content
+				
+= link_to 'home', root_path
