@@ -12,6 +12,7 @@
       %td= quiz.name
       %td= link_to 'Show', kwizzer_quiz_path(quiz)
       %td= link_to 'Edit', edit_kwizzer_quiz_path(quiz)
+      %td= link_to 'edit user info', kwizzer_quiz_additional_questions_path(quiz)
       %td= link_to 'Destroy', kwizzer_quiz_path(quiz), :confirm => 'Are you sure?', :method => :delete
 
 %br

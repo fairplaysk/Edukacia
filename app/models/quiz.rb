@@ -10,6 +10,9 @@ class Quiz < ActiveRecord::Base
   
   has_many :submissions
   
+  has_many :additional_questions
+  accepts_nested_attributes_for :additional_questions, :reject_if => lambda { |aq| aq[:name].blank? }, :allow_destroy => true
+  
   has_attached_file :graphic, :styles => { :thumb => "150x150#" }
   
   validates :name, :categories, :placement_comments, :presence => true

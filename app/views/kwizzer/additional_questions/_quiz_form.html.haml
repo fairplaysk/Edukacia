@@ -1,0 +1,6 @@
+%h1= "Additional questions for #{quiz.name}"
+= semantic_form_for quiz, :url => save_all_kwizzer_quiz_additional_questions_path(quiz) do |form|
+  = form.inputs :class => 'additional_questions_container', :for => :additional_questions do |q|
+    = render 'additional_question_fields', :f => q
+  = link_to_add_fields("Add question", form, :additional_questions)
+  = form.submit 'Save'

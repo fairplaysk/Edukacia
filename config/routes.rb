@@ -8,6 +8,9 @@ Kwizzer::Application.routes.draw do
       resources :questions do
         put 'save_all', :on => :collection
       end
+      resources :additional_questions do
+        put 'save_all', :on => :collection
+      end
     end
     resources :users
   end

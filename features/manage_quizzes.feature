@@ -25,8 +25,8 @@ Feature: Manage quizzes
 		
   Scenario: Edit a quiz should take me to questions edit page
 		Given the following "quiz" factory_girl models:
-			|name|
-			|quiz1|
+		 | name  |
+		 | quiz1 |
 		And I am a new, authenticated user
 		When I edit the 1st quiz
 		And I press "Save"
@@ -95,6 +95,19 @@ Feature: Manage quizzes
 	  And I am on the new quiz page
 		When I press "Save"
 		Then I should see "Name can't be blank"
+		
+	Scenario: Specify additional information the user can fill out after submitting the quiz
+		Given the following "quiz" factory_girl models:
+		 | name   |
+		 | quiz 1 |
+		And I am a new, authenticated user
+		And I am on the backend quizzes list page
+		And I follow "edit user info"
+		And I fill in "Name" with "name"
+		And I select "text" from "Input type"
+		And I fill in "Values" with ""
+		And I press "Save"
+		Then I should see "Additional user questions successfully updated."
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).

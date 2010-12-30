@@ -1,0 +1,5 @@
+= f.input :name
+= f.input :input_type, :collection => ['radio', 'select', 'text', 'email']
+= f.input :values
+= f.input :_destroy, :as => :hidden
+= f.commit_button 'Remove question', :button_html => {:name => 'remove_question', :class => 'remove'}
