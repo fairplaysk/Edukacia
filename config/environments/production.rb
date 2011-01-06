@@ -48,5 +48,8 @@ Kwizzer::Application.configure do
   config.active_support.deprecation = :notify
   
   
-  config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.smtp_settings = {  
+    :domain => "kvizy.fair-play.sk",
+    :address => "kvizy.fair-play.sk"
+  }
 end
