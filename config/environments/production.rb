@@ -52,4 +52,6 @@ Kwizzer::Application.configure do
     :domain => "kvizy.fair-play.sk",
     :address => "kvizy.fair-play.sk"
   }
+  
+  config.default_url_options = { :host => 'kvizy.fair-play.sk' }
 end
