@@ -43,10 +43,14 @@ module Kwizzer
     
     private
     def add_remove_placement_comments
-      @quiz = params[:id] ? Quiz.find(params[:id]) : Quiz.new(params[:quiz])
+      if params[:id]
+        @quiz = Quiz.find(params[:id]) and @quiz.update_attributes(params[:quiz])
+      else
+        @quiz = Quiz.new(params[:quiz])
+      end
       if params[:add_placement_comment] || params[:remove_placement_comment]
         @quiz.placement_comments.build if @quiz.placement_comments.length < 6 && params[:add_placement_comment]
-        @quiz.placement_comments.pop if @quiz.placement_comments.length > 3 if params[:remove_placement_comment]
+        @quiz.placement_comments.delete(@quiz.placement_comments.last) if @quiz.placement_comments.length > 3 if params[:remove_placement_comment]
         params[:id] ? render('edit') : render('new')
       end
     end

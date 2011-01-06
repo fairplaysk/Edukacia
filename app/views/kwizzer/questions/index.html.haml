@@ -1,7 +1,9 @@
 %h1= "Questions for #{@quiz.name}"
 
 = semantic_form_for @quiz, :url => save_all_kwizzer_quiz_questions_path(@quiz) do |form|
+  - index = 1
   = form.inputs :class => 'question_container', :for => :questions do |q|
-    = render 'question_fields', :f => q
+    = render 'question_fields', :f => q, :index => index
+    - index += 1
   = link_to_add_fields("Add question", form, :questions, [:answers, 4])
   = form.submit 'Save'

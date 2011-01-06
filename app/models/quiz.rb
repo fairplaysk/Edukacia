@@ -1,6 +1,7 @@
 class Quiz < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
-  accepts_nested_attributes_for :questions, :reject_if => lambda { |q| q[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :questions, :allow_destroy => true
+  validates_associated :questions
   
   has_many :placement_comments, :dependent => :destroy
   accepts_nested_attributes_for :placement_comments, :allow_destroy => true

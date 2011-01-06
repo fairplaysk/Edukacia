@@ -2,8 +2,10 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(function() {
+	cleanup_hashes();
+	
 	$('.hide_following_containers').live('click', function () { 
-		var containers = $(this).parent().find('.'+$(this).attr('data-container'))
+		var containers = $(this).parent().find('.'+$(this).attr('data-container'));
 		containers.each(function(index, domElem) {
 		  $(domElem).toggle('medium');
 		});
@@ -18,23 +20,16 @@ $(function() {
 		if($('.placement_comment_container:visible').length < 6) {
 			var content = $(this).attr("data-element");
 		  var new_id = new Date().getTime();
-		  var regexp = new RegExp("new_" + $(this).attr("data-association"), "g")
+		  var regexp = new RegExp("new_" + $(this).attr("data-association"), "g");
 			$(this).parent().before(content.replace(regexp, new_id));
 	  }
+	  cleanup_hashes();
 		return false;  
 	});
 });
 
-
-function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().find(".inputs .remove").last().after(content.replace(regexp, new_id));
-	return false;
-
-	$(".remove").click(function() {
-		$(this).prev().children("input[type=hidden]").val("1");
-		$(this).parent().hide();
-		return false;
+function cleanup_hashes() {
+	$('input.remove,input.add_element').each(function(index, domElem){
+		$(domElem).val($(domElem).val().replace(/\s+#\d+/, ''));
 	});
 }

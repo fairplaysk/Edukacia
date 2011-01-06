@@ -83,9 +83,9 @@ Feature: Manage javascripts
 	@javascript
 	Scenario: Remove an answer
 		Given I am a new, authenticated user
-		And a quiz "healthcare" with 1 questions and 1 answers for each question was created
+		And a quiz "healthcare" with 1 questions and 4 answers for each question was created
 		And I edit the 1st quiz
 		And I press "Save"
 		And I press "Remove answer"
 		And I press "Save"
-		Then I should not see "Answer"
+		Then I should not see "answer 1"

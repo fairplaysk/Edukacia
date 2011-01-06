@@ -31,3 +31,26 @@ Feature: Manage questions
 		And I should see "answer 3"
 		And I should see "answer 4"
 		
+	Scenario: Add questions and answers saves everything
+	  Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		And I am a new, authenticated user
+		And I am editing question for the first quiz
+		And I press "Add question"
+		And I fill in "Question" with "question 1" within "//fieldset[@class='question_container'][1]"
+		And I fill in "Comment" with "comment 1" within "//fieldset[@class='question_container'][1]"
+		And I fill in "Answer" with "answer 1" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][1]"
+		And I fill in "Answer" with "answer 2" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][2]"
+		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][3]"
+		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][4]"
+		And I fill in "Question" with "question 1" within "//fieldset[@class='question_container'][2]"
+		And I fill in "Comment" with "comment 1" within "//fieldset[@class='question_container'][2]"
+		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I fill in "Answer" with "answer 1" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][1]"
+		And I fill in "Answer" with "answer 2" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][2]"
+		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][3]"
+		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][4]"
