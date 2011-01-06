@@ -3,7 +3,8 @@ class Quiz < ActiveRecord::Base
   accepts_nested_attributes_for :questions, :reject_if => lambda { |q| q[:content].blank? }, :allow_destroy => true
   
   has_many :placement_comments, :dependent => :destroy
-  accepts_nested_attributes_for :placement_comments, :reject_if => lambda { |pc| pc[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :placement_comments, :allow_destroy => true
+  validates_associated :placement_comments
 
   has_many :categorizations
   has_many :categories, :through => :categorizations

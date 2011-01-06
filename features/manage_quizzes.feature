@@ -37,9 +37,9 @@ Feature: Manage quizzes
 		Given I am a new, authenticated user
 		And I am on the new quiz page
 		When I press "Add placement comment"
-		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][4]"
+		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][5]"
 		And I press "Save"
-		Then the "Placement comment" field within "//fieldset[@class='placement_comment_container'][1]" should contain "placement comment 5"
+		Then the "Placement comment" field within "//fieldset[@class='placement_comment_container'][5]" should contain "placement comment 5"
 		
 	Scenario: Cannot add more than 6 placement comments
 		Given I am a new, authenticated user
