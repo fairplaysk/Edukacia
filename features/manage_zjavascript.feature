@@ -69,3 +69,23 @@ Feature: Manage javascripts
 		When I fill in and submit the 1st quiz
 		When I go to the homepage
 		And I follow "show submission"
+		
+	@javascript
+	Scenario: Remove a question
+		Given I am a new, authenticated user
+		And a quiz "healthcare" with 1 questions and 4 answers for each question was created
+		And I edit the 1st quiz
+		And I press "Save"
+		And I press "Remove question"
+		And I press "Save"
+		Then I should not see "Question"
+		
+	@javascript
+	Scenario: Remove an answer
+		Given I am a new, authenticated user
+		And a quiz "healthcare" with 1 questions and 1 answers for each question was created
+		And I edit the 1st quiz
+		And I press "Save"
+		And I press "Remove answer"
+		And I press "Save"
+		Then I should not see "Answer"
