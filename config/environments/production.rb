@@ -53,5 +53,5 @@ Kwizzer::Application.configure do
     :address => "kvizy.fair-play.sk"
   }
   
-  config.action_mailer.default_url_options = { :host => 'kvizy.fair-play.sk' }
+  config.action_mailer.default_url_options = { :host => 'localhost' }
 end
