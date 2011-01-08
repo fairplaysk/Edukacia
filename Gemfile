@@ -55,7 +55,7 @@ group :development, :test do
 	gem 'mocha'
 	gem 'capybara'
 	gem 'database_cleaner'
-	gem 'spork'
+	gem 'spork', '>= 0.9.0.rc2'
 	gem 'launchy'    # So you can do Then show me the page
 	gem 'factory_girl_rails', '>= 1.1.beta1'
 end

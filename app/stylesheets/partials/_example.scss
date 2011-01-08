@@ -20,8 +20,8 @@ html { @include force-scrollbar; }
 a, a:active, a:visited { color: $link-color; }
 a:hover { color: $link-hover-color; }
 
-ul, ol { margin-left: $list-left-margin; }
-ol { list-style-type: decimal; }
+ul, ol { margin-left: 10px; }
+ol { list-style-type: none; }
 
 td, td img { vertical-align: top; }
 

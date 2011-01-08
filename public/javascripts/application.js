@@ -5,10 +5,11 @@ $(function() {
 	cleanup_hashes();
 	
 	$('.hide_following_containers').live('click', function () { 
-		var containers = $(this).parent().find('.'+$(this).attr('data-container'));
-		containers.each(function(index, domElem) {
-		  $(domElem).toggle('medium');
-		});
+		// var containers = $(this).parent().find('.'+$(this).attr('data-container'));
+		// 		containers.each(function(index, domElem) {
+		// 		  $(domElem).toggle('medium');
+		// 		});
+		$(this).parent().next().toggle('medium');
 		return false;
 	});
 	$('.remove').live('click', function () { 

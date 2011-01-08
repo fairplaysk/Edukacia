@@ -37,7 +37,7 @@ input:invalid, textarea:invalid {
 // Add your own custom styles below
 //-----------------------------------
 
-@include blueprint-typography;
+/*@include blueprint-typography;*/
 
 #usernav{
 	@include float-right;}
@@ -52,6 +52,21 @@ header {
 	@include column($blueprint-grid-columns);
 }
 
-#main {}
+#main {
+	@include container;
+	.question_details_container {
+		@include column($blueprint-grid-columns/2.1);	
+		textarea {
+			width: 440px;
+		}
+	}
+	.answer_details_container{
+		@include column($blueprint-grid-columns/2, true);	
+		@include float-right;
+		input[type='text'] {
+			width: 400px;
+		}
+	}
+}
 
 footer {}
