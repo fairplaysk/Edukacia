@@ -2,12 +2,20 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  quiz_saved: 'Successfully saved quiz. Please fill out questions for the quiz next.'
+  quiz_updated: 'Successfully updated quiz. Please fill out questions for the quiz next.'
+  
   formtastic:
     labels:
       quiz:
       placement_comment:
         content: 'Placement comment'
-  
+      question:
+        content: 'Question'
+      answer:
+        content: 'Answer'
+        is_correct: 'Correct'  
+        is_funny: 'Funny'
   layouts:
     header:
       submissions: 'Submissions'
@@ -33,6 +41,10 @@ en:
       form:
         categories: 'Categories'
         save: 'Save'
+      edit:
+        editing_quiz: 'Editing quiz'
+        cancel: 'Cancel'
+        show: 'Show'
     users:
       index:
         listing_users: 'Listing users'
@@ -41,3 +53,13 @@ en:
         show: 'Show'
         edit: 'Edit'
         new_user: 'New User'
+      new:
+        new_user: 'New user'
+        cancel: 'Cancel'
+      edit:
+        edit_user: 'Editing user'
+        cancel: 'Cancel'
+        show: 'Show'
+    questions:
+      index:
+        questions_title: 'Questions for %{quiz}'

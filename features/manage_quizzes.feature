@@ -30,7 +30,7 @@ Feature: Manage quizzes
 		And I am a new, authenticated user
 		When I edit the 1st quiz
 		And I press "Save"
-		Then I should see "Successfully saved quiz. Please fill out questions for the quiz next."
+		Then I should see "Successfully updated quiz. Please fill out questions for the quiz next."
 		And I should see "Question"
 		
 	Scenario: Add additional placement comment

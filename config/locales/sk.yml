@@ -2,6 +2,10 @@
 # by Jozef Fulop (jofi-rails@silake.com)
  
 sk:
+  multiple_errors: 'Vyskytli sa %{count} chyby pri ukladaní formulára.'
+  quiz_saved: 'Kvíz bol úspešne uložený. Vyplnte prosím otázky a odpovede.'
+  quiz_updated: 'Kvíz bol úspešne aktualizovaný. Vyplnte prosím otázky a odpovede.'
+  
   formtastic:
     labels:
       quiz:
@@ -12,6 +16,19 @@ sk:
         graphic: 'Grafika'
       placement_comment:
         content: 'Komentár k hodnoteniu'
+      question:
+        content: 'Otázka'
+        comment: 'Komentár'
+      answer:
+        content: 'Odpoveď'
+        is_correct: 'Správna'
+        is_funny: 'Vtipná'
+      user:
+        username: 'Používateľské meno'
+        email: "Email"
+        password: 'Heslo'
+        password_confirmation: 'Potvrdenie hesla'
+        super: 'Administrátor'
   layouts:
     header:
       submissions: 'Odovzdania'
@@ -37,6 +54,10 @@ sk:
       form:
         categories: 'Kategórie'
         save: 'Uložiť'
+      edit:
+        editing_quiz: 'Úprava kvízu'
+        cancel: 'Zrušiť'
+        show: 'Ukázať'
     users:
       index:
         listing_users: 'Zoznam používateľov'
@@ -45,6 +66,16 @@ sk:
         show: 'Zobraziť'
         edit: 'Upraviť'
         new_user: 'Vytvoriť nového používateľa'
+      new:
+        new_user: 'Nový používateľ'
+        cancel: 'Zrušiť'
+      edit:
+        edit_user: 'Úprava používateľa'
+        cancel: 'Zrušiť'
+        show: 'Zobraziť'
+    questions:
+      index:
+        questions_title: 'Otázky pre %{quiz}'
 
   # Date
   date:
@@ -211,7 +242,11 @@ sk:
           even: "musí byť párne číslo"
 
   # ActiveRecord validation messages
-  activerecord:                  
+  activerecord:
+      attributes:
+        quiz:
+          name: 'Názov'
+          categories: 'Kategórie'
       errors:
           template:
              header:

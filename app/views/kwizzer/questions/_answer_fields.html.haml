@@ -1,5 +1,5 @@
-= f.input :content, :label => 'Answer'
-= f.input :is_correct, :label => 'Correct'
-= f.input :is_funny, :label => 'Funny'
+= f.input :content
+= f.input :is_correct
+= f.input :is_funny
 = f.input :_destroy, :as => :hidden
 = f.commit_button "Remove answer for question ##{index}", :button_html => {:name => 'remove_answer', :class => 'remove'}

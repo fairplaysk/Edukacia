@@ -1,5 +1,5 @@
 .question_details_container
-	= f.input :content, :label => 'Question', :input_html => {:rows => 3}
+	= f.input :content, :input_html => {:rows => 3}
 	= f.input :comment
 	= f.input :_destroy, :as => :hidden
 	= f.commit_button 'Remove question', :button_html => {:name => 'remove_question', :class => 'remove'}

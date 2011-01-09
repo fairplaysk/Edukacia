@@ -21,7 +21,7 @@ module Kwizzer
 
     def create
       if @quiz.save
-        redirect_to(kwizzer_quiz_questions_path(@quiz), :notice => 'Successfully saved quiz. Please fill out questions for the quiz next.')
+        redirect_to(kwizzer_quiz_questions_path(@quiz), :notice => t('.quiz_saved'))
       else
         render 'new'
       end
@@ -29,7 +29,7 @@ module Kwizzer
 
     def update
       if @quiz.update_attributes(params[:quiz])
-        redirect_to(kwizzer_quiz_questions_path(@quiz), :notice => 'Successfully saved quiz. Please fill out questions for the quiz next.')
+        redirect_to(kwizzer_quiz_questions_path(@quiz), :notice => t('.quiz_updated'))
       else
         render :action => "edit"
       end

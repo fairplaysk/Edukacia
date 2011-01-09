@@ -1,7 +1,7 @@
-%h1 Editing quiz
+%h1= t('.editing_quiz')
 
 = render 'form'
 
-= link_to 'Show', kwizzer_quiz_path(@quiz)
+= link_to t('.show'), kwizzer_quiz_path(@quiz)
 \|
-= link_to 'Back', kwizzer_quizzes_path
+= link_to t('.cancel'), kwizzer_quizzes_path
