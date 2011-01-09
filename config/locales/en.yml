@@ -10,3 +10,14 @@ en:
       signed_in: 'Signed in as %{username}. Not you?'
       sign_in: 'sign in'
       sign_out: 'sign out'
+      
+  kwizzer:
+    quizzes:
+      index:
+        listing_quizzes: 'Listing quizzes'
+        name: 'Name'
+        show: 'Show'
+        edit: 'Edit'
+        additional_questions: 'Additional questions'
+        destroy: 'Destroy'
+        new_quiz: 'New Quiz'

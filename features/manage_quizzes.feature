@@ -102,7 +102,7 @@ Feature: Manage quizzes
 		 | quiz 1 |
 		And I am a new, authenticated user
 		And I am on the backend quizzes list page
-		And I follow "edit user info"
+		And I follow "Additional questions"
 		And I fill in "Name" with "name"
 		And I select "text" from "Input type"
 		And I fill in "Values" with ""

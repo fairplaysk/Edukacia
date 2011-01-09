@@ -10,6 +10,17 @@
       signed_in: 'Prihlásený ako %{username}.'
       sign_in: 'Prihlásiť sa'
       sign_out: 'Odhlásiť sa'
+      
+  kwizzer:
+    quizzes:
+      index:
+        listing_quizzes: 'Zoznam Kvízov'
+        name: 'Názov'
+        show: 'Ukázať'
+        edit: 'Upraviť'
+        additional_questions: 'Dodatočné otázky'
+        destroy: 'Zmazať'
+        new_quiz: 'Vytvoriť nový kvíz'
   
   # Date
   date:

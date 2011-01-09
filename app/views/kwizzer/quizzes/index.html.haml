@@ -1,8 +1,8 @@
-%h1 Listing quizzes
+%h1= t('.listing_quizzes')
 
 %table
   %tr
-    %th Name
+    %th= t('.name')
     %th
     %th
     %th
@@ -10,11 +10,11 @@
   - @quizzes.each do |quiz|
     %tr
       %td= quiz.name
-      %td= link_to 'Show', kwizzer_quiz_path(quiz)
-      %td= link_to 'Edit', edit_kwizzer_quiz_path(quiz)
-      %td= link_to 'edit user info', kwizzer_quiz_additional_questions_path(quiz)
-      %td= link_to 'Destroy', kwizzer_quiz_path(quiz), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t('.show'), kwizzer_quiz_path(quiz)
+      %td= link_to t('.edit'), edit_kwizzer_quiz_path(quiz)
+      %td= link_to t('.additional_questions'), kwizzer_quiz_additional_questions_path(quiz)
+      %td= link_to t('.destroy'), kwizzer_quiz_path(quiz), :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Quiz', new_kwizzer_quiz_path
+= link_to t('.new_quiz'), new_kwizzer_quiz_path
