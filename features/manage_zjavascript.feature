@@ -17,16 +17,6 @@ Feature: Manage javascripts
 		And I should see "placement comment 1"
 		And I should see "placement comment 2"
 		And I should see "placement comment 3"
-
-	@javascript
-	Scenario: Show and hide answers for quiz question
-		Given the following "quiz" factory_girl models:
-		 | name |
-		 | quiz |
-		And I am a new, authenticated user
-		And I am editing question for the first quiz
-		And I follow "Show/Hide answers"
-		Then the page should not contain xpath "//fieldset[style!='display:none']"
 	
 	@javascript
 	Scenario: Add questions and answers saves everything
