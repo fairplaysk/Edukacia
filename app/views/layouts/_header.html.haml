@@ -3,10 +3,10 @@
 		= link_to 'Kwizzer_logo', root_path
 #usernav
 	- if user_signed_in?
-		="Signed in as #{current_user.username}. Not you?"
-		= link_to "Sign out", destroy_user_session_path
+		= t('.signed_in', :username => current_user.username)
+		= link_to t('.sign_in'), destroy_user_session_path
 	- else
-		= link_to "sign in", new_user_session_path
+		= link_to t('.sign_out'), new_user_session_path
 #locale_switcher
 	%ul
 		%li= link_to "Slovenčina", set_locale_path('sk')
@@ -15,7 +15,7 @@
 	%ul
 		%li= link_to t('.submissions'), submissions_path
 		- if user_signed_in? && current_user.super?
-			%li= link_to 'Quizzes', kwizzer_quizzes_path
-			%li= link_to 'Users', kwizzer_users_path
+			%li= link_to t('.quizzes'), kwizzer_quizzes_path
+			%li= link_to t('.users'), kwizzer_users_path
 			%li= link_to 'Rails admin', rails_admin_dashboard_path
 	

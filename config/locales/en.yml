@@ -5,3 +5,8 @@ en:
   layouts:
     header:
       submissions: 'Submissions'
+      quizzes: 'Quizzes'
+      users: 'Users'
+      signed_in: 'Signed in as %{username}. Not you?'
+      sign_in: 'sign in'
+      sign_out: 'sign out'

@@ -5,6 +5,11 @@
   layouts:
     header:
       submissions: 'Odovzdania'
+      quizzes: 'Kvízy'
+      users: 'Používatelia'
+      signed_in: 'Prihlásený ako %{username}.'
+      sign_in: 'Prihlásiť sa'
+      sign_out: 'Odhlásiť sa'
   
   # Date
   date:
