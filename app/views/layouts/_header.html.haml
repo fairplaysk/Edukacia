@@ -4,9 +4,9 @@
 #usernav
 	- if user_signed_in?
 		= t('.signed_in', :username => current_user.username)
-		= link_to t('.sign_in'), destroy_user_session_path
+		= link_to t('.sign_out'), destroy_user_session_path
 	- else
-		= link_to t('.sign_out'), new_user_session_path
+		= link_to t('.sign_in'), new_user_session_path
 #locale_switcher
 	%ul
 		%li= link_to "Slovenčina", set_locale_path('sk')

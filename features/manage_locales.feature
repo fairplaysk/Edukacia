@@ -26,6 +26,17 @@ Feature: Manage locales
 		And I should see "Zmazať"
 		And I should see "Vytvoriť nový kvíz"
 		
+	Scenario: Listing users in slovak
+		Given I am a new, authenticated user
+		And I follow "Slovenčina"
+		When I am on the backend users list page
+		Then I should see "Zoznam používateľov"
+		And I should see "Používateľské meno"
+		And I should see "Email"
+		And I should see "Zobraziť"
+		And I should see "Upraviť"
+		And I should see "Vytvoriť nového používateľa"
+		
   Scenario: Click on English locale
 		Given I am a new, authenticated user
 		And I am on the homepage

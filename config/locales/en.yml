@@ -21,3 +21,11 @@ en:
         additional_questions: 'Additional questions'
         destroy: 'Destroy'
         new_quiz: 'New Quiz'
+    users:
+      index:
+        listing_users: 'Listing users'
+        username: 'Username'
+        email: 'Email'
+        show: 'Show'
+        edit: 'Edit'
+        new_user: 'New User'

@@ -21,6 +21,14 @@
         additional_questions: 'Dodatočné otázky'
         destroy: 'Zmazať'
         new_quiz: 'Vytvoriť nový kvíz'
+    users:
+      index:
+        listing_users: 'Zoznam používateľov'
+        username: 'Používateľské meno'
+        email: 'Email'
+        show: 'Zobraziť'
+        edit: 'Upraviť'
+        new_user: 'Vytvoriť nového používateľa'
   
   # Date
   date:

@@ -18,6 +18,9 @@ module NavigationHelpers
       
     when /the backend quizzes list page/
       kwizzer_quizzes_path
+      
+    when /the backend users list page/
+      kwizzer_users_path
     
     when /login/
       new_user_session_path
