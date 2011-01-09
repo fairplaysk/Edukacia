@@ -59,11 +59,15 @@ header {
 	@include column($blueprint-grid-columns);
 	#logo{
 		padding: 10px 0 10px 20px;
-		@include column($blueprint-grid-columns/3); }
+		@include column($blueprint-grid-columns/2); }
 	#usernav{
-		@include column($blueprint-grid-columns/5, last); 
-		@include float-right; 
-		padding: 20px;}
+		@include column($blueprint-grid-columns/5); 
+		padding: 20px;
+		@include float-right;}
+	#locale_switcher{
+		@include column($blueprint-grid-columns/8, last); 
+		padding: 20px;
+		@include float-right;}
 	#navigation{
 		background: black;
 		font-size:1.2em;

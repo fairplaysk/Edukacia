@@ -7,10 +7,15 @@
 		= link_to "Sign out", destroy_user_session_path
 	- else
 		= link_to "sign in", new_user_session_path
+#locale_switcher
+	%ul
+		%li= link_to "Slovenčina", set_locale_path('sk')
+		%li= link_to "English", set_locale_path('en')
 #navigation
 	%ul
-		%li= link_to 'Submissions', submissions_path
+		%li= link_to t('.submissions'), submissions_path
 		- if user_signed_in? && current_user.super?
 			%li= link_to 'Quizzes', kwizzer_quizzes_path
 			%li= link_to 'Users', kwizzer_users_path
 			%li= link_to 'Rails admin', rails_admin_dashboard_path
+	
