@@ -55,6 +55,7 @@ body {
 header {
 	color: white;
 	background: #484848;
+	a, a:active, a:visited {color: #ddd;}
 	@include column($blueprint-grid-columns);
 	#logo{
 		padding: 10px 0 10px 20px;
@@ -66,7 +67,6 @@ header {
 	#navigation{
 		background: black;
 		font-size:1.2em;
-		a {color: #ddd;}
 		@include column($blueprint-grid-columns); 
 		li{
 			padding: 5px;

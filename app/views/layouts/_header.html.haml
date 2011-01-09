@@ -1,5 +1,6 @@
 #logo
-	%h1 Kwizzer_logo
+	%h1
+		= link_to 'Kwizzer_logo', root_path
 #usernav
 	- if user_signed_in?
 		="Signed in as #{current_user.username}. Not you?"
