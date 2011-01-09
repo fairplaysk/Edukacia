@@ -3,7 +3,6 @@
 	= f.input :comment
 	= f.input :_destroy, :as => :hidden
 	= f.commit_button 'Remove question', :button_html => {:name => 'remove_question', :class => 'remove'}
-	= link_to 'Show/Hide answers', nil, :class => 'hide_following_containers', 'data-container' => 'answer_container'
 .answer_details_container
 	= f.inputs :class => 'answer_container', :for => :answers do |a|
 		= render 'answer_fields', :f => a, :index => index

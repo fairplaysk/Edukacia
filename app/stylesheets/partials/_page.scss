@@ -39,34 +39,68 @@ input:invalid, textarea:invalid {
 
 /*@include blueprint-typography;*/
 
-#usernav{
-	@include float-right;}
-
-body {}
+body {
+	@include linear-gradient(color-stops(#d8d8d8, white));
+}
 
 #container {
 	@include container;
+	@include box-shadow;
+	margin-bottom: 20px;
+	margin-top: 10px;
 }
 
 header {
+	color: white;
+	background: #484848;
+	padding: 10px;
 	@include column($blueprint-grid-columns);
+	#logo{
+		@include column($blueprint-grid-columns/3); }
+	#usernav{
+		@include column($blueprint-grid-columns/5, last); 
+		@include float-right; 
+		padding: 20px;}
+	h1 {
+		font-size: 5em;	}
 }
 
 #main {
-	@include container;
-	.question_details_container {
-		@include column($blueprint-grid-columns/2.1);	
-		textarea {
-			width: 440px;
+	background: #eee;
+	padding: 20px;
+	@include column($blueprint-grid-columns);
+	.formtastic {
+		ol {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+		}
+		fieldset {
+			margin-bottom: 20px;
+		}
+		.question_details_container {
+			@include column(11); /*11 out of 24 columns*/
+			textarea {
+				width: 440px;
+			}
+		}
+		.answer_details_container{
+			@include column(11, true);	/*11 out of 24 columns*/
+			@include float-right;
+			input[type='text'] {
+				width: 300px;
+			}
 		}
 	}
-	.answer_details_container{
-		@include column($blueprint-grid-columns/2, true);	
-		@include float-right;
-		input[type='text'] {
-			width: 400px;
-		}
+	#flash {
+		@include column($blueprint-grid-columns);
+	}
+	h1{
+		@include column($blueprint-grid-columns);
+		font-size: 3em;
 	}
 }
 
-footer {}
+footer { @include column($blueprint-grid-columns); }

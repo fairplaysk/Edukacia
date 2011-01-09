@@ -4,14 +4,6 @@
 $(function() {
 	cleanup_hashes();
 	
-	$('.hide_following_containers').live('click', function () { 
-		// var containers = $(this).parent().find('.'+$(this).attr('data-container'));
-		// 		containers.each(function(index, domElem) {
-		// 		  $(domElem).toggle('medium');
-		// 		});
-		$(this).parent().next().toggle('medium');
-		return false;
-	});
 	$('.remove').live('click', function () { 
 		$(this).parent().prev().children("input[type=hidden]").val("1");
 		$(this).parent().parent().parent().hide();
@@ -22,7 +14,7 @@ $(function() {
 			var content = $(this).attr("data-element");
 		  var new_id = new Date().getTime();
 		  var regexp = new RegExp("new_" + $(this).attr("data-association"), "g");
-			$(this).parent().before(content.replace(regexp, new_id));
+			$(this).parent().parent().before(content.replace(regexp, new_id));
 	  }
 	  cleanup_hashes();
 		return false;  
