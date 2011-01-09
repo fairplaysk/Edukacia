@@ -1,5 +1,5 @@
-%h1 New quiz
+%h1= t('.new_quiz')
 
 = render 'form'
 
-= link_to 'Back', kwizzer_quizzes_path
+= link_to t('.cancel'), kwizzer_quizzes_path

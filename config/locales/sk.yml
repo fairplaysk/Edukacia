@@ -1,7 +1,17 @@
 # Slovak translations for Ruby on Rails (inspired by the Czech localization - thanx to Karel Minařík)
 # by Jozef Fulop (jofi-rails@silake.com)
  
-"sk":
+sk:
+  formtastic:
+    labels:
+      quiz:
+        name: 'Názov'
+        comment: 'Komentár'
+        sponsor: 'Sponzor'
+        funny_comment: 'Vtipný komentár'
+        graphic: 'Grafika'
+      placement_comment:
+        content: 'Komentár k hodnoteniu'
   layouts:
     header:
       submissions: 'Odovzdania'
@@ -21,6 +31,12 @@
         additional_questions: 'Dodatočné otázky'
         destroy: 'Zmazať'
         new_quiz: 'Vytvoriť nový kvíz'
+      new:
+        new_quiz: 'Nový kvíz'
+        cancel: 'Zrušiť'
+      form:
+        categories: 'Kategórie'
+        save: 'Uložiť'
     users:
       index:
         listing_users: 'Zoznam používateľov'
@@ -29,7 +45,7 @@
         show: 'Zobraziť'
         edit: 'Upraviť'
         new_user: 'Vytvoriť nového používateľa'
-  
+
   # Date
   date:
       formats:

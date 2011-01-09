@@ -2,6 +2,12 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  formtastic:
+    labels:
+      quiz:
+      placement_comment:
+        content: 'Placement comment'
+  
   layouts:
     header:
       submissions: 'Submissions'
@@ -21,6 +27,12 @@ en:
         additional_questions: 'Additional questions'
         destroy: 'Destroy'
         new_quiz: 'New Quiz'
+      new:
+        new_quiz: 'New Quiz'
+        cancel: 'Cancel'
+      form:
+        categories: 'Categories'
+        save: 'Save'
     users:
       index:
         listing_users: 'Listing users'

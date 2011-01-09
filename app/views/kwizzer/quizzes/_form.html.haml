@@ -10,7 +10,7 @@
 		.quiz_details_container
 			= form.input :name
 			= form.input :comment, :input_html => {:rows => 3}
-			= form.input :categories, :label => 'Categories'#, :include_blank => true, :multiple => false, :input_html => { :size => 1 }
+			= form.input :categories, :label => t('.categories')#, :include_blank => true, :multiple => false, :input_html => { :size => 1 }
 			= form.input :sponsor
 			= form.input :funny_comment, :input_html => {:rows => 3}
 			= form.input :graphic, :as => :file
@@ -21,4 +21,4 @@
 				- index += 1
 			= link_to_add_fields("Add placement comment", form, :placement_comments)
 	.actions
-		= form.submit 'Save'
+		= form.submit t('.save')
