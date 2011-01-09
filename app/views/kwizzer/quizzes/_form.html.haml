@@ -1,22 +1,24 @@
 = semantic_form_for [:kwizzer, @quiz], :html => {:multipart => true} do |form|
-  -if @quiz.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@quiz.errors.count, "error")} prohibited this quiz from being saved:"
-      %ul
-        - @quiz.errors.full_messages.each do |msg|
-          %li= msg
+	-if @quiz.errors.any?
+		#error_explanation
+			%h2= "#{pluralize(@quiz.errors.count, "error")} prohibited this quiz from being saved:"
+			%ul
+				- @quiz.errors.full_messages.each do |msg|
+					%li= msg
 
-  = form.inputs :name => 'Quiz' do
-    = form.input :name
-    = form.input :comment, :input_html => {:rows => 3}
-    = form.input :categories, :label => 'Categories'#, :include_blank => true, :multiple => false, :input_html => { :size => 1 }
-    = form.input :sponsor
-    = form.input :graphic, :as => :file
-    - index = 1
-    = form.inputs :class => 'placement_comment_container', :for => :placement_comments do |f|
-      = render 'placement_comment_fields', :index => index, :f => f
-      - index += 1
-    = link_to_add_fields("Add placement comment", form, :placement_comments)
-    = form.input :funny_comment, :input_html => {:rows => 3}
-  .actions
-    = form.submit 'Save'
+	= form.inputs do
+		.quiz_details_container
+			= form.input :name
+			= form.input :comment, :input_html => {:rows => 3}
+			= form.input :categories, :label => 'Categories'#, :include_blank => true, :multiple => false, :input_html => { :size => 1 }
+			= form.input :sponsor
+			= form.input :funny_comment, :input_html => {:rows => 3}
+			= form.input :graphic, :as => :file
+		.placement_comments_details_container
+			- index = 1
+			= form.inputs :class => 'placement_comment_container', :for => :placement_comments do |f|
+				= render 'placement_comment_fields', :index => index, :f => f
+				- index += 1
+			= link_to_add_fields("Add placement comment", form, :placement_comments)
+	.actions
+		= form.submit 'Save'

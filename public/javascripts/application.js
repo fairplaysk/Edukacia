@@ -14,7 +14,7 @@ $(function() {
 			var content = $(this).attr("data-element");
 		  var new_id = new Date().getTime();
 		  var regexp = new RegExp("new_" + $(this).attr("data-association"), "g");
-			$(this).parent().parent().before(content.replace(regexp, new_id));
+			$(this).parent().before(content.replace(regexp, new_id));
 	  }
 	  cleanup_hashes();
 		return false;  

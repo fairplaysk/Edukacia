@@ -1,4 +1,5 @@
 @import "compass/css3";
+@import "compass/utilities/tables";
 @import "blueprint";
 
 //-----------------------------------------------
@@ -40,7 +41,8 @@ input:invalid, textarea:invalid {
 /*@include blueprint-typography;*/
 
 body {
-	@include linear-gradient(color-stops(#d8d8d8, white));
+/*	@include linear-gradient(color-stops(#d8d8d8, white));*/
+	background: #d8d8d8;
 }
 
 #container {
@@ -53,14 +55,23 @@ body {
 header {
 	color: white;
 	background: #484848;
-	padding: 10px;
 	@include column($blueprint-grid-columns);
 	#logo{
+		padding: 10px 0 10px 20px;
 		@include column($blueprint-grid-columns/3); }
 	#usernav{
 		@include column($blueprint-grid-columns/5, last); 
 		@include float-right; 
 		padding: 20px;}
+	#navigation{
+		background: black;
+		font-size:1.2em;
+		a {color: #ddd;}
+		@include column($blueprint-grid-columns); 
+		li{
+			padding: 5px;
+			@include column($blueprint-grid-columns/8); }
+	}
 	h1 {
 		font-size: 5em;	}
 }
@@ -69,15 +80,25 @@ header {
 	background: #eee;
 	padding: 20px;
 	@include column($blueprint-grid-columns);
+	.inline-errors{
+		color: red;
+		font-style: italic;
+		font-size: 0.9em;
+	}
 	.formtastic {
+		@include column($blueprint-grid-columns);
 		ol {
 			margin: 0;
 			padding: 0;
 		}
 		li {
-			list-style: none;
+			margin-top: 10px;
+		}
+		label {
+			@include column(5);
 		}
 		fieldset {
+			margin-top: 10px;
 			margin-bottom: 20px;
 		}
 		.question_details_container {
@@ -93,14 +114,43 @@ header {
 				width: 300px;
 			}
 		}
+		.quiz_details_container{
+			@include column(11); /*11 out of 24 columns*/
+		}
+		.placement_comments_details_container {
+			@include column(11, last); /*11 out of 24 columns*/
+		}
+	}
+	table {
+		td {
+			padding:5px 15px; }
+	}
+	#error_explanation {
+		@include column(15); 
+		border: 2px solid red;
+		background-color: #f0f0f0;
+		
+		h2 {
+			text-align: left;
+		  font-weight: bold;
+		  padding: 5px 5px 5px 15px;
+		  font-size: 12px;
+		  margin-bottom: 0px;
+		  background-color: #c00;
+		  color: #fff;
+		}
+		ul li {
+		  font-size: 12px;
+		}
 	}
 	#flash {
-		@include column($blueprint-grid-columns);
-	}
+		@include column($blueprint-grid-columns);	}
 	h1{
 		@include column($blueprint-grid-columns);
 		font-size: 3em;
 	}
 }
 
-footer { @include column($blueprint-grid-columns); }
+footer { 
+	background: white;
+	@include column($blueprint-grid-columns, true); }

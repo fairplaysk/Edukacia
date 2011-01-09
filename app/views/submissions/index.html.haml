@@ -13,9 +13,3 @@
       %td= link_to 'show submission', @submission if @submission = quiz.last_submission_for_session_id(@session_id)
 
 %br
-
-= link_to 'New Quiz', new_kwizzer_quiz_path
-|
-= link_to 'Backend', kwizzer_quizzes_path
-|
-= link_to 'Rails admin', rails_admin_dashboard_path
