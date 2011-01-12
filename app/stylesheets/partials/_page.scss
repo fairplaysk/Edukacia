@@ -74,7 +74,8 @@ header {
 		@include column($blueprint-grid-columns); 
 		li{
 			padding: 5px;
-			@include column($blueprint-grid-columns/8); }
+			@include column($blueprint-grid-columns/8); 
+			text-align:center;}
 	}
 	h1 {
 		font-size: 5em;	}
