@@ -19,6 +19,7 @@ en:
   layouts:
     backend:
       header:
+        homepage: Home
         submissions: 'Submissions'
         quizzes: 'Quizzes'
         users: 'Users'

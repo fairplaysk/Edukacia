@@ -32,6 +32,7 @@ sk:
   layouts:
     backend:
       header:
+        homepage: Úvod
         submissions: 'Odovzdania'
         quizzes: 'Kvízy'
         users: 'Používatelia'
