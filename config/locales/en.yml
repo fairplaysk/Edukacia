@@ -17,13 +17,21 @@ en:
         is_correct: 'Correct'  
         is_funny: 'Funny'
   layouts:
-    header:
-      submissions: 'Submissions'
-      quizzes: 'Quizzes'
-      users: 'Users'
-      signed_in: 'Signed in as %{username}. Not you?'
-      sign_in: 'sign in'
-      sign_out: 'sign out'
+    backend:
+      header:
+        submissions: 'Submissions'
+        quizzes: 'Quizzes'
+        users: 'Users'
+        signed_in: 'Signed in as %{username}. Not you?'
+        sign_in: 'sign in'
+        sign_out: 'sign out'
+    frontend:
+      header:
+        homepage: Home
+        quiz_list: Quiz List
+        statistics: Statistics
+        about: About
+        contact: Contact
       
   kwizzer:
     quizzes:

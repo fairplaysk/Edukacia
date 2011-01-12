@@ -1,5 +1,7 @@
 module Kwizzer
   class ApplicationController < ::ApplicationController
+    layout 'backend'
+    
     before_filter :authenticate_user!
     
     private

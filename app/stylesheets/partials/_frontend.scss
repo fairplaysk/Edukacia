@@ -1,0 +1,133 @@
+@import "compass/css3";
+@import "compass/utilities/tables";
+@import "blueprint";
+
+//-----------------------------------------------
+// The following html5-boilerplate styles should
+// probably be customized for each site
+//-----------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  // Bold might not be the best choice if you are
+  // embedding font faces that are already bold
+  font-weight: bold;
+}
+
+strong, th {
+  font-weight: bold;
+}
+
+small {
+  // Use font-size mixin to convert to percentage for YUI
+  // http://developer.yahoo.com/yui/3/cssfonts/#fontsize
+  @include font-size(11px);  // approx 85% when base-font-size eq 13px
+}
+
+// Add the 'required' attribute on your
+// inputs if you want to use these
+input:valid, textarea:valid {}
+input:invalid, textarea:invalid {
+  @include border-radius(1px);
+  @include box-shadow(red, 0, 0, 5px, 0);
+}
+.no-boxshadow input:invalid,
+.no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+
+//-----------------------------------
+// Add your own custom styles below
+//-----------------------------------
+/*@include blueprint-typography;*/
+h1 {
+	font-family: 'Copse', arial, serif; font-size:40px; color:#3C2415; text-align:center; font-weight:400; 
+	margin:30px 0px 0px 0px;}
+
+body { background: url($frontend-image-url+"back.png"); }
+
+#container { @include container;}
+
+header { 
+	@include column($blueprint-grid-columns, true); 
+	#top {
+		@include column($blueprint-grid-columns, true); background: url($frontend-image-url+"top_container.png") repeat-x; height:10px; margin:40px auto 0px auto;}
+	#head {
+		@include column(21.25, true); margin:0px auto 0px auto; padding: 20px 60px 0 60px; background: url($frontend-image-url+"back_container.png");
+		#header_text {
+			padding:10px 150px 0px 150px; margin: 0;
+			font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300; font-size:15px; text-align:center; color:#8B5E3C; }
+		#menu {
+			margin:25px 0px 0px 0px;
+			border-bottom:1px solid #8C694C; border-top:1px solid #8C694C; padding:7px 0px;
+			font-family: 'Copse', arial, serif; font-size: 16px; color:#3C2415; text-align:center; font-weight:400;
+			a {
+				text-decoration:none; color:#3C2415;}
+			span {
+				font-size:15px; padding:0px 10px;}
+			}
+	}
+}
+
+#main {
+	@include column(21.25, true); margin:0px auto 0px auto; padding:20px 60px; 
+	background: url($frontend-image-url+"back_container.png");
+	#center{
+		border-bottom:1px dashed #8C694C;
+		margin:0px 0px 10px 0px; padding:0px 0px 30px 0px;
+		font-family: Arial, Helvetica Neue, Helvetica, sans-serif; font-size:13px; color:#8B5E3C; 
+		#icon_navigation {
+			background:url($frontend-image-url+"web_sketch_v3.png") no-repeat; height:525px; font-family: 'Yanone Kaffeesatz', arial, serif;
+			
+			/* LEFT ICON NAVIGATION */
+			#left_icon_navigation {width:380px; height:525px; float:left; overflow:hidden; border:0px solid #000;
+
+				a.navigation1 {font-size:23px; display:block; width:140px; height:26px; background:#FFB733; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:200px; left:160px; -moz-border-radius:140px; border-radius:140px; padding:56px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
+				a.navigation1:hover {background:#000000; -webkit-transform:scale(1.5) rotate(-10deg); -moz-transform:scale(1.5) rotate(-10deg); -o-transform:scale(1.5) rotate(-10deg); transform:scale(1.5) rotate(-10deg);}
+
+				a.navigation2 {font-size:23px; display:block; width:110px; height:26px; background:#596A63; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:220px; left:60px; -moz-border-radius:110px; border-radius:110px; padding:43px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
+				a.navigation2:hover {background:#000000; -webkit-transform:scale(1.2) rotate(10deg); -moz-transform:scale(1.2) rotate(10deg); -o-transform:scale(1.2) rotate(10deg); transform:scale(1.2) rotate(10deg);}
+
+				a.navigation3 {font-size:20px; display:block; width:90px; height:20px; background:#726658; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:-200px; left:110px; -moz-border-radius:110px; border-radius:110px; padding:35px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
+				a.navigation3:hover {background:#000000; -webkit-transform:scale(1.2) rotate(-20deg); -moz-transform:scale(1.2) rotate(-20deg); -o-transform:scale(1.2) rotate(-20deg); transform:scale(1.2) rotate(-20deg);}
+
+				a.navigation8 {font-size:20px; display:block; width:90px; height:20px; background:#C2C76C; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:-180px; left:30px; -moz-border-radius:110px; border-radius:110px; padding:35px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
+				a.navigation8:hover {background:#000000; -webkit-transform:scale(1.2) rotate(-20deg); -moz-transform:scale(1.2) rotate(-20deg); -o-transform:scale(1.2) rotate(-20deg); transform:scale(1.2) rotate(-20deg);}
+			}
+
+			/* HEAD GEAR WHEELS */
+			#head_gear_wheels {
+				width:180px; height:525px; float:left; overflow:hidden; border:0px solid #000;
+				#kolecko1 {width:103px; height:103px; position:relative; top:125px; left:7px; background:url($frontend-image-url+"kolecko_01.png");}
+				#kolecko2 {width:62px; height:61px; position:relative; top:105px; left:85px;}
+				#kolecko3 {width:61px; height:60px; position:relative; top:-13px; left:113px;}
+				#kolecko4 {width:30px; height:30px; position:relative; top:-97px; left:103px;}
+			}
+
+			/* RIGHT ICON NAVIGATION */
+			#right_icon_navigation {
+				width:350px; height:525px; float:left; overflow:hidden; border:0px solid #000;
+
+				a.navigation4 {font-size:23px; display:block; width:140px; height:26px; background:#C49A6C; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:300px; left:160px; -moz-border-radius:140px; border-radius:140px; padding:56px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
+				a.navigation4:hover {background:#000000; -webkit-transform:scale(1.5) rotate(-10deg); -moz-transform:scale(1.5) rotate(-10deg); -o-transform:scale(1.5) rotate(-10deg); transform:scale(1.5) rotate(-10deg);}
+
+				a.navigation5 {font-size:23px; display:block; width:110px; height:26px; background:#1CA099; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:70px; left:30px; -moz-border-radius:110px; border-radius:110px; padding:43px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
+				a.navigation5:hover {background:#000000; -webkit-transform:scale(1.2) rotate(10deg); -moz-transform:scale(1.2) rotate(10deg); -o-transform:scale(1.2) rotate(10deg); transform:scale(1.2) rotate(10deg);}
+
+				a.navigation6 {font-size:20px; display:block; width:90px; height:20px; background:#F57336; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:-130px; left:220px; -moz-border-radius:110px; border-radius:110px; padding:35px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
+				a.navigation6:hover {background:#000000; -webkit-transform:scale(1.2) rotate(-20deg); -moz-transform:scale(1.2) rotate(-20deg); -o-transform:scale(1.2) rotate(-20deg); transform:scale(1.2) rotate(-20deg);}
+
+				a.navigation7 {font-size:20px; display:block; width:125px; height:26px; background:#C2B59B; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:-305px; left:50px; -moz-border-radius:140px; border-radius:140px; padding:50px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
+				a.navigation7:hover {background:#000000; -webkit-transform:scale(1.5) rotate(-10deg); -moz-transform:scale(1.5) rotate(-10deg); -o-transform:scale(1.5) rotate(-10deg); transform:scale(1.5) rotate(-10deg);}
+			}
+		}
+	}
+	
+	
+}
+#bottom {
+	@include column($blueprint-grid-columns, true); height:10px; margin:0px auto 10px auto; background:url($frontend-image-url+"bottom_container.png") repeat-x;
+}
+#footer { 
+	@include column(11.66,true);
+	margin:20px auto; padding: 0 270px;
+	text-align:center; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; color:#ffffff; font-size:13px; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); letter-spacing:1px;
+}

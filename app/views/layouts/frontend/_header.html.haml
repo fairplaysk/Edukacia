@@ -1,0 +1,16 @@
+#top
+#head
+	%h1 Kvízy & Testy
+	#header_text Maecenas metus lorem, porta porttitor rutrum vel, euismod vitae risus. Integer molestie arcu sed eros iaculis faucibus vitae at dui. Duis pulvinar lectus nec libero rutrum viverra. Donec dictum pretium luctus. Fusce viverra suscipit nunc in viverra.
+	#menu
+		= link_to t('.homepage'), root_url
+		%span •
+		= link_to t('.quiz_list'), submissions_path
+		%span •
+		= link_to t('.statistics')
+		%span •
+		= link_to t('.about')
+		%span •
+		= link_to t('.contact')
+		%span •
+		= link_to 'backend', kwizzer_quizzes_path

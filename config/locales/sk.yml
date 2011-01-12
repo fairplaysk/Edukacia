@@ -30,13 +30,21 @@ sk:
         password_confirmation: 'Potvrdenie hesla'
         super: 'Administrátor'
   layouts:
-    header:
-      submissions: 'Odovzdania'
-      quizzes: 'Kvízy'
-      users: 'Používatelia'
-      signed_in: 'Prihlásený ako %{username}.'
-      sign_in: 'Prihlásiť sa'
-      sign_out: 'Odhlásiť sa'
+    backend:
+      header:
+        submissions: 'Odovzdania'
+        quizzes: 'Kvízy'
+        users: 'Používatelia'
+        signed_in: 'Prihlásený ako %{username}.'
+        sign_in: 'Prihlásiť sa'
+        sign_out: 'Odhlásiť sa'
+    frontend:
+      header:
+        homepage: Úvod
+        quiz_list: Zoznam kvízov
+        statistics: Štatistiky
+        about: O projekte
+        contact: Kontakt
       
   kwizzer:
     quizzes:

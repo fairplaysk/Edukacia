@@ -17,7 +17,7 @@ Kwizzer::Application.routes.draw do
   
   match '/locale/:locale' => 'locales#set_locale', :as => 'set_locale'
   
-  root :to => 'submissions#index'
+  root :to => 'homepages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
