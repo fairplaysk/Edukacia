@@ -77,20 +77,25 @@ header {
 		#icon_navigation {
 			background:url($frontend-image-url+"web_sketch_v3.png") no-repeat; height:525px; font-family: 'Yanone Kaffeesatz', arial, serif;
 			
+			a{
+				@include border-radius(140px); @include box-shadow(#666, 2px, 2px, 6px); display:block;	text-decoration:none;	text-align:center; position:relative; font-weight:300; }
+			
 			/* LEFT ICON NAVIGATION */
 			#left_icon_navigation {width:380px; height:525px; float:left; overflow:hidden; border:0px solid #000;
+				a.navigation1 { font-size:23px; width:140px; height:26px; background:#FFB733; color:#fcdd9a; top:200px; left:160px; padding:56px 0px;}
+				a.navigation1:hover {	@include transform(1.5,-10deg);	background:#000000; }
 
-				a.navigation1 {font-size:23px; display:block; width:140px; height:26px; background:#FFB733; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:200px; left:160px; -moz-border-radius:140px; border-radius:140px; padding:56px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
-				a.navigation1:hover {background:#000000; -webkit-transform:scale(1.5) rotate(-10deg); -moz-transform:scale(1.5) rotate(-10deg); -o-transform:scale(1.5) rotate(-10deg); transform:scale(1.5) rotate(-10deg);}
+				a.navigation2 {font-size:23px; width:110px; height:26px; background:#596A63; color:#fcdd9a; top:220px; left:60px;  padding:43px 0px; }
+				a.navigation2:hover {
+					@include transform(1.2,10deg); background:#000000;}
 
-				a.navigation2 {font-size:23px; display:block; width:110px; height:26px; background:#596A63; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:220px; left:60px; -moz-border-radius:110px; border-radius:110px; padding:43px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
-				a.navigation2:hover {background:#000000; -webkit-transform:scale(1.2) rotate(10deg); -moz-transform:scale(1.2) rotate(10deg); -o-transform:scale(1.2) rotate(10deg); transform:scale(1.2) rotate(10deg);}
+				a.navigation3 {font-size:20px; width:90px; height:20px; background:#726658; color:#fcdd9a; top:-200px; left:110px;  padding:35px 0px; }
+				a.navigation3:hover {
+					@include transform(1.2,-20deg);	background:#000000;}
 
-				a.navigation3 {font-size:20px; display:block; width:90px; height:20px; background:#726658; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:-200px; left:110px; -moz-border-radius:110px; border-radius:110px; padding:35px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
-				a.navigation3:hover {background:#000000; -webkit-transform:scale(1.2) rotate(-20deg); -moz-transform:scale(1.2) rotate(-20deg); -o-transform:scale(1.2) rotate(-20deg); transform:scale(1.2) rotate(-20deg);}
-
-				a.navigation8 {font-size:20px; display:block; width:90px; height:20px; background:#C2C76C; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:-180px; left:30px; -moz-border-radius:110px; border-radius:110px; padding:35px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
-				a.navigation8:hover {background:#000000; -webkit-transform:scale(1.2) rotate(-20deg); -moz-transform:scale(1.2) rotate(-20deg); -o-transform:scale(1.2) rotate(-20deg); transform:scale(1.2) rotate(-20deg);}
+				a.navigation8 { font-size:20px; width:90px; height:20px; background:#C2C76C; color:#fcdd9a; top:-180px; left:30px;  padding:35px 0px; }
+				a.navigation8:hover {
+					@include transform(1.2,-20deg);	background:#000000;}
 			}
 
 			/* HEAD GEAR WHEELS */
@@ -105,18 +110,21 @@ header {
 			/* RIGHT ICON NAVIGATION */
 			#right_icon_navigation {
 				width:350px; height:525px; float:left; overflow:hidden; border:0px solid #000;
+				
+				a {
+						@include border-radius(140px); @include box-shadow(#666, 2px, 2px, 6px); display:block;	text-decoration:none;	text-align:center; position:relative; font-weight:300; }
 
-				a.navigation4 {font-size:23px; display:block; width:140px; height:26px; background:#C49A6C; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:300px; left:160px; -moz-border-radius:140px; border-radius:140px; padding:56px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
-				a.navigation4:hover {background:#000000; -webkit-transform:scale(1.5) rotate(-10deg); -moz-transform:scale(1.5) rotate(-10deg); -o-transform:scale(1.5) rotate(-10deg); transform:scale(1.5) rotate(-10deg);}
+				a.navigation4 {font-size:23px; width:140px; height:26px; background:#C49A6C; color:#fcdd9a; font-weight:300; top:300px; left:160px; padding:56px 0px; }
+				a.navigation4:hover {@include transform(1.5,-10deg); background:#000000;}
 
-				a.navigation5 {font-size:23px; display:block; width:110px; height:26px; background:#1CA099; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:70px; left:30px; -moz-border-radius:110px; border-radius:110px; padding:43px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
-				a.navigation5:hover {background:#000000; -webkit-transform:scale(1.2) rotate(10deg); -moz-transform:scale(1.2) rotate(10deg); -o-transform:scale(1.2) rotate(10deg); transform:scale(1.2) rotate(10deg);}
+				a.navigation5 {font-size:23px; width:110px; height:26px; background:#1CA099; color:#fcdd9a; font-weight:300; top:70px; left:30px; padding:43px 0px; }
+				a.navigation5:hover {@include transform(1.2,10deg); background:#000000;}
 
-				a.navigation6 {font-size:20px; display:block; width:90px; height:20px; background:#F57336; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:-130px; left:220px; -moz-border-radius:110px; border-radius:110px; padding:35px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
-				a.navigation6:hover {background:#000000; -webkit-transform:scale(1.2) rotate(-20deg); -moz-transform:scale(1.2) rotate(-20deg); -o-transform:scale(1.2) rotate(-20deg); transform:scale(1.2) rotate(-20deg);}
+				a.navigation6 {font-size:20px; width:90px; height:20px; background:#F57336; color:#fcdd9a; font-weight:300; top:-130px; left:220px; padding:35px 0px; }
+				a.navigation6:hover {@include transform(1.2,-20deg); background:#000000;}
 
-				a.navigation7 {font-size:20px; display:block; width:125px; height:26px; background:#C2B59B; color:#fcdd9a; font-weight:300; text-align:center; position:relative; top:-305px; left:50px; -moz-border-radius:140px; border-radius:140px; padding:50px 0px; text-decoration:none; -moz-box-shadow: 2px 2px 6px #666; -webkit-box-shadow: 2px 2px 6px #666; box-shadow: 0 0 5px 5px #eee;}
-				a.navigation7:hover {background:#000000; -webkit-transform:scale(1.5) rotate(-10deg); -moz-transform:scale(1.5) rotate(-10deg); -o-transform:scale(1.5) rotate(-10deg); transform:scale(1.5) rotate(-10deg);}
+				a.navigation7 {font-size:20px; width:125px; height:26px; background:#C2B59B; color:#fcdd9a; font-weight:300; top:-305px; left:50px; padding:50px 0px; }
+				a.navigation7:hover {@include transform(1.5,-10deg); background:#000000;}
 			}
 		}
 	}
