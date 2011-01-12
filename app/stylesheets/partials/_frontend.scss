@@ -51,7 +51,7 @@ header {
 	#top {
 		@include column($blueprint-grid-columns, true); background: url($frontend-image-url+"top_container.png") repeat-x; height:10px; margin:40px auto 0px auto;}
 	#head {
-		@include column(21.25, true); margin:0px auto 0px auto; padding: 20px 60px 0 60px; background: url($frontend-image-url+"back_container.png");
+		@include column(21.25, true); margin:0px auto 0px auto; padding: 20px 60px 10px 60px; background: url($frontend-image-url+"back_container.png");
 		#header_text {
 			padding:10px 150px 0px 150px; margin: 0;
 			font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300; font-size:15px; text-align:center; color:#8B5E3C; }
