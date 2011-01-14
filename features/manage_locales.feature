@@ -78,8 +78,8 @@ Feature: Manage locales
 		
   Scenario: Click on English locale
 		Given I am a new, authenticated user
-		And I am on the homepage
 		When I follow "English"
-		Then I should see "Submissions"
+		And I go to the backend quizzes list page
+		Then I should see "Home"
 		And I should see "Quizzes"
 		And I should see "Users"
