@@ -6,7 +6,7 @@ $(function() {
 	
 	$('.remove').live('click', function () { 
 		$(this).parent().prev().children("input[type=hidden]").val("1");
-		$(this).parent().parent().parent().hide();
+		$(this).closest('fieldset').hide();
 		return false;
 	});
 	$('.add_element').live('click', function () { 

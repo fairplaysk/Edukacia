@@ -36,7 +36,7 @@ Feature: Manage quizzes
 	Scenario: Add additional placement comment
 		Given I am a new, authenticated user
 		And I am on the new quiz page
-		When I press "Add placement comment"
+		When I press "+"
 		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][5]"
 		And I press "Save"
 		Then the "Placement comment" field within "//fieldset[@class='placement_comment_container'][5]" should contain "placement comment 5"
@@ -44,22 +44,22 @@ Feature: Manage quizzes
 	Scenario: Cannot add more than 6 placement comments
 		Given I am a new, authenticated user
 		And I am on the new quiz page
-		When I press "Add placement comment"
-		And I press "Add placement comment"
-		And I press "Add placement comment"
+		When I press "+"
+		And I press "+"
+		And I press "+"
 		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][7]"
 		
 	Scenario: Remove additional placement comments
 		Given I am a new, authenticated user
 		And I am on the new quiz page
-		When I press "Remove placement comment"
+		When I press "-"
 		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Cannot remove and have less than 3 placement comments
 		Given I am a new, authenticated user
 		And I am on the new quiz page
-		When I press "Remove placement comment"
-		Then I should not see "Remove placement comment"
+		When I press "-"
+		Then I should not see "-" within "//fieldset[@class='placement_comment_container']"
 	
 	Scenario: Add additional placement comment while editing quiz
 		Given the following "quiz" factory_girl models:
@@ -67,7 +67,7 @@ Feature: Manage quizzes
 		 | quiz 1 |
 		And I am a new, authenticated user
 		When I edit the 1st quiz
-		And I press "Add placement comment"
+		And I press "+"
 		And I fill in "Placement comment" with "placement comment 5" within "//fieldset[@class='placement_comment_container'][5]"
 		And I fill in "Name" with ""
 		And I press "Save"
@@ -79,7 +79,7 @@ Feature: Manage quizzes
 		 | quiz 1 |
 		And I am a new, authenticated user
 		When I edit the 1st quiz
-		When I press "Remove placement comment"
+		When I press "-"
 		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Submit with validation failures should not disrupt placement comments

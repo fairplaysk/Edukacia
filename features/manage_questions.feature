@@ -16,12 +16,13 @@ Feature: Manage questions
 		 | name |
 		 | quiz |
 		And I am a new, authenticated user
+		And I follow "English"
 		And I am editing question for the first quiz
 		And I fill in "Question" with "question 1"
 		And I fill in "Answer" with "answer 1" within "//fieldset[@class='answer_container'][1]"
-		And I check "Correct" within "//fieldset[@class='answer_container'][1]"
+		And I choose "quiz[questions_attributes][0][answers_attributes][is_correct]"
 		And I fill in "Answer" with "answer 2" within "//fieldset[@class='answer_container'][2]"
-		And I check "Funny" within "//fieldset[@class='answer_container'][2]"
+		And I choose "quiz[questions_attributes][0][answers_attributes][is_funny]"
 		And I fill in "Answer" with "answer 3" within "//fieldset[@class='answer_container'][3]"
 		And I fill in "Answer" with "answer 4" within "//fieldset[@class='answer_container'][4]"
 		And I press "Save"
@@ -37,7 +38,7 @@ Feature: Manage questions
 		 | quiz |
 		And I am a new, authenticated user
 		And I am editing question for the first quiz
-		And I press "Add question"
+		And I press "+ Question"
 		And I fill in "Question" with "question 1" within "//fieldset[@class='question_container'][1]"
 		And I fill in "Comment" with "comment 1" within "//fieldset[@class='question_container'][1]"
 		And I fill in "Answer" with "answer 1" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][1]"
@@ -46,10 +47,10 @@ Feature: Manage questions
 		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][4]"
 		And I fill in "Question" with "question 1" within "//fieldset[@class='question_container'][2]"
 		And I fill in "Comment" with "comment 1" within "//fieldset[@class='question_container'][2]"
-		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
-		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
-		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
-		And I press "Add answer" within "//fieldset[@class='question_container'][2]"
+		And I press "+" within "//fieldset[@class='question_container'][2]"
+		And I press "+" within "//fieldset[@class='question_container'][2]"
+		And I press "+" within "//fieldset[@class='question_container'][2]"
+		And I press "+" within "//fieldset[@class='question_container'][2]"
 		And I fill in "Answer" with "answer 1" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][1]"
 		And I fill in "Answer" with "answer 2" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][2]"
 		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][3]"

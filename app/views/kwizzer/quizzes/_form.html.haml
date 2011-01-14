@@ -19,6 +19,6 @@
 			= form.inputs :class => 'placement_comment_container', :for => :placement_comments do |f|
 				= render 'placement_comment_fields', :index => index, :f => f
 				- index += 1
-			= link_to_add_fields("Add placement comment", form, :placement_comments)
+			= link_to_add_fields("+", form, :placement_comments)
 	.actions
 		= form.submit t('.save')

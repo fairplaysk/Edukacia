@@ -11,6 +11,7 @@ module Kwizzer
   
     def save_all
       @quiz = Quiz.find(params[:quiz_id])
+      schuffle_answer_values
       @quiz.update_attributes(params[:quiz])
       if params[:add_answer]
         index = Regexp.new(/#(\d+)$/).match(params[:add_answer])[1].to_i
@@ -32,6 +33,16 @@ module Kwizzer
         redirect_to(kwizzer_quiz_path(@quiz), :notice => 'Successfully updated questions for this quiz.')
       else
         render 'index'
+      end
+    end
+    
+    private
+    def schuffle_answer_values
+      params[:quiz][:questions_attributes].each do |key, value|
+        correct_value = value[:answers_attributes].delete(:is_correct) if value[:answers_attributes]
+        value[:answers_attributes][correct_value][:is_correct] = "1" if correct_value
+        funny_value = value[:answers_attributes].delete(:is_funny) if value[:answers_attributes]
+        value[:answers_attributes][funny_value][:is_funny] = "1" if funny_value
       end
     end
     

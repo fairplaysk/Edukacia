@@ -24,12 +24,13 @@ Given /^a quiz "([^"]*)" with (\d+) questions and (\d+) answers for each questio
   Factory(:category)
   Given %{I create a new quiz}
   (1..questions_count.to_i).each do |question_index|
-    And %{I press "Add question"} if question_index < questions_count.to_i
+    And %{I press "+ Question"} if question_index < questions_count.to_i
     And %{I fill in "Question" with "question #{question_index}" within "//fieldset[@class='question_container'][#{question_index}]"}
+    # And %{show me the page}
     (1..answers_per_question.to_i).each do |answer_index|
     	And %{I fill in "Answer" with "answer #{answer_index}" within "//fieldset[@class='question_container'][#{question_index}]//fieldset[@class='answer_container'][#{answer_index}]"}
-    	And %{I check "Correct" within "//fieldset[@class='question_container'][#{question_index}]//fieldset[@class='answer_container'][#{answer_index}]"} if answer_index.to_i == 1
-    	And %{I check "Funny" within "//fieldset[@class='question_container'][#{question_index}]//fieldset[@class='answer_container'][#{answer_index}]"} if answer_index.to_i == 2
+      And %{I choose "Correct" within "//fieldset[@class='question_container'][#{question_index}]//fieldset[@class='answer_container'][#{answer_index}]"} if answer_index.to_i == 1
+    	And %{I choose "Funny" within "//fieldset[@class='question_container'][#{question_index}]//fieldset[@class='answer_container'][#{answer_index}]"} if answer_index.to_i == 2
 	  end
 	end 
 	And %{I press "Save"}

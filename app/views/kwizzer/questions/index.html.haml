@@ -6,6 +6,6 @@
 	= form.inputs :class => 'question_container', :for => :questions do |q|
 		= render 'question_fields', :f => q, :index => index
 		- index += 1
-	= link_to_add_fields("Add question", form, :questions, [:answers, 4])
+	= link_to_add_fields("+ Question", form, :questions, [:answers, 4])
 	.actions
 		= form.submit 'Save'

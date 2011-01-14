@@ -31,11 +31,11 @@ sk:
         super: 'Administrátor'
   layouts:
     backend:
+      homepage: Úvod
+      submissions: 'Odovzdania'
+      quizzes: 'Kvízy'
+      users: 'Používatelia'
       header:
-        homepage: Úvod
-        submissions: 'Odovzdania'
-        quizzes: 'Kvízy'
-        users: 'Používatelia'
         signed_in: 'Prihlásený ako %{username}.'
         sign_in: 'Prihlásiť sa'
         sign_out: 'Odhlásiť sa'
@@ -85,6 +85,9 @@ sk:
     questions:
       index:
         questions_title: 'Otázky pre %{quiz}'
+      question_fields:
+        correct: 'Správna'
+        funny: 'Vtipná'
 
   # Date
   date:

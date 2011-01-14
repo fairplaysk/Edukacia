@@ -11,11 +11,4 @@
 	%ul
 		%li= link_to "Slovenčina", set_locale_path('sk')
 		%li= link_to "English", set_locale_path('en')
-#navigation
-	%ul
-		%li= link_to t('.homepage'), root_path
-		- if user_signed_in? && current_user.super?
-			%li= link_to t('.quizzes'), kwizzer_quizzes_path
-			%li= link_to t('.users'), kwizzer_users_path
-			%li= link_to 'Rails admin', rails_admin_dashboard_path
 	

@@ -18,11 +18,11 @@ en:
         is_funny: 'Funny'
   layouts:
     backend:
+      homepage: Home
+      submissions: 'Submissions'
+      quizzes: 'Quizzes'
+      users: 'Users'
       header:
-        homepage: Home
-        submissions: 'Submissions'
-        quizzes: 'Quizzes'
-        users: 'Users'
         signed_in: 'Signed in as %{username}. Not you?'
         sign_in: 'sign in'
         sign_out: 'sign out'
@@ -72,3 +72,6 @@ en:
     questions:
       index:
         questions_title: 'Questions for %{quiz}'
+      question_fields:
+        correct: 'Correct'
+        funny: 'Funny'

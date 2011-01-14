@@ -56,74 +56,97 @@ header {
 	color: white;
 	background: #484848;
 	a, a:active, a:visited {color: #ddd;}
-	@include column($blueprint-grid-columns);
+	padding: 20px;
+	@include column(23.1, true);
 	#logo{
-		padding: 10px 0 10px 20px;
+/*		padding: 10px 0 10px 20px;*/
 		@include column($blueprint-grid-columns/2); }
 	#usernav{
 		@include column($blueprint-grid-columns/5); 
-		padding: 20px;
 		@include float-right;}
 	#locale_switcher{
 		@include column($blueprint-grid-columns/8, last); 
-		padding: 20px;
 		@include float-right;}
-	#navigation{
-		background: black;
-		font-size:1.2em;
-		@include column($blueprint-grid-columns); 
-		li{
-			padding: 5px;
-			@include column($blueprint-grid-columns/8); 
-			text-align:center;}
-	}
 	h1 {
 		font-size: 5em;	}
+}
+
+#navigation{
+	background: black;
+	font-size:1.2em;
+	a, a:active, a:visited {color: #ddd;}
+	@include column($blueprint-grid-columns); 
+	li{
+		padding: 5px;
+		@include column($blueprint-grid-columns/8); 
+		text-align:center;}
 }
 
 #main {
 	background: #eee;
 	padding: 20px;
-	@include column($blueprint-grid-columns);
+	@include column(23.1, true);
 	.inline-errors{
 		color: red;
 		font-style: italic;
 		font-size: 0.9em;
 	}
 	.formtastic {
-		@include column($blueprint-grid-columns);
+		@include column(23.1, true);
 		ol {
 			margin: 0;
-			padding: 0;
-		}
+			padding: 0; }
 		li {
-			margin-top: 10px;
-		}
+			margin-top: 10px; }
+		input, textarea, select{width: 250px;}
 		label {
-			@include column(5);
-		}
+			margin-right: 20px; 
+			@include column(5, true);}
 		fieldset {
-			margin-top: 10px;
-			margin-bottom: 20px;
+			padding-bottom: 10px; 
+			margin-bottom: 10px;
+			}
+		.answer_container {
+			margin-top: 0;
+			.commit{
+				@include column(1, true);
+				margin-top: 10px;}
+		}
+		.question_container{
+			border-bottom: 1px solid gray;
 		}
 		.question_details_container {
 			@include column(11); /*11 out of 24 columns*/
 			textarea {
-				width: 440px;
-			}
+				width: 440px; }
 		}
 		.answer_details_container{
 			@include column(11, true);	/*11 out of 24 columns*/
-			@include float-right;
-			input[type='text'] {
-				width: 300px;
-			}
+			.content{
+				@include column(7);
+				input{width: 180px;}
+				label{@include column(2);}
+				}
+			.radio_group{
+				@include column(1.8, true); 
+				margin-top: 10px;
+				input{width: 20px;}
+				}
 		}
+		.attributes_header{
+			margin-left: 290px;}
 		.quiz_details_container{
-			@include column(11); /*11 out of 24 columns*/
+			@include column(12); /*11 out of 24 columns*/
 		}
 		.placement_comments_details_container {
-			@include column(11, last); /*11 out of 24 columns*/
+			@include column(11.1, last); /*11 out of 24 columns*/
+			label{ @include column(3.7); }
+/*			li{	@include column(10);}*/
+			.text{@include column(10, true);}
+			.commit { @include column(1, true); @include float-right; }
+		}
+		.actions, .commit {
+			input{width:auto;}
 		}
 	}
 	table {

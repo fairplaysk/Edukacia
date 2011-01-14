@@ -1,5 +1,11 @@
-= f.input :content
-= f.input :is_correct
-= f.input :is_funny
+.content
+	= f.input :content
+.radio_group
+	= label_tag f.object_name.gsub(/\[(\d+|\w+)\]$/,'')+"[is_correct][#{$1}]", 'Correct', :style => 'display:none;'
+	= radio_button_tag f.object_name.gsub(/\[(\d+|\w+)\]$/,'')+'[is_correct]', (f.object_name.match(/\[(\d+|\w+)\]$/)[1] if f.object_name.match(/\[(\d+|\w+)\]$/)), f.object.is_correct?
+	= f.input :is_correct, :as => :hidden, :value => 0
+	= label_tag f.object_name.gsub(/\[(\d+|\w+)\]$/,'')+"[is_funny][#{$1}]", 'Funny', :style => 'display:none;'
+	= radio_button_tag f.object_name.gsub(/\[(\d+|\w+)\]$/,'')+'[is_funny]', (f.object_name.match(/\[(\d+|\w+)\]$/)[1] if f.object_name.match(/\[(\d+|\w+)\]$/)), f.object.is_funny?
+	= f.input :is_funny, :as => :hidden, :value => 0
 = f.input :_destroy, :as => :hidden
-= f.commit_button "Remove answer for question ##{index}", :button_html => {:name => 'remove_answer', :class => 'remove'}
+= f.commit_button "- ##{index}", :button_html => {:name => 'remove_answer', :class => 'remove'}
