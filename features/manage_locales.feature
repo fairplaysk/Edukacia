@@ -5,9 +5,9 @@ Feature: Manage locales
   
   Scenario: Click on Slovak locale
 		Given I am a new, authenticated user
-		And I am on the homepage
 		When I follow "Slovenčina"
-		Then I should see "Odovzdania"
+		And I go to the backend quizzes list page
+		Then I should see "Úvod"
 		And I should see "Kvízy"
 		And I should see "Používatelia"
 		

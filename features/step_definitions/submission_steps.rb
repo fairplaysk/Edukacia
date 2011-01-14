@@ -1,5 +1,5 @@
 When /^I take the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
-  visit root_path
+  visit submissions_path
   within("//table//tr[#{pos.to_i+1}]") do
     click_link "take quiz"
   end
@@ -37,7 +37,7 @@ Given /^a quiz "([^"]*)" with (\d+) questions and (\d+) answers for each questio
 end
 
 When /^I fill in and submit the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
-  visit root_path
+  visit submissions_path
   within("//table//tr[#{pos.to_i+1}]") do
     click_link "take quiz"
   end

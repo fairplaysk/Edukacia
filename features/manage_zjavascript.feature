@@ -57,7 +57,7 @@ Feature: Manage javascripts
 		Given I am a new, authenticated user
 		And a quiz "healthcare" with 2 questions and 4 answers for each question was created
 		When I fill in and submit the 1st quiz
-		When I go to the homepage
+		When I go to the submissions page
 		And I follow "show submission"
 		
 	@javascript
