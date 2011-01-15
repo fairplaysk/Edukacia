@@ -3,4 +3,6 @@ class Question < ActiveRecord::Base
   has_many :answers, :dependent => :destroy
   accepts_nested_attributes_for :answers, :allow_destroy => true
   validates_associated :answers
+  
+  has_attached_file :graphic, :styles => { :thumb => "150x150#" }
 end

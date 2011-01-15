@@ -55,3 +55,13 @@ Feature: Manage questions
 		And I fill in "Answer" with "answer 2" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][2]"
 		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][3]"
 		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][4]"
+
+  Scenario: Add graphic to question
+   Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		And I am a new, authenticated user
+		And I am editing question for the first quiz
+		And I attach the file "features/support/files/web_sketch_v3.png" to "Graphic"
+		And I press "Save"
+		Then I should not see "error"
