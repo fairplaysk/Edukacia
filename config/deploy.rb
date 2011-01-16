@@ -15,7 +15,7 @@ set :application, "kwizzer"
 set(:deploy_to) { "/var/rails/#{application}" }
 
 set :scm, :git
-set :repository, "gitosis@195.210.29.138:kwizzer.git"
+set :repository, "git://github.com/fairplaysk/Edukacia.git"
 set :use_sudo, false
 
 set(:user) { Capistrano::CLI.ui.ask "user:" }
