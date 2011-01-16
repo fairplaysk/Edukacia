@@ -1,0 +1,21 @@
+%h1= t('.listing_categories')
+
+%table
+  %tr
+    %th= t('.category_name')
+    %th= t('.category_short_name')
+    %th
+    %th
+    %th
+
+  - @categories.each do |category|
+    %tr
+      %td= category.name
+      %td= category.short_name
+      %td= link_to t('.show'), kwizzer_category_path(category)
+      %td= link_to t('.edit'), edit_kwizzer_category_path(category)
+      %td= link_to t('.destroy'), kwizzer_category_path(category), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to t('.new_category'), new_kwizzer_category_path

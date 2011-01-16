@@ -4,6 +4,7 @@ Kwizzer::Application.routes.draw do
   resources :submissions
 
   namespace :kwizzer do
+    resources :categories
     resources :quizzes do
       resources :questions do
         put 'save_all', :on => :collection

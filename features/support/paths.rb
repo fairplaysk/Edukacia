@@ -10,6 +10,9 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the new category page/
+      new_kwizzer_category_path
+
     when /the new question page/
       new_kwizzer_question_path
 

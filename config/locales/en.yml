@@ -22,6 +22,7 @@ en:
       submissions: 'Submissions'
       quizzes: 'Quizzes'
       users: 'Users'
+      categories: Categories
       header:
         signed_in: 'Signed in as %{username}. Not you?'
         sign_in: 'sign in'
@@ -75,3 +76,16 @@ en:
       question_fields:
         correct: 'Correct'
         funny: 'Funny'
+    categories:
+      index:
+        category_name: Name
+        category_short_name: Short name
+        listing_categories: Listing categories
+        new_category: New Category
+        show: 'Show'
+        edit: 'Edit'
+        destroy: 'Destroy'
+      new:
+        new_category: New category
+      edit:
+        editing_category: Editing category

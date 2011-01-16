@@ -29,12 +29,17 @@ sk:
         password: 'Heslo'
         password_confirmation: 'Potvrdenie hesla'
         super: 'Administrátor'
+      category:
+        name: Názov
+        short_name: Krátky názov
+        
   layouts:
     backend:
       homepage: Úvod
       submissions: 'Odovzdania'
       quizzes: 'Kvízy'
       users: 'Používatelia'
+      categories: Kategórie
       header:
         signed_in: 'Prihlásený ako %{username}.'
         sign_in: 'Prihlásiť sa'
@@ -88,7 +93,19 @@ sk:
       question_fields:
         correct: 'Správna'
         funny: 'Vtipná'
-
+    categories:
+      index:
+        category_name: Názov
+        category_short_name: Krátky názov
+        listing_categories: Zoznam kategórií
+        new_category: Nová Kategória
+        show: Ukázať
+        edit: Upraviť
+        destroy: Zmazať
+      new:
+        new_category: Nová kategória
+      edit:
+        editing_category: Úprava kategórie
   # Date
   date:
       formats:

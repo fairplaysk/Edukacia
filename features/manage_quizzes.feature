@@ -4,7 +4,7 @@ Feature: Manage quizzes
   wants to be able to login and manage quizzes
   
   Scenario: Register new quiz
-    Given the following "category" factory_girl models:
+    And the following "category" factory_girl models:
 		 | name       |
 		 | category 1 |
 		 | category 2 |

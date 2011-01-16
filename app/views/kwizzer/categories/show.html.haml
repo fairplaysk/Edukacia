@@ -1,0 +1,6 @@
+%p= "Category name: #{@category.name}"
+%p= "Category short name: #{@category.short_name}"
+
+= link_to 'Edit', edit_kwizzer_category_path(@category)
+\|
+= link_to 'Back', kwizzer_categories_path
