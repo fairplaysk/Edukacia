@@ -65,3 +65,13 @@ Feature: Manage questions
 		And I attach the file "features/support/files/web_sketch_v3.png" to "Graphic"
 		And I press "Save"
 		Then I should not see "error"
+		
+	Scenario: Select 15 questions per page
+	  Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		And I am a new, authenticated user
+		And I am editing question for the first quiz
+		And I select "15" from "Questions per page"
+		And I press "Save"
+		Then I should see "Questions per page: 15"

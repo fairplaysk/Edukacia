@@ -13,6 +13,7 @@
       %li= placement_comment.content
   %p= @quiz.funny_comment
   %p= image_tag @quiz.graphic.url(:thumb)
+  %p= "Questions per page: #{@quiz.questions_per_page}"
   %ul
   - @quiz.questions.each_with_index do |question, q_index|
     %li= "Question #{q_index+1}: #{question.content}"

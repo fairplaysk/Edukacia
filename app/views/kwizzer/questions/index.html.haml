@@ -7,5 +7,6 @@
 		= render 'question_fields', :f => q, :index => index
 		- index += 1
 	= link_to_add_fields("+ Question", form, :questions, [:answers, 4])
+	= form.input :questions_per_page, :as => :select, :collection => [1, 5, 10, 15], :include_blank => false
 	.actions
 		= form.submit 'Save'
