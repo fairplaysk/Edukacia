@@ -4,6 +4,7 @@
   %b Name:
   %p= @quiz.name
   %p= @quiz.comment
+  %p= "Published at: #{I18n.localize(@quiz.published_at, :format => :date)}" if @quiz.published_at
   %ul
     - @quiz.categories.each do |category|
       %li= category.name

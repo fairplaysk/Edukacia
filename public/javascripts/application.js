@@ -19,6 +19,7 @@ $(function() {
 	  cleanup_hashes();
 		return false;  
 	});
+	$('input.ui-date-picker').datepicker({ dateFormat: 'yy-mm-dd' });
 });
 
 function cleanup_hashes() {

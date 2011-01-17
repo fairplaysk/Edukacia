@@ -108,7 +108,18 @@ Feature: Manage quizzes
 		And I fill in "Values" with ""
 		And I press "Save"
 		Then I should see "Additional user questions successfully updated."
-
+		
+	Scenario: Add published at date to quiz
+    Given the following "quiz" factory_girl models:
+		 | name   |
+		 | quiz 1 |
+		And I am a new, authenticated user
+		And I edit the 1st quiz
+		When I fill in "Published at" with "2010-02-28"
+		And I press "Save"
+		And I display the 1st quiz
+		Then I should see "Published at: February 28, 2010"
+		
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).
   #

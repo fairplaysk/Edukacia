@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110117103840) do
+ActiveRecord::Schema.define(:version => 20110117121611) do
 
   create_table "additional_questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20110117103840) do
     t.integer  "graphic_file_size"
     t.datetime "graphic_updated_at"
     t.integer  "questions_per_page"
+    t.datetime "published_at"
   end
 
   create_table "submissions", :force => true do |t|

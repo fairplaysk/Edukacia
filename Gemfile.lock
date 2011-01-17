@@ -84,6 +84,11 @@ GEM
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
       i18n (>= 0.4.0)
+    formtastic_datepicker_inputs (1.0.0)
+      actionpack (>= 2.3.7)
+      activesupport (>= 2.3.7)
+      formtastic
+      i18n (>= 0.4.0)
     gherkin (2.3.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
@@ -198,6 +203,7 @@ DEPENDENCIES
   devise
   factory_girl_rails (>= 1.1.beta1)
   formtastic (>= 1.1.0.beta)
+  formtastic_datepicker_inputs
   haml-rails
   hpricot
   html5-boilerplate

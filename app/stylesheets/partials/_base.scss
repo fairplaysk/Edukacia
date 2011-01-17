@@ -33,4 +33,5 @@ $blueprint-grid-margin: 10px;
 // Or you can set !blueprint_grid_width to a fixed value and unset !blueprint_container_size -- it will be calculated for you.
 $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
-$frontend-image-url: '../../images/frontend/'
+$frontend-image-url: '../../images/frontend/';
+$jquery-image-url: '../../images/jquery/';

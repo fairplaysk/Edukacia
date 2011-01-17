@@ -126,6 +126,7 @@ sk:
           default: "%a %d. %B %Y %H:%M %z"
           short: "%d.%m. %H:%M"
           long: "%A %d. %B %Y %H:%M"
+          date: "%B %d, %Y"
       am: "dopoludnia"
       pm: "popoludní"
 
