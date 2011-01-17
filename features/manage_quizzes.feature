@@ -119,6 +119,16 @@ Feature: Manage quizzes
 		And I press "Save"
 		And I display the 1st quiz
 		Then I should see "Published at: February 28, 2010"
+	
+	Scenario: An active quiz must contain a publish date
+	  Given the following "quiz" factory_girl models:
+		 | name   |
+		 | quiz 1 |
+		And I am a new, authenticated user
+		And I edit the 1st quiz
+		And I check "Is active"
+		And I press "Save"
+		Then I should see "An active quiz must have a published date"
 		
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).

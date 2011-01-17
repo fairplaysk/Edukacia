@@ -15,6 +15,7 @@
 			= form.input :funny_comment, :input_html => {:rows => 3}
 			= form.input :graphic, :as => :file
 			= form.input :published_at, :as => :date_picker
+			= form.input :is_active
 		.placement_comments_details_container
 			- index = 1
 			= form.inputs :class => 'placement_comment_container', :for => :placement_comments do |f|

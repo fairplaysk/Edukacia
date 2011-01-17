@@ -19,7 +19,7 @@ class Quiz < ActiveRecord::Base
   
   validates :name, :categories, :placement_comments, :presence => true
   
-  validate :question_positions_unique
+  validate :question_positions_unique, :active_with_published_at
   
   def last_submission_for_session_id(session_id)
     submissions.where(:session_id => session_id).order('created_at').last
@@ -27,5 +27,9 @@ class Quiz < ActiveRecord::Base
   
   def question_positions_unique
     errors.add :questions, 'Positions have to be unique.' unless questions.select{|q| q.position!=99}.map(&:position).uniq!.nil?
+  end
+  
+  def active_with_published_at
+    errors.add :published_at, 'An active quiz must have a published date' if is_active? && published_at.nil?
   end
 end
