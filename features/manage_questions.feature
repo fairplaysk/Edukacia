@@ -97,3 +97,51 @@ Feature: Manage questions
 		And I press "Save"
 		Then I should see "Questions content can't be blank"
 		And I should see "Questions answers content can't be blank"
+		
+	Scenario: Defaults to 99 in the question order box
+		Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		When I am a new, authenticated user
+		And I am editing question for the first quiz
+		Then the "Position" field should contain "99"
+		
+	Scenario: Order questions
+	  Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		When I am a new, authenticated user
+		And I am editing question for the first quiz
+		And I fill in "Position" with "1"
+		And I fill in "Question" with "question"
+		And I fill in "Answer" with "answer 1" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][1]"
+		And I fill in "Answer" with "answer 2" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][2]"
+		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][3]"
+		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][4]"
+		And I choose "Correct"
+		And I press "Save"
+		Then I should see "Position: 1"
+		
+	Scenario: There cannot be more than one Question with the same position
+	  Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		When I am a new, authenticated user
+		And I am editing question for the first quiz
+		And I press "+ Question"
+		And I fill in "Position" with "1" within "//fieldset[@class='question_container'][1]"
+		And I fill in "Position" with "1" within "//fieldset[@class='question_container'][2]"
+		And I press "Save"
+		Then I should see "Positions have to be unique"
+		
+  Scenario: There can be more than one Question with the 99 position
+	  Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		When I am a new, authenticated user
+		And I am editing question for the first quiz
+		And I press "+ Question"
+		And I fill in "Position" with "99" within "//fieldset[@class='question_container'][1]"
+		And I fill in "Position" with "99" within "//fieldset[@class='question_container'][2]"
+		And I press "Save"
+		Then I should not see "Positions have to be unique"	

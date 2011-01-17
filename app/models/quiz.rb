@@ -19,7 +19,13 @@ class Quiz < ActiveRecord::Base
   
   validates :name, :categories, :placement_comments, :presence => true
   
+  validate :question_positions_unique
+  
   def last_submission_for_session_id(session_id)
     submissions.where(:session_id => session_id).order('created_at').last
+  end
+  
+  def question_positions_unique
+    errors.add :questions, 'Positions have to be unique.' unless questions.select{|q| q.position!=99}.map(&:position).uniq!.nil?
   end
 end

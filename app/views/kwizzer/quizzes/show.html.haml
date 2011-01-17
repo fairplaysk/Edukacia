@@ -18,6 +18,7 @@
   - @quiz.questions.each_with_index do |question, q_index|
     %li= "Question #{q_index+1}: #{question.content}"
     %li= image_tag question.graphic.url(:thumb)
+    %li= "Position: #{question.position}"
     %ul
       - question.answers.each_with_index do |answer, a_index|
         %li= "Answer #{a_index+1}: #{answer.content}"

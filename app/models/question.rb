@@ -10,7 +10,6 @@ class Question < ActiveRecord::Base
   validates_presence_of :content
   validate :check_correct_answer
   
-  
   def check_correct_answer
     errors.add :answers, 'You need to select at least one correct answer for a question' if answers.select{|a| a.is_correct? == true}.count == 0
   end
