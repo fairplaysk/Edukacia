@@ -4,6 +4,6 @@ FactoryGirl.define do
   end
   
   factory :question_with_answers, :parent => :question do
-    answers (1..4).collect { Factory(:answer) }
+    answers { [Factory(:answer, :is_correct => true), Factory(:answer), Factory(:answer), Factory(:answer)]  }
   end
 end

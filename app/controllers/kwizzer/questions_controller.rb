@@ -15,7 +15,7 @@ module Kwizzer
       @quiz.update_attributes(params[:quiz])
       if params[:add_answer]
         index = Regexp.new(/#(\d+)$/).match(params[:add_answer])[1].to_i
-        @quiz.questions[index-1].answers.create
+        @quiz.questions[index-1].answers.build
         render 'index' and return
       elsif params[:remove_answer]
         index = Regexp.new(/#(\d+)$/).match(params[:remove_answer])[1].to_i
