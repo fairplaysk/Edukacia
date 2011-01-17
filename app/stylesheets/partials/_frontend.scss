@@ -78,7 +78,7 @@ header {
 			background:url($frontend-image-url+"web_sketch_v3.png") no-repeat; height:525px; font-family: 'Yanone Kaffeesatz', arial, serif;
 			
 			a{
-				@include border-radius(140px); @include box-shadow(#666, 2px, 2px, 6px); display:block;	text-decoration:none;	text-align:center; position:relative; font-weight:300; }
+				@include border-radius(140px); @include box-shadow(#666, 2px, 2px, 6px); display:block;	text-decoration:none;	text-align:center; position:relative; font-weight:300; cursor:pointer; }
 			
 			/* LEFT ICON NAVIGATION */
 			#left_icon_navigation {width:380px; height:525px; float:left; overflow:hidden; border:0px solid #000;
