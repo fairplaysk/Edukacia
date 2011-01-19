@@ -87,6 +87,9 @@ header {
 #main {
 	@include column(21.26, true); margin:0px auto 0px auto; padding:20px 60px; 
 	background: url($frontend-image-url+"back_container.png");
+	color:#8B5E3C;
+	p {
+		margin: 1em 0;}
 	#center{
 		border-bottom:1px solid #8C694C;
 		margin:0px 0px 10px 0px; padding:0px 0px 30px 0px;
@@ -146,6 +149,12 @@ header {
 				a.navigation7:hover {@include transform(1.5,-10deg); background:#000000;}
 			}
 		}
+	}
+	#list_test {float:none; overflow:hidden; display:block;
+		a,a:hover{color: #8B5E3C;};
+		ul {float:left; overflow:hidden; width:173px; list-style:none; margin:0px 10px 30px 0px; padding:0px;}
+		li {margin:0px 0px 3px 0px; font-size:13px;}
+		.header {font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:30px; color:#3C2415;}
 	}
 	#info_zone {
 		@include column(21.26, true);

@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   def index
-    @quizzes = Quiz.includes(:submissions)
+    # @quizzes = Quiz.includes(:submissions)
+    @categories = Category.includes(:quizzes => :submissions)
     @session_id = session[:session_id]
   end
   

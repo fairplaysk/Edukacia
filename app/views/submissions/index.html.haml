@@ -1,15 +1,8 @@
-%h1 Index
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-
-  - @quizzes.each do |quiz|
-    %tr
-      %td= quiz.name
-      %td= link_to 'take quiz', new_submission_path(:quiz_id => quiz.id)
-      %td= link_to 'show submission', @submission if @submission = quiz.last_submission_for_session_id(@session_id)
-
-%br
+#list_test
+	%ul
+		- @categories.each do |category|
+			%li.header= category.name
+			- category.quizzes.each do |quiz|
+				%li
+					= link_to quiz.name, new_submission_path(:quiz_id => quiz.id)
+					= link_to 'last submission', @submission if @submission = quiz.last_submission_for_session_id(@session_id)
