@@ -1,9 +1,8 @@
 #icon_navigation
 	#left_icon_navigation
-		%a.navigation1 Zdravotníctvo
-		%a.navigation2 Kataster
-		%a.navigation3 Rutrum
-		%a.navigation8 Donec
+		- if @categories[0..3]
+			- @categories[0..3].each_with_index do |category, category_index|
+				%a{:class=>"navigation#{category_index+1}"}= category.short_name
 	#head_gear_wheels
 		%div#kolecko1 
 		%div#kolecko2 
@@ -13,7 +12,6 @@
 		%div#kolecko4
 			=image_tag 'frontend/kolecko_04.png'
 	#right_icon_navigation
-		%a.navigation4 Justícia
-		%a.navigation5 Ekonómia
-		%a.navigation6 Rutrum
-		%a.navigation7 Náhodný test
+		- if @categories[4..7]
+			- @categories[4..7].each_with_index do |category, category_index|
+				%a{:class=>"navigation#{category_index+1}"}= category.short_name
