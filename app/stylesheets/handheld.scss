@@ -1,5 +1,6 @@
 // Slightly reducing font size to reduce need to scroll
 /*body { font-size: 80%; }*/
+@import 'partials/base';
 
 body {background:#222222; margin:0px; padding:0px; font-family: Tahoma, Verdana, Geneva; font-size:16px;}
 h1 {font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:55px; color:#3C2415; text-align:center; font-weight:400; margin:30px 0px 0px 0px;}
@@ -12,7 +13,7 @@ h2 {font-family: Tahoma, Verdana, Geneva; font-size:16px; color:#000; text-align
 
 #navigation {font-family:'Yanone Kaffeesatz', arial, serif; text-align:center; margin:0px; padding:0px; color:#000;
 	ul {float:none; overflow:hidden; list-style:none; margin:0px; padding:0px; background:#6B4C3B; border-top:1px solid #F2CA5C;}
-	li {float:left; margin:0px; padding:0px; background:url(forward_arrow.png) 100% 0% no-repeat;}
+	li {float:left; margin:0px; padding:0px; background:url($frontend-image-url+'forward_arrow.png') 100% 0% no-repeat;}
 	a {display:block; text-decoration:none; font-size:18px; color:#F2CA5C; display:block; text-align:center; padding:6px 25px 6px 20px; background:transparent;}
 }
 

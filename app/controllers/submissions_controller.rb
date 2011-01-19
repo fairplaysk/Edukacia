@@ -1,8 +1,11 @@
 class SubmissionsController < ApplicationController
   def index
-    # @quizzes = Quiz.includes(:submissions)
-    @categories = Category.includes(:quizzes => :submissions)
-    @session_id = session[:session_id]
+    if mobile_device?
+      @category = Category.find(params[:category_id])
+    else
+      @categories = Category.includes(:quizzes => :submissions)
+      @session_id = session[:session_id]
+    end
   end
   
   def new
