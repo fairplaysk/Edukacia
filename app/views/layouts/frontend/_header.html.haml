@@ -1,8 +1,11 @@
+#top_navigation
+	= link_to '', kwizzer_quizzes_path, :class => 'login'
+	= link_to '', set_locale_path('sk'), :class => 'slovak'
+	= link_to '', set_locale_path('en'), :class => 'english'
 #top
-	= link_to 'Slovenčina', set_locale_path('sk')
-	= link_to 'English', set_locale_path('en')
 #head
-	%h1 Kvízy & Testy
+	#logo
+		= link_to image_tag('frontend/logo.png'), root_path
 	#header_text Maecenas metus lorem, porta porttitor rutrum vel, euismod vitae risus. Integer molestie arcu sed eros iaculis faucibus vitae at dui. Duis pulvinar lectus nec libero rutrum viverra. Donec dictum pretium luctus. Fusce viverra suscipit nunc in viverra.
 	#menu
 		= link_to t('.homepage'), root_url

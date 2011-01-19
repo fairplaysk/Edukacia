@@ -1,6 +1,5 @@
 #logo
-	%h1
-		= link_to 'Kwizzer_logo', root_path
+	= link_to image_tag('frontend/logo.png'), root_path
 #usernav
 	- if user_signed_in?
 		= t('.signed_in', :username => current_user.username)
