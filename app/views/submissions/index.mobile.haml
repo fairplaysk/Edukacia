@@ -2,6 +2,7 @@
 	%ul
 		%li= link_to 'Home', root_path
 		%li= link_to @category.short_name, submissions_path(:category_id => @category.id)
-%ul
-	- @category.quizzes.each do |quiz|
-		%li= link_to "#{quiz.name}<div class='arrow''>></div>".html_safe
+#menu_mobile
+	%ul
+		- @category.quizzes.each do |quiz|
+			%li= link_to "#{quiz.name}<div class='arrow''>></div>".html_safe, new_submission_path(:quiz_id => quiz.id)

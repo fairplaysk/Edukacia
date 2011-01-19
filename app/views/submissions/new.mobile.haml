@@ -1,0 +1,21 @@
+- content_for :navigation do
+	%ul
+		%li= link_to 'Home', root_path
+		%li= link_to @quiz.categories.first.short_name, submissions_path(:category_id => @quiz.categories.first.id)
+		%li= link_to @quiz.name, new_submission_path(:quiz_id => @quiz.id)
+#form
+	%h2 1. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus?
+	%form{:action=>"test_submit", :method=>"get", "accept-charset"=>"utf-8"}
+		%ol{:type => 'A'}
+			%li
+				%input{:type=>'radio'}
+					%span.answer Vivamus semper interdum ante a lobortis.
+			%li
+				%input{:type=>'radio'}
+					%span.answer Vivamus semper interdum ante a lobortis.
+			%li
+				%input{:type=>'radio'}
+					%span.answer Vivamus semper interdum ante a lobortis.
+		#submit
+			%input{:type=>'submit', :value=>'Dalej', :class=>'next'}
+			%input{:type=>'submit', :value=>'Preskoc', :class=>'skip'}
