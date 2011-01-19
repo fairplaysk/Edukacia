@@ -1,8 +1,30 @@
-* {
-  float: none;       // Screens are not big enough to account for floats
-  background: #fff;  // As much contrast as possible */
-  color: #000;
-}
-
 // Slightly reducing font size to reduce need to scroll
 body { font-size: 80%; }
+
+body {background:#222222; margin:0px; padding:0px; font-family: Tahoma, Verdana, Geneva; font-size:16px;}
+h1 {font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:55px; color:#3C2415; text-align:center; font-weight:400; margin:30px 0px 0px 0px;}
+
+h2 {font-family: Tahoma, Verdana, Geneva; font-size:16px; color:#000; text-align:left; margin:15px 0px 0px 0px;}
+
+#logo_mobile {font-family: 'Yanone Kaffeesatz', arial, serif; text-align:center; width:100%; padding:10px 0px; margin:0px 0px; background:#3C2415; font-size:30px; color:#F2CA5C; }
+#logo_mobile a.button_back {float:left; text-decoration:none; padding:0px 20px 0px 20px; background:#23130A; color:#5B3F2F; margin:0px 0px 0px 10px; border:1px solid #5B3F2F;}
+
+#navigation {font-family:'Yanone Kaffeesatz', arial, serif; text-align:center; margin:0px; padding:0px; color:#000;}
+#navigation ul {float:none; overflow:hidden; list-style:none; margin:0px; padding:0px; background:#6B4C3B; border-top:1px solid #F2CA5C;}
+#navigation li {float:left; margin:0px; padding:0px; background:url(forward_arrow.png) 100% 0% no-repeat;}
+#navigation a {display:block; text-decoration:none; font-size:18px; color:#F2CA5C; display:block; text-align:center; padding:6px 25px 6px 20px; background:transparent;}
+
+#menu_mobile {float:none; overflow:hidden; display:block; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; color:#3C2415;}
+#menu_mobile .arrow {float:right;}
+#menu_mobile ul {float:none; overflow:hidden; list-style:none; margin:0px; padding:0px; border-top:0px solid #3C2415;}
+#menu_mobile li {margin:0px;}
+#menu_mobile a {text-decoration:none; font-size:27px; color:#3C2415; display:block; border-top:1px solid #3C2415; padding:6px 10px; background:#F2CA5C;}
+
+#form {background:#F2CA5C; margin:0px; padding:10px 20px; font-size:14px;}
+#form ol {margin:20px 0px 20px 30px; padding:0px;}
+#form li {margin:0px 0px 15px 0px; padding:0px; font-weight:bold; font-size:14px;}
+#form .answer {font-weight:normal; font-size:14px;}
+#items {padding:10px 20px;}
+#submit {background:#F2CA5C; float:none; overflow:hidden;}
+#submit .next {float:none; width:100%; border:none; padding:8px 20px; background:#333; color:#eee; font-size:20px; margin:10px 0px 15px 0px;}
+#submit .skip {float:none; width:100%; border:none; padding:8px 20px; background:#666; color:#eee; font-size:20px; margin:0px 0px 15px 0px;}

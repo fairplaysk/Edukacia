@@ -1,0 +1,19 @@
+!!! 5
+-# http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither
+-ie_html :lang => 'en', :class => 'no-js' do
+	/ = render :partial => 'layouts/frontend/head'
+	%head
+		%meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
+		%title Kvízy & Testy
+		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz', 'http://fonts.googleapis.com/css?family=Copse'
+		= stylesheet_link_tag 'compiled/handheld', :media => 'all'
+	%body{ :class => "#{controller.controller_name}" }
+		#logo_mobile
+			%a{:href=>"index.html"}
+				= image_tag('frontend/logo_mobile_03.png', :style => 'border:none;')
+		#navigation
+		#menu_mobile
+			= yield
+		%div{:style=>"margin:20px auto; text-align:center; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300; color:#ffffff; font-size:13px; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); letter-spacing:1px; padding:0px 15px;"}
+			%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec orci in odio consectetur laoreet vitae in nibh. Morbi in vehicula tellus. Cras ultrices rhoncus lacus, interdum cursus sapien volutpat aliquam. Vivamus viverra dui et leo congue pharetra elementum felis vestibulum.</p>
+			= image_tag 'frontend/logo_AFP_biele.png'
