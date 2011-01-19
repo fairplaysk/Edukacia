@@ -1,6 +1,6 @@
 #list_test
-	%ul
-		- @categories.each do |category|
+	- @categories.each do |category|
+		%ul
 			%li.header= category.name
 			- category.quizzes.each do |quiz|
 				%li

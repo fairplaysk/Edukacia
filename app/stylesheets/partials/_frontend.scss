@@ -46,9 +46,12 @@ h1 {
 body { background: url($frontend-image-url+"back.png"); 
 	font-family: Tahoma, Verdana, Geneva; font-size:13px; }
 
-#login {width:200px; margin:50px auto 70px auto; float:none; overflow:hidden; color:#3C2415; font-size:15px; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300;}
-#login .login_input {width:185px; height:30px; padding:0px 5px; background:#fff; border:1px dashed #8B5E3C; font-size:18px; -moz-border-radius:3px; border-radius:3px;}
-#login .login_input_submit {padding:5px 15px; background:#3C2415; border:none; -moz-border-radius:3px; border-radius:3px; font-size:18px; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300; color:#F2CA5C;}
+#login {
+	width:200px; margin:50px auto 70px auto; float:none; overflow:hidden; 
+	color:#3C2415; font-size:15px; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300;
+	.login_input {width:185px; height:30px; padding:0px 5px; background:#fff; border:1px dashed #8B5E3C; font-size:18px; -moz-border-radius:3px; border-radius:3px;}
+	.login_input_submit {padding:5px 15px; background:#3C2415; border:none; -moz-border-radius:3px; border-radius:3px; font-size:18px; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300; color:#F2CA5C;}
+}
 
 #container { @include container;}
 
