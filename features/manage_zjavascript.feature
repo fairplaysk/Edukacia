@@ -58,7 +58,7 @@ Feature: Manage javascripts
 		And a quiz "healthcare" with 2 questions and 4 answers for each question was created
 		When I fill in and submit the 1st quiz
 		When I go to the submissions page
-		And I follow "show submission"
+		And I follow "last submission"
 
 	@javascript
 	Scenario: Remove an answer

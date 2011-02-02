@@ -1,10 +1,3 @@
-When /^I take the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
-  visit submissions_path
-  within("//table//tr[#{pos.to_i+1}]") do
-    click_link "take quiz"
-  end
-end
-
 Given /^I create a new quiz$/ do
   Factory(:category, :name => 'category 1')
 	And %{I am on the new quiz page}
@@ -39,9 +32,7 @@ end
 
 When /^I fill in and submit the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
   visit submissions_path
-  within("//table//tr[#{pos.to_i+1}]") do
-    click_link "take quiz"
-  end
+  click_link "name 1"
   And %{I choose "answer 1" within "//fieldset[@class='quiz_question_container'][1]"}
   And %{I choose "answer 2" within "//fieldset[@class='quiz_question_container'][2]"}
   And %{I press "Submit"}
