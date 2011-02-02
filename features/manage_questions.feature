@@ -144,4 +144,19 @@ Feature: Manage questions
 		And I fill in "Position" with "99" within "//fieldset[@class='question_container'][1]"
 		And I fill in "Position" with "99" within "//fieldset[@class='question_container'][2]"
 		And I press "Save"
-		Then I should not see "Positions have to be unique"	
+		Then I should not see "Positions have to be unique"
+		
+	Scenario: Once a quiz is published allow only adding answers to questions
+	  Given the following "quiz" factory_girl models:
+		 | name | is_active | published_at |
+		 | quiz | true      | 1-1-2010       |
+		When I am a new, authenticated user
+		And I am editing question for the first quiz
+		Then I should not be able to edit "Question"
+		And I should not be able to edit "Comment"
+		And I should not be able to edit "Answer"
+		And I should not be able to edit "Correct"
+		And I should not see "-" button
+		And I should see "+" button
+		And I should not see "+ Question"
+		And I should not see "- Question"

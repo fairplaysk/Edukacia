@@ -17,3 +17,21 @@ end
 Then /^I should see the following questions:$/ do |expected_questions_table|
   expected_questions_table.diff!(tableish('table tr', 'td,th'))
 end
+
+Then /^I should not be able to edit "([^"]*)"$/ do |label|
+  field_disabled = find_field(label)['disabled']
+  if field_disabled.respond_to? :should
+    field_disabled.should be_true, 'The field was not disabled'
+  else
+    assert field_disabled
+  end
+end
+
+Then /^I should not see "([^"]*)" button$/ do |label|
+  has_no_button?(label).should be_true
+end
+
+Then /^I should see "([^"]*)" button$/ do |label|
+  has_button?(label).should be_true
+end
+
