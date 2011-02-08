@@ -5,7 +5,7 @@
 				.navigation{:class=>"navigation#{category_index+1}"}
 					= category.short_name
 					- category.quizzes.each do |quiz|
-						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id)
+						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
 	#head_gear_wheels
 		%div#kolecko1 
 		%div#kolecko2 

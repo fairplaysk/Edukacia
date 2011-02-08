@@ -3,13 +3,27 @@
 	#test_names= @quiz.name
 	#question_meter
 		.background
-			.meter 2 / 10
+			.meter= "#{params[:page]} / #{@quiz.questions.length/@quiz.questions_per_page}"
 
-= semantic_form_for  @quiz, :as =>:submission, :url => submissions_url(:quiz_id => @quiz.id), :html => { :method => :post } do |f|
-	= f.inputs :for => :questions, :class => 'quiz_question_container' do |q|
-		#question= q.object.content
+= form_tag submissions_path(:quiz_id => @quiz.id, :page => params[:page]) do
+	- @questions.each do |question|
+		#question= question.content
 		#answers
-			= q.input :answers, :as => :radio, :collection => q.object.answers, :label => false
-	#sub_area
-		= f.submit :value => 'Skip', :class => 'skip_button'
-		= f.submit :value => 'Submit', :class => 'next_button'
+			%ol
+				- question.answers.each do |answer|
+					%li
+						%label
+							= radio_button_tag "questions[#{question.id}][answer_ids]", answer.id
+							= answer.content
+			#sub_area
+				= submit_tag 'Skip', :class => 'skip_button'
+				= submit_tag @last_page ? 'Submit' : 'Next question', :class => 'next_button'
+
+/ = semantic_form_for  @quiz, :as =>:submission, :url => submissions_url(:quiz_id => @quiz.id), :html => { :method => :post } do |f|
+/ 	= f.inputs :for => :questions, :class => 'quiz_question_container' do |q|
+/ 		#question= q.object.content
+/ 		#answers
+/ 			= q.input :answers, :as => :radio, :collection => q.object.answers, :label => false
+/ 	#sub_area
+/ 		= f.submit :value => 'Skip', :class => 'skip_button'
+/ 		= f.submit :value => 'Submit', :class => 'next_button'

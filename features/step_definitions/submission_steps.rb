@@ -16,6 +16,7 @@ end
 Given /^a quiz "([^"]*)" with (\d+) questions and (\d+) answers for each question was created$/ do |quiz_name, questions_count, answers_per_question|
   Factory(:category)
   Given %{I create a new quiz}
+  And %{I select "15" from "Questions per page"}
   (1..questions_count.to_i).each do |question_index|
     And %{I press "+ Question"} if question_index < questions_count.to_i
     And %{I fill in "Question" with "question #{question_index}" within "//fieldset[@class='question_container'][#{question_index}]"}
@@ -30,16 +31,11 @@ Given /^a quiz "([^"]*)" with (\d+) questions and (\d+) answers for each questio
 	And %{I should see "Successfully updated questions for this quiz."}
 end
 
-When /^I fill in and submit the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
-  visit submissions_path
-  click_link "name 1"
-  And %{I choose "answer 1" within "//fieldset[@class='quiz_question_container'][1]"}
-  And %{I choose "answer 2" within "//fieldset[@class='quiz_question_container'][2]"}
-  And %{I press "Submit"}
-end
-
 Then /^I should see image with "([^"]*)" alt$/ do |alt|
   find(:xpath, "//img[@alt='#{alt}']")
 end
 
+Then /^there should be (\d+) submissions$/ do |count|
+  Submission.count.should == count.to_i
+end
 

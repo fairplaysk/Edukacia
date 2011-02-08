@@ -43,15 +43,6 @@ Feature: Manage javascripts
 		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][3]"
 		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][2]//fieldset[@class='answer_container'][4]"
 
-
-	@javascript
-	Scenario: Show result of a quiz
-		Given I am a new, authenticated user
-		And a quiz "healthcare" with 2 questions and 4 answers for each question was created
-		When I fill in and submit the 1st quiz
-		When I go to the submissions page
-		And I follow "last submission"
-
 	@javascript
 	Scenario: Remove an answer
 		Given I am a new, authenticated user

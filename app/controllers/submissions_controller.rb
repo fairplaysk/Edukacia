@@ -10,16 +10,26 @@ class SubmissionsController < ApplicationController
   
   def new
     @quiz = Quiz.find(params[:quiz_id])
+    @questions = @quiz.questions_for_page(params[:page].to_i)
+    @last_page = @quiz.questions_per_page*params[:page].to_i >= @quiz.questions.length
   end
   
   def create
-    submission = Submission.new(:quiz_id => params[:quiz_id])
-    submission.session_id = session[:session_id]
-    params[:submission][:questions_attributes].each do |question_id, answer|
-      submission.answers << Answer.find(answer[:answer_ids])
+    if params[:questions]
+      submission = Submission.find_or_initialize_by_session_id_and_quiz_id(session[:session_id], params[:quiz_id])
+      submission = Submission.new(:session_id => session[:session_id], :quiz_id => params[:quiz_id], :is_repeated => true) if params[:page] == '1' && !submission.new_record?
+      params[:questions].each do |question_id, answer|
+        submission.answers << Answer.find(answer[:answer_ids])
+      end
+      submission.save
+      if submission.quiz.questions_per_page*params[:page].to_i >= submission.quiz.questions.length
+        redirect_to submission
+      else
+        redirect_to new_submission_path(:quiz_id => params[:quiz_id], :page => params[:page].to_i+1)
+      end
+    else
+      redirect_to new_submission_path(:quiz_id => params[:quiz_id], :page => params[:page]), :notice => 'Please select an answer.'
     end
-    submission.save
-    redirect_to submission
   end
   
   def show

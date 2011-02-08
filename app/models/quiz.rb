@@ -32,4 +32,12 @@ class Quiz < ActiveRecord::Base
   def active_with_published_at
     errors.add :published_at, 'An active quiz must have a published date' if is_active? && published_at.nil?
   end
+  
+  def questions_for_page(page)
+    if page <= questions.length/questions_per_page
+      questions[((page-1)*questions_per_page)...(page*questions_per_page)]
+    else
+      raise ActiveRecord::RecordNotFound
+    end
+  end
 end
