@@ -51,7 +51,14 @@ sk:
         statistics: Štatistiky
         about: O projekte
         contact: Kontakt
-      
+
+  submissions:
+    new:
+      submit: Odovzdať
+      next_question: Ďalej
+      skip: Preskočiť
+    show:
+      header: Vyhodnotenie kvízu
   kwizzer:
     quizzes:
       index:

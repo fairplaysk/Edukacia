@@ -15,13 +15,13 @@ class SubmissionsController < ApplicationController
   end
   
   def create
-    if params[:questions] || params[:commit] == 'Skip'
+    if params[:questions] || params[:commit] == I18n.translate('submissions.new.skip')
       submission = Submission.find_or_initialize_by_session_id_and_quiz_id(session[:session_id], params[:quiz_id])
       submission = Submission.new(:session_id => session[:session_id], :quiz_id => params[:quiz_id], :is_repeated => true) if params[:page] == '1' && !submission.new_record?
       
       params[:questions].each do |question_id, answer|
         submission.answers << Answer.find(answer[:answer_ids])
-      end unless params[:commit] == 'Skip'
+      end unless params[:commit] == I18n.translate('submissions.new.skip')
       
       submission.save
       if submission.quiz.questions_per_page*params[:page].to_i >= submission.quiz.questions.length

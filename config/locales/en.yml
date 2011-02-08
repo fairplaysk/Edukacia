@@ -34,6 +34,13 @@ en:
         statistics: Statistics
         about: About
         contact: Contact
+  submissions:
+    new:
+      submit: Submit
+      next_question: Next question
+      skip: Skip
+    show:
+      header: Quiz Evaluation
       
   kwizzer:
     quizzes:

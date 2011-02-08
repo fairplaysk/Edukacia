@@ -64,7 +64,6 @@ Feature: Manage locales
 		And I should see "Správna"
 		And I should see "Vtipná"
 		
-		
 	Scenario: Listing users in slovak
 		Given I am a new, authenticated user
 		And I follow "Slovenčina"
@@ -83,3 +82,20 @@ Feature: Manage locales
 		Then I should see "Home"
 		And I should see "Quizzes"
 		And I should see "Users"
+		
+	Scenario: Submit a quiz in slovak
+	  Given the following "quiz_with_questions" factory_girl models:
+		 | name                         | questions_per_page |
+		 | Chalenging history questions | 1                  |
+		And I am on the submissions page
+		And I follow "Slovenčina"
+		And I am on the submissions page
+		When I follow "Chalenging history questions"
+		And I press "Preskočiť"
+		And I choose "answer 5"
+		And I press "Odovzdať"
+		Then I should see "Vyhodnotenie kvízu"
+		And I should see image with "True" alt
+		And I should see image with "False" alt
+		And I should see "Správna odpoveď"
+		

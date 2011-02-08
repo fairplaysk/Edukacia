@@ -1,4 +1,4 @@
-%h1 Results for quiz
+%h1= t('.header')
 #vyhodnotenie
 	.test_name= "#{@submission.quiz.categories.first.name} | #{@submission.quiz.name}"
 	%ol

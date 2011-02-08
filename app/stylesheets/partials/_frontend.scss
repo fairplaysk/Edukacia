@@ -182,10 +182,11 @@ header {
 	#question_meter {
 		float:right; overflow:hidden; border:1px dashed #3C2415; padding:3px; @include border-radius(20px);
 		.background {background:#ffffff; padding:3px; @include border-radius(20px);}
-		.meter {color:#ffffff; background:#F57336; padding:3px 70px; @include border-radius(20px); font-family: Tahoma, Verdana, Geneva; font-size:12px;}
+		.meter {color:#ffffff; background:#F57336; padding:4px 73px; @include border-radius(20px); font-family: Tahoma, Verdana, Geneva; font-size:12px;}
 	}
 	#question {font-family:Tahoma, Verdana, Geneva; font-size:20px; color:#3C2415; margin:50px 0px 20px 0px;}
-	#answers {font-family:Tahoma, Verdana, Geneva; font-size:15px; color:#8B5E3C;}
+	#answers {font-family:Tahoma, Verdana, Geneva; font-size:15px; color:#8B5E3C;
+		li{margin: 15px 0;}}
 	#sub_area {
 		float:none; overflow:hidden; margin:40px 0px 0px 0px; font-size:14px;
 		.skip_button {background:#3C2415; padding:10px 20px; color:#F2CA5C; font-size:14px; border:none; @include opacity(0.5); @include border-radius(3px);}
