@@ -40,11 +40,12 @@ input:invalid, textarea:invalid {
 //-----------------------------------
 /*@include blueprint-typography;*/
 h1 {
-	font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:55px; color:#3C2415; text-align:center; font-weight:400;
-	margin:30px 0px 0px 0px;}
+	font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:50px; color:#3C2415; text-align:center; margin:20px 0px 0px 0px;}
+h4 {
+	font-family: "tandelle-1","tandelle-2"; font-size:40px;}
 
 body { background: url($frontend-image-url+"back.png"); 
-	font-family: Tahoma, Verdana, Geneva; font-size:13px; }
+	font-family: Tahoma, Verdana, Geneva; font-size:13px; color:#8B5E3C;}
 
 #login {
 	width:200px; margin:50px auto 70px auto; float:none; overflow:hidden; 
@@ -167,10 +168,41 @@ header {
 	}
 	#info_zone {
 		@include column(21.26, true);
-		border-bottom:1px solid #8C694C; padding:10px 0px 20px 0px; margin:0px 0px 10px 0px;
+		border-bottom:0px solid #8C694C; padding:0; margin:0px 0px 10px 0px;
 		.info {
-			@include column(7.23, true); border-right:1px dashed #8C694C; height:300px;}
+			@include column(7.23, true); height:300px; margin:0px 20px 0px 0px;}
 	}
+	/* TEST HEADER */
+	#test_header {
+		font-family:'Yanone Kaffeesatz', arial, serif; font-weight:300; font-size:25px; color:#8B5E3C; text-align:left; margin:0px 0px 0px 0px; overflow:hidden; float:none;}
+	#test_categories {
+		float:left; overflow:hidden; border-right:1px solid #8B5E3C; padding:3px 15px 3px 0px;}
+	#test_names {
+		float:left; overflow:hidden; padding:3px 0px 3px 15px; color:#3C2415;}
+	#question_meter {
+		float:right; overflow:hidden; border:1px dashed #3C2415; padding:3px; @include border-radius(20px);
+		.background {background:#ffffff; padding:3px; @include border-radius(20px);}
+		.meter {color:#ffffff; background:#F57336; padding:3px 70px; @include border-radius(20px); font-family: Tahoma, Verdana, Geneva; font-size:12px;}
+	}
+	#question {font-family:Tahoma, Verdana, Geneva; font-size:20px; color:#3C2415; margin:50px 0px 20px 0px;}
+	#answers {font-family:Tahoma, Verdana, Geneva; font-size:15px; color:#8B5E3C;}
+	#sub_area {
+		float:none; overflow:hidden; margin:40px 0px 0px 0px; font-size:14px;
+		.skip_button {background:#3C2415; padding:10px 20px; color:#F2CA5C; font-size:14px; border:none; @include opacity(0.5); @include border-radius(20px);}
+		.next_button {background:#3C2415; padding:10px 20px; color:#F2CA5C; font-size:14px; border:none; @include border-radius(3px);}
+	}
+	
+	#vyhodnotenie {
+		font-size:18px; color:#3C2415; margin:10px 0px 0px 0px; overflow:hidden; float:none;
+		ol{padding-left: 40px;margin:0;}
+		li {margin:0px 0px 20px 0px; list-style:decimal;}
+		.true {font-size:14px; color:#8B5E3C;}
+		a.more_info {font-size:11px; text-decoration:none;overflow:hidden; padding:3px 6px; color:#fcdd9a; background:#1CA099; @include opacity(0.5);;
+			@include border-radius(3px); }
+		a.more_info:hover {@include opacity(1.0);}
+		.test_name {text-align:center; font-size:16px; color:#8B5E3C; margin:0px 0px 30px 0px;}
+	}
+	
 }
 #bottom {
 	@include column($blueprint-grid-columns, true); height:10px; margin:0px auto 10px auto; background:url($frontend-image-url+"bottom_container.png") repeat-x;

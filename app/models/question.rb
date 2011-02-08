@@ -13,4 +13,8 @@ class Question < ActiveRecord::Base
   def check_correct_answer
     errors.add :answers, 'You need to select at least one correct answer for a question' if answers.select{|a| a.is_correct? == true}.count == 0
   end
+  
+  def correct_answer
+    answers.where(:is_correct => true).first
+  end
 end
