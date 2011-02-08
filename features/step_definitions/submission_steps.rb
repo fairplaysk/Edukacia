@@ -37,3 +37,9 @@ When /^I fill in and submit the (\d+)(?:st|nd|rd|th) quiz$/ do |pos|
   And %{I choose "answer 2" within "//fieldset[@class='quiz_question_container'][2]"}
   And %{I press "Submit"}
 end
+
+Then /^I should see image with "([^"]*)" alt$/ do |alt|
+  find(:xpath, "//img[@alt='#{alt}']")
+end
+
+

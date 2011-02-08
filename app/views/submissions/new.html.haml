@@ -10,6 +10,6 @@
 		#question= q.object.content
 		#answers
 			= q.input :answers, :as => :radio, :collection => q.object.answers, :label => false
-			#sub_area
-				= f.submit :value => 'Skip', :class => 'skip_button'
-				= f.submit :value => 'Submit', :class => 'next_button'
+	#sub_area
+		= f.submit :value => 'Skip', :class => 'skip_button'
+		= f.submit :value => 'Submit', :class => 'next_button'
