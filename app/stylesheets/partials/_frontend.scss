@@ -188,7 +188,7 @@ header {
 	#answers {font-family:Tahoma, Verdana, Geneva; font-size:15px; color:#8B5E3C;}
 	#sub_area {
 		float:none; overflow:hidden; margin:40px 0px 0px 0px; font-size:14px;
-		.skip_button {background:#3C2415; padding:10px 20px; color:#F2CA5C; font-size:14px; border:none; @include opacity(0.5); @include border-radius(20px);}
+		.skip_button {background:#3C2415; padding:10px 20px; color:#F2CA5C; font-size:14px; border:none; @include opacity(0.5); @include border-radius(3px);}
 		.next_button {background:#3C2415; padding:10px 20px; color:#F2CA5C; font-size:14px; border:none; @include border-radius(3px);}
 	}
 	

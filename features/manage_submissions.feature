@@ -68,3 +68,26 @@ Feature: Manage submissions
 		And I press "Submit"
 		Then I should see "Please select an answer."
 	
+	Scenario: I press the skip button and get to the results page
+    Given the following "quiz_with_questions" factory_girl models:
+		 | name                         | questions_per_page |
+		 | Chalenging history questions | 2                  |
+		And I am on the submissions page
+		When I follow "Chalenging history questions"
+		And I choose "answer 1"
+		And I choose "answer 6"
+		And I press "Skip"
+  	Then I should see image with "False" alt
+  
+  Scenario: The form takes me to the correct evaluation page
+    Given the following "quiz_with_questions" factory_girl models:
+		 | name                         | questions_per_page |
+		 | Chalenging history questions | 1                  |
+		And I am on the submissions page
+		When I follow "Chalenging history questions"
+		And I choose "answer 1"
+		And I press "Next question"
+		And I press "Skip"
+		Then there should be 1 submissions
+		And I should see image with "True" alt
+		And I should see image with "False" alt
