@@ -92,6 +92,11 @@ header {
 	@include column(21.26, true); margin:0px auto 0px auto; padding:20px 60px; 
 	background: url($frontend-image-url+"back_container.png");
 	color:#8B5E3C;
+	.popup_block {
+		color: #3C2415;
+		a {
+			color: #3C2415;}
+	}
 	p {
 		margin: 1em 0;}
 	#center{
@@ -102,10 +107,8 @@ header {
 
 			.navigation{
 				@include border-radius(140px); @include box-shadow(#666, 2px, 2px, 6px); display:block;	text-decoration:none;	text-align:center; position:relative; font-weight:300;
-				@include transition(transform, 1s, ease-in);
+				@include transition(transform, 0.5s, ease-in);
 				a {
-					display:none;	
-					font-size:12px;
 					color:#fcdd9a;}
 			}
 			.navigation:hover{

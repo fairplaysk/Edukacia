@@ -85,8 +85,8 @@ Feature: Manage locales
 		
 	Scenario: Submit a quiz in slovak
 	  Given the following "quiz_with_questions" factory_girl models:
-		 | name                         | questions_per_page |
-		 | Chalenging history questions | 1                  |
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 1                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		And I follow "Slovenčina"
 		And I am on the submissions page

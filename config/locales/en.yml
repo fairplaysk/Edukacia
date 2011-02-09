@@ -41,6 +41,9 @@ en:
       skip: Skip
     show:
       header: Quiz Evaluation
+  homepages:
+    home:
+      popup_title: Quizzes for %{category}
       
   kwizzer:
     quizzes:

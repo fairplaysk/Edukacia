@@ -59,6 +59,10 @@ sk:
       skip: Preskočiť
     show:
       header: Vyhodnotenie kvízu
+  homepages:
+    home:
+      popup_title: Kvízy pre %{category}
+      
   kwizzer:
     quizzes:
       index:

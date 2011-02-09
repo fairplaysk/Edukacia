@@ -3,7 +3,9 @@
 		- if @categories[0..3]
 			- @categories[0..3].each_with_index do |category, category_index|
 				.navigation{:class=>"navigation#{category_index+1}"}
-					= category.short_name
+					= link_to category.short_name, submissions_path(:w => '500'), :rel=>"quiz_popup_#{category.id}", :class => 'poplight'
+				.popup_block{:id => "quiz_popup_#{category.id}"}
+					%h2= t('.popup_title', :category => category.name)
 					- category.quizzes.each do |quiz|
 						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
 	#head_gear_wheels
@@ -18,9 +20,10 @@
 		- if @categories[4..7]
 			- @categories[4..7].each_with_index do |category, category_index|
 				.navigation{:class=>"navigation#{category_index+1}"}
-					= category.short_name
+					= link_to category.short_name, '#?w=500', :rel=>"quiz_popup_#{category.id}", :class => 'poplight'
+				.popup_block{:id => "quiz_popup_#{category.id}"}
 					- category.quizzes.each do |quiz|
-						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id)
+						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
 #info_zone
 	.info
 	.info

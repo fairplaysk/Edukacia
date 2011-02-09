@@ -11,4 +11,8 @@ FactoryGirl.define do
   factory :quiz_with_questions, :parent => :quiz do
     questions { [Factory(:question_one_with_answers), Factory(:question_two_with_answers)] }
   end
+  
+  factory :quiz_with_category, :parent => :quiz_with_questions do
+    categories { [Factory(:category, :name => "Category", :short_name => 'category')] }
+  end
 end

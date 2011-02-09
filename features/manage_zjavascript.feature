@@ -52,3 +52,12 @@ Feature: Manage javascripts
 		And I press "-"
 		And I press "Save"
 		Then I should not see "answer 1"
+		
+	@javascript
+	Scenario: Homescreen popup
+	  Given the following "quiz_with_category" factory_girl models:
+		 | name                                   | questions_per_page | published_at | is_active |
+		 | Published Chalenging history questions | 1                  | 2011-01-01   | true      |
+		And I am on the homepage
+		When I follow "category"
+		Then I should see "Published Chalenging history questions"

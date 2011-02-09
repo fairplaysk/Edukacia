@@ -5,8 +5,8 @@ Feature: Manage submissions
   
   Scenario: Fill out a quiz
 		Given the following "quiz_with_questions" factory_girl models:
-		 | name                         | questions_per_page |
-		 | Chalenging history questions | 2                  |
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 2                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		When I follow "Chalenging history questions"
 		And I choose "answer 1"
@@ -15,8 +15,8 @@ Feature: Manage submissions
 		
 	Scenario: Show quiz summary page if a quiz was previously submitted
 		Given the following "quiz_with_questions" factory_girl models:
-		 | name                         | questions_per_page |
-		 | Chalenging history questions | 2                  |
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 2                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		And there should be 0 submissions
 		When I follow "Chalenging history questions"
@@ -31,8 +31,8 @@ Feature: Manage submissions
 		
 	Scenario: Multiple submit pages for quiz
 	  Given the following "quiz_with_questions" factory_girl models:
-		 | name                         | questions_per_page |
-		 | Chalenging history questions | 1                  |
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 1                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		When I follow "Chalenging history questions"
 		And I choose "answer 1"
@@ -45,8 +45,8 @@ Feature: Manage submissions
 		
 	Scenario: Multiple submits by one user do not overwrite each other
 	  Given the following "quiz_with_questions" factory_girl models:
-		 | name                         | questions_per_page |
-		 | Chalenging history questions | 2                  |
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 2                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		When I follow "Chalenging history questions"
 		And I choose "answer 1"
@@ -61,8 +61,8 @@ Feature: Manage submissions
 		
 	Scenario: I do not select any answers and submit
 	  Given the following "quiz_with_questions" factory_girl models:
-		 | name                         | questions_per_page |
-		 | Chalenging history questions | 2                  |
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 2                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		When I follow "Chalenging history questions"
 		And I press "Submit"
@@ -70,8 +70,8 @@ Feature: Manage submissions
 	
 	Scenario: I press the skip button and get to the results page
     Given the following "quiz_with_questions" factory_girl models:
-		 | name                         | questions_per_page |
-		 | Chalenging history questions | 2                  |
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 2                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		When I follow "Chalenging history questions"
 		And I choose "answer 1"
@@ -81,8 +81,8 @@ Feature: Manage submissions
   
   Scenario: The form takes me to the correct evaluation page
     Given the following "quiz_with_questions" factory_girl models:
-		 | name                         | questions_per_page |
-		 | Chalenging history questions | 1                  |
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 1                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		When I follow "Chalenging history questions"
 		And I choose "answer 1"
@@ -91,3 +91,22 @@ Feature: Manage submissions
 		Then there should be 1 submissions
 		And I should see image with "True" alt
 		And I should see image with "False" alt
+		
+	Scenario: Unpublished quizzes do not show up in the quiz list
+	  Given the following "quiz_with_questions" factory_girl models:
+		 | name                                     | questions_per_page |
+		 | Unpublished Chalenging history questions | 1                  |
+	  And the following "quiz_with_questions" factory_girl models:
+		 | name                                   | questions_per_page | published_at | is_active |
+		 | Published Chalenging history questions | 1                  | 2011-01-01   | true      |
+    When I go to the submissions page
+    Then I should see "Published"
+    And I should not see "Unpublished"
+    
+  Scenario: Homescreen links work
+	  Given the following "quiz_with_category" factory_girl models:
+		 | name                                   | questions_per_page | published_at | is_active |
+		 | Published Chalenging history questions | 1                  | 2011-01-01   | true      |
+		And I am on the homepage
+		When I follow "category"
+		Then I should see "Published Chalenging history questions"
