@@ -41,10 +41,11 @@ en:
       skip: Skip
     show:
       header: Quiz Evaluation
+      learn_more: learn more
   homepages:
     home:
       popup_title: Quizzes for %{category}
-      
+      learn_more: dozvedieť sa viac
   kwizzer:
     quizzes:
       index:

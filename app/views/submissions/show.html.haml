@@ -3,9 +3,13 @@
 	.test_name= "#{@submission.quiz.categories.first.name} | #{@submission.quiz.name}"
 	%ol
 		- @submission.quiz.questions.each do |question|
+			.popup_block{:id => "question_popup_#{question.id}"}
+				%h2= question.content
+				%p= question.comment
+				%p= image_tag question.graphic.url(:thumb)
 			%li
 				= question.content
-				= link_to "dozvediet sa viac", '#', :class => 'more_info'
+				= link_to t('.learn_more'), "#?w=700", :class => 'more_info poplight', :rel=>"question_popup_#{question.id}"
 				= image_tag @submission.answers.include?(question.correct_answer) ? "frontend/true.png" : "frontend/false.png", :style => 'float:right;'
 				%br
 				%span.true= "Správna odpoveď: #{question.correct_answer.content}"

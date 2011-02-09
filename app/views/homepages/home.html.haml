@@ -6,7 +6,7 @@
 					= link_to category.short_name, submissions_path(:w => '500'), :rel=>"quiz_popup_#{category.id}", :class => 'poplight'
 				.popup_block{:id => "quiz_popup_#{category.id}"}
 					%h2= t('.popup_title', :category => category.name)
-					- category.quizzes.each do |quiz|
+					- category.active_quizzes.each do |quiz|
 						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
 	#head_gear_wheels
 		%div#kolecko1 
@@ -22,7 +22,7 @@
 				.navigation{:class=>"navigation#{category_index+1}"}
 					= link_to category.short_name, '#?w=500', :rel=>"quiz_popup_#{category.id}", :class => 'poplight'
 				.popup_block{:id => "quiz_popup_#{category.id}"}
-					- category.quizzes.each do |quiz|
+					- category.active_quizzes.each do |quiz|
 						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
 #info_zone
 	.info
