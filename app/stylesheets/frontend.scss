@@ -34,25 +34,28 @@
 .popup_block{
 	display: none; /*--hidden by default--*/
 	background: #fff;
-	padding: 20px;
-	border: 20px solid #ddd;
+	padding: 5px;
 	float: left;
 	font-size: 1.2em;
 	position: fixed;
 	top: 50%; left: 50%;
 	z-index: 99999;
-	/*--CSS3 Box Shadows--*/
-	-webkit-box-shadow: 0px 0px 20px #000;
-	-moz-box-shadow: 0px 0px 20px #000;
-	box-shadow: 0px 0px 20px #000;
-	/*--CSS3 Rounded Corners--*/
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	@include box-shadow(#000, 0px, 0px, 20px);
+	@include border-radius(5px);
+}
+.popup_navigation{
+	border:1px dashed #3C2415;
+	@include border-radius(5px);
+	padding: 20px 30px;
+	font-size:14px;
+	ul {list-style:none; margin:20px 0px 0px 0px; padding:0px 0px 0px 0px; }
+	li {margin:0px 0px 5px 0px;list-style:none;
+		a{font-size:14px;color: #8B5E3C;}
+	}
 }
 img.btn_close {
 	float: right;
-	margin: -55px -55px 0 0;
+	margin: -20px -20px 0 0;
 }
 /*--Making IE6 Understand Fixed Positioning--*/
 *html #fade {

@@ -4,9 +4,10 @@
 	%ol
 		- @submission.quiz.questions.each do |question|
 			.popup_block{:id => "question_popup_#{question.id}"}
-				%h2= question.content
-				%p= question.comment
-				%p= image_tag question.graphic.url(:thumb)
+				.popup_navigation
+					%h3= question.content
+					%p= question.comment
+					%p= image_tag question.graphic.url(:thumb)
 			%li
 				= question.content
 				= image_tag @submission.answers.include?(question.correct_answer) ? "frontend/true.png" : "frontend/false.png", :class => 'point'

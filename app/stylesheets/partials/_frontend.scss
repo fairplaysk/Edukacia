@@ -42,6 +42,7 @@ input:invalid, textarea:invalid {
 h1 {
 	font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:50px; color:#3C2415; text-align:center; margin:20px 0px 10px 0px;}
 h2 {font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:30px; color:#3C2415; text-align:left; margin:10px 0px 30px 0px;}
+h3 {font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:27px; color:#3C2415; text-align:left; margin:0px 0px 0px 0px;}
 h4 {
 	font-family: "tandelle-1","tandelle-2"; font-size:40px;}
 
@@ -93,12 +94,6 @@ header {
 	@include column(21.26, true); margin:0px auto 0px auto; padding:20px 60px; 
 	background: url($frontend-image-url+"back_container.png");
 	color:#8B5E3C;
-	.popup_block {
-		font-size:14px;
-		color: #3C2415;
-		a {
-			color: #3C2415;}
-	}
 	p {
 		margin: 1em 0;}
 	#center{

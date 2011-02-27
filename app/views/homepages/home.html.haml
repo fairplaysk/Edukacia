@@ -5,9 +5,11 @@
 				.navigation{:class=>"navigation#{category_index+1}"}
 					= link_to category.short_name, submissions_path(:w => '500'), :rel=>"quiz_popup_#{category.id}", :class => 'poplight'
 				.popup_block{:id => "quiz_popup_#{category.id}"}
-					%h2= t('.popup_title', :category => category.name)
-					- category.active_quizzes.each do |quiz|
-						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
+					.popup_navigation
+						%h3= t('.popup_title', :category => category.name)
+						%ul
+							- category.active_quizzes.each do |quiz|
+								%li=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
 	#head_gear_wheels
 		%div#kolecko1 
 		%div#kolecko2 
@@ -22,8 +24,11 @@
 				.navigation{:class=>"navigation#{category_index+1}"}
 					= link_to category.short_name, '#?w=500', :rel=>"quiz_popup_#{category.id}", :class => 'poplight'
 				.popup_block{:id => "quiz_popup_#{category.id}"}
-					- category.active_quizzes.each do |quiz|
-						=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
+					.popup_navigation
+						%h3= t('.popup_title', :category => category.name)
+						%ul
+							- category.active_quizzes.each do |quiz|
+								%li=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
 #info_zone
 	.info
 	.info
