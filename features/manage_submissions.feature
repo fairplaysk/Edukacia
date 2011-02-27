@@ -91,6 +91,9 @@ Feature: Manage submissions
 		Then there should be 1 submissions
 		And I should see image with "True" alt
 		And I should see image with "False" alt
+		And I should see "You answered 1 out of 2 questions correctly."
+		And I should see "50%"
+		And I should see "0%"
 		
 	Scenario: Unpublished quizzes do not show up in the quiz list
 	  Given the following "quiz_with_questions" factory_girl models:

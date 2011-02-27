@@ -24,21 +24,21 @@
 	%h2 Zhrnutie
 	.container_main
 		.container
-			Zodpovedali ste správne
-			%span.name 7
-			z
-			%span.name 10
-			otázok.
+			= t '.correct_answers_first'
+			%span.name= @submission.correct_answers_count
+			= t '.correct_answers_second'
+			%span.name= @submission.quiz.questions.count
+			= t '.correct_answers_third'
 		.container
-			.per 70%
+			.per= number_to_percentage((@submission.correct_answers_count.to_f*100) / @submission.quiz.questions.count.to_f, :precision => 0) if @submission.quiz.questions.count != 0
 			.text 
 				správne vami zodpovedaných otázok v teste
-				%span.name Vivamus viverra dui
+				%span.name= @submission.quiz.name
 		.container
-			.per 40%
+			.per= number_to_percentage(@submission.correct_submissions_percentage, :precision => 0)
 			.text 
 				ľudí zodpovedalo správne na všetky otázky v teste 
-				%span.name Vivamus viverra dui
+				%span.name= @submission.quiz.name
 	.evaluation
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis est nisi, ornare vitae elementum quis, mattis vitae est. Proin elit augue, consequat eu porttitor in, aliquet at risus. Etiam eget nulla non lorem pharetra gravida sed vel nibh. Vestibulum elementum pellentesque venenatis. Phasellus purus magna, tincidunt id condimentum ac, elementum non elit.
 		%p Vivamus et orci at leo feugiat dapibus non et lorem. Duis quis euismod mi. Cras rhoncus tincidunt nibh. Donec et diam diam, ultrices venenatis nibh. Suspendisse laoreet pharetra arcu et facilisis. Nulla mollis tortor non justo congue commodo. Etiam ullamcorper commodo ligula, eu condimentum nisl imperdiet eu. Sed ut elit ac turpis rhoncus volutpat ac eget risus. Proin vehicula commodo lectus sit amet accumsan. Integer urna leo, egestas ac cursus volutpat, iaculis quis mauris. In at nulla a nibh sollicitudin posuere.

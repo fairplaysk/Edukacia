@@ -42,6 +42,9 @@ en:
     show:
       header: Quiz Evaluation
       learn_more: learn more
+      correct_answers_first: You answered 
+      correct_answers_second: out of
+      correct_answers_third: questions correctly.
   homepages:
     home:
       popup_title: Quizzes for %{category}

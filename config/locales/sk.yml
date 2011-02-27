@@ -59,6 +59,9 @@ sk:
       skip: Preskočiť
     show:
       header: Vyhodnotenie kvízu
+      correct_answers_first: Zodpovedali ste správne
+      correct_answers_second: z
+      correct_answers_third: otázok.
   homepages:
     home:
       popup_title: Kvízy pre %{category}
