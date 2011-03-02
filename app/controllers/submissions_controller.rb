@@ -36,5 +36,13 @@ class SubmissionsController < ApplicationController
   
   def show
     @submission = Submission.find(params[:id])
+    @correct_answers_percentage = (@submission.correct_answers_count.to_f*100) / @submission.quiz.questions.count.to_f if @submission.quiz.questions.count != 0
+    if @correct_answers_percentage
+      if @correct_answers_percentage == 100
+        @placement_comment = @submission.quiz.placement_comments.last
+      elsif @submission.quiz.placement_comments.count > 0
+        @placement_comment = @submission.quiz.placement_comments[@correct_answers_percentage / (100/@submission.quiz.placement_comments.count)]
+      end
+    end
   end
 end

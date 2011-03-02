@@ -21,6 +21,16 @@ class Quiz < ActiveRecord::Base
   
   validate :question_positions_unique, :active_with_published_at
   
+  
+  after_save :update_placement_comments_positions
+  def update_placement_comments_positions
+    if placement_comments.present?
+      placement_comments.each_with_index do |placement_comment, index|
+        placement_comment.update_attribute(:position, index)
+      end
+    end
+  end
+  
   def last_submission_for_session_id(session_id)
     submissions.where(:session_id => session_id).order('created_at').last
   end

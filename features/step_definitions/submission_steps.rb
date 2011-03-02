@@ -13,6 +13,27 @@ Given /^I create a new quiz$/ do
   And %{I press "Save"}
 end
 
+Given /^I submitted a quiz with all the right answers and am now on the summary page$/ do
+	Factory(:quiz_with_questions, :name => 'Chalenging history questions', :questions_per_page => 1, :published_at => '2011-01-01', :is_active => true)
+	And %{I am on the submissions page}
+	And %{I follow "Chalenging history questions"}
+	And %{I choose "answer 1"}
+	And %{I press "Next question"}
+	And %{I choose "answer 5"}
+	And %{I press "Submit"}
+end
+
+When /^I submitted a quiz with all the wrong answers and am now on the summary page$/ do
+  Factory(:quiz_with_questions, :name => 'Chalenging history questions', :questions_per_page => 1, :published_at => '2011-01-01', :is_active => true)
+	And %{I am on the submissions page}
+	And %{I follow "Chalenging history questions"}
+	And %{I choose "answer 2"}
+	And %{I press "Next question"}
+	And %{I choose "answer 6"}
+	And %{I press "Submit"}
+end
+
+
 Given /^a quiz "([^"]*)" with (\d+) questions and (\d+) answers for each question was created$/ do |quiz_name, questions_count, answers_per_question|
   Factory(:category)
   Given %{I create a new quiz}

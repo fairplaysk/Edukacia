@@ -113,3 +113,11 @@ Feature: Manage submissions
 		And I am on the homepage
 		When I follow "category"
 		Then I should see "Published Chalenging history questions"
+
+  Scenario: Show placement comment for all correct answers on the summary
+    When I submitted a quiz with all the right answers and am now on the summary page
+    Then I should see "placement_comment 4"
+  
+  Scenario: Show placement comment for all incorrect answers on the summary
+    When I submitted a quiz with all the wrong answers and am now on the summary page
+    Then I should see "placement_comment 1"

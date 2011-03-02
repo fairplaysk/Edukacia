@@ -31,7 +31,7 @@
 			%span.name= @submission.quiz.questions.count
 			= t '.correct_answers_third'
 		.container
-			.per= number_to_percentage((@submission.correct_answers_count.to_f*100) / @submission.quiz.questions.count.to_f, :precision => 0) if @submission.quiz.questions.count != 0
+			.per= number_to_percentage(@correct_answers_percentage, :precision => 0) if @correct_answers_percentage
 			.text 
 				správne vami zodpovedaných otázok v teste
 				%span.name= @submission.quiz.name
@@ -41,10 +41,9 @@
 				ľudí zodpovedalo správne na všetky otázky v teste 
 				%span.name= @submission.quiz.name
 	.evaluation
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis est nisi, ornare vitae elementum quis, mattis vitae est. Proin elit augue, consequat eu porttitor in, aliquet at risus. Etiam eget nulla non lorem pharetra gravida sed vel nibh. Vestibulum elementum pellentesque venenatis. Phasellus purus magna, tincidunt id condimentum ac, elementum non elit.
-		%p Vivamus et orci at leo feugiat dapibus non et lorem. Duis quis euismod mi. Cras rhoncus tincidunt nibh. Donec et diam diam, ultrices venenatis nibh. Suspendisse laoreet pharetra arcu et facilisis. Nulla mollis tortor non justo congue commodo. Etiam ullamcorper commodo ligula, eu condimentum nisl imperdiet eu. Sed ut elit ac turpis rhoncus volutpat ac eget risus. Proin vehicula commodo lectus sit amet accumsan. Integer urna leo, egestas ac cursus volutpat, iaculis quis mauris. In at nulla a nibh sollicitudin posuere.
+		%p= @placement_comment.content if @placement_comment
 	.buttons
-		%a{:class => 'testes'} Zopakovať test
+		= link_to t('.retry_quiz'), new_submission_path(:quiz_id => @submission.quiz.id, :page => 1), :class => 'testes'
 		%a{:class => 'testes'} Najťažší test
 		%a{:class => 'testes'} Najlahší test
 		%a{:class => 'testes'} Náhodný test

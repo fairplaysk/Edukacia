@@ -62,6 +62,7 @@ sk:
       correct_answers_first: Zodpovedali ste správne
       correct_answers_second: z
       correct_answers_third: otázok.
+      retry_quiz: Zopakovať kvíz
   homepages:
     home:
       popup_title: Kvízy pre %{category}

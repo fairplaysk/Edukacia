@@ -4,7 +4,7 @@ FactoryGirl.define do
     comment 'comment for the quiz'
     sponsor 'sponsor for the quiz'
     funny_comment 'funny comment for the quiz'
-    placement_comments (1..4).collect { Factory(:placement_comment) }
+    placement_comments { (1..4).collect { |i| Factory(:placement_comment, :content => "placement_comment #{i}") } }
     categories { [Factory(:category)] }
   end
   
