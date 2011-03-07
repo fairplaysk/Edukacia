@@ -59,13 +59,25 @@ sk:
       skip: Preskočiť
     show:
       header: Vyhodnotenie kvízu
+      learn_more: Dozvedieť sa viac
       correct_answers_first: Zodpovedali ste správne
       correct_answers_second: z
       correct_answers_third: otázok.
       retry_quiz: Zopakovať kvíz
+      summary: Zhrnutie
+      correct_answers_percentage: správne vami zodpovedaných otázok v teste
+      hardest_test: Najťažší kvíz
+      easiest_test: Najľahší kvíz
+      random_test: Náhodný kvíz
+      facebook_share: Zdielať výsledky testu na facebooku
+      twitter_share: Odoslať výsledky testu na twitter
+      correct_answers_by: Na túto otázku správne odpovedalo
+      people: ľudí
+      correct_answer: "Správna odpoveď: %{answer}"
   homepages:
     home:
       popup_title: Kvízy pre %{category}
+      random_quiz: Náhodný kvíz
       
   kwizzer:
     quizzes:

@@ -1,12 +1,12 @@
 .question_details_container
-	= f.input :content, :input_html => {:rows => 2, :disabled => (f.object.quiz && f.object.quiz.is_active?)}
-	= f.input :comment, :input_html => {:rows => 5, :disabled => (f.object.quiz && f.object.quiz.is_active?)}
+	= f.input :content, :input_html => {:rows => 2, :disabled => @quiz.is_active}
+	= f.input :comment, :input_html => {:rows => 5, :disabled => @quiz.is_active}
 	= f.input :graphic, :as => :file
 	= f.input :position
 	= f.input :_destroy, :as => :hidden
-	= f.commit_button '- Question', :button_html => {:name => 'remove_question', :class => 'remove'} if (f.object.quiz && !f.object.quiz.is_active?)
+	= f.commit_button '- Question', :button_html => {:name => 'remove_question', :class => 'remove'} if !@quiz.is_active
 .answer_details_container
 	.attributes_header= "#{t('.correct')}  |  #{t('.funny')}"
 	= f.inputs :class => 'answer_container', :for => :answers do |a|
-		= render 'answer_fields', :f => a, :index => index, :quiz_active => (f.object.quiz && f.object.quiz.is_active?)
+		= render 'answer_fields', :f => a, :index => index, :quiz_active => @quiz.is_active
 	= link_to_add_fields("+ ##{index}", f, :answers)

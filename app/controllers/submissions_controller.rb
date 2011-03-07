@@ -9,7 +9,13 @@ class SubmissionsController < ApplicationController
   end
   
   def new
-    @quiz = Quiz.find(params[:quiz_id])
+    if params[:quiz_id] == 'random'
+      @quiz = Quiz.create(:is_generated => true, :questions_per_page => 1, :name => 'Random quiz', :categories => [Category.find_or_create_by_name('Random')])
+      @quiz.questions.push_with_attributes(Question.order('rand()').limit(4), :is_generated => true)
+      @quiz.save
+    else
+      @quiz = Quiz.find(params[:quiz_id])
+    end
     @questions = @quiz.questions_for_page(params[:page].to_i)
     @last_page = @quiz.questions_per_page*params[:page].to_i >= @quiz.questions.length
   end

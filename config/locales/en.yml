@@ -46,10 +46,21 @@ en:
       correct_answers_second: out of
       correct_answers_third: questions correctly.
       retry_quiz: Retry quiz
+      summary: Summary
+      correct_answers_percentage: correct answers in test
+      hardest_test: Hardest quiz
+      easiest_test: Easiest quiz
+      random_test: Random quiz
+      facebook_share: Share on Facebook
+      twitter_share: Share on Twitter
+      correct_answers_by: Correct answers by
+      people: people
+      correct_answer: "Correct answer: %{answer}"
   homepages:
     home:
       popup_title: Quizzes for %{category}
-      learn_more: dozvedieť sa viac
+      learn_more: learn more
+      random_quiz: Random quiz
   kwizzer:
     quizzes:
       index:

@@ -121,3 +121,13 @@ Feature: Manage submissions
   Scenario: Show placement comment for all incorrect answers on the summary
     When I submitted a quiz with all the wrong answers and am now on the summary page
     Then I should see "placement_comment 1"
+    
+  Scenario: Complete a random quiz
+    Given the following "question_one_with_answers" factory_girl models:
+      | random_enabled |
+      | true           |
+    When I go to the homepage
+    And I follow "Random quiz"
+    And I choose "answer 1"
+    And I press "Submit"
+    Then I should see "100%"

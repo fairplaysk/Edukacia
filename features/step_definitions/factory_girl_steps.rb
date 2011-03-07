@@ -4,3 +4,4 @@ Given /^the following "([^"]*)" factory_girl models:$/ do |factory_name, models|
   end
 end
 
+

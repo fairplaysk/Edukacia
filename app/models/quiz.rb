@@ -1,5 +1,10 @@
 class Quiz < ActiveRecord::Base
-  has_many :questions, :dependent => :destroy
+  has_many :queries
+  has_many :questions, :dependent => :destroy, :through => :queries do
+    def push_with_attributes(question, join_attrs)
+      Query.send(:with_scope, :create => join_attrs) { self << question }
+    end
+  end
   accepts_nested_attributes_for :questions, :allow_destroy => true
   validates_associated :questions
   
@@ -17,10 +22,9 @@ class Quiz < ActiveRecord::Base
   
   has_attached_file :graphic, :styles => { :thumb => "150x150#" }
   
-  validates :name, :categories, :placement_comments, :presence => true
+  validates :name, :categories, :placement_comments, :presence => true, :unless => :is_generated?
   
   validate :question_positions_unique, :active_with_published_at
-  
   
   after_save :update_placement_comments_positions
   def update_placement_comments_positions

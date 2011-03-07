@@ -1,5 +1,8 @@
 class Question < ActiveRecord::Base
-  belongs_to :quiz
+  # belongs_to :quiz
+  has_many :queries
+  has_many :quizzes, :through => :queries
+  has_one :quiz, :through => :queries, :conditions => ['queries.is_generated = ?', false]
   
   has_many :answers, :dependent => :destroy
   accepts_nested_attributes_for :answers, :allow_destroy => true
