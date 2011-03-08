@@ -1,0 +1,22 @@
+- content_for :navigation do
+	%ul
+		%li= link_to 'Home', root_path
+		%li= link_to @submission.quiz.categories.first.short_name, submissions_path(:category_id => @submission.quiz.categories.first.id)
+		%li= link_to @submission.quiz.name, new_submission_path(:quiz_id => @submission.quiz.id)
+#form
+	%h1= t('.header')
+	.test_name= "#{@submission.quiz.categories.first.name} | #{@submission.quiz.name}"
+	%ol
+		- @submission.quiz.questions.each do |question|
+			%li
+				= question.content
+				= image_tag @submission.answers.include?(question.correct_answer) ? "frontend/true.png" : "frontend/false.png", :class => 'point'
+				%br
+				%span.true= t('.correct_answer', :answer => question.correct_answer.content)
+				%br
+				%span.true
+					= t('.correct_answers_by')
+					%span{:style => "color:#3C2415; font-weight:bold;"}= "83%"
+					= t('.people')
+				%br
+				= link_to t('.learn_more'), "#?w=700", :class => 'more_info poplight', :rel=>"question_popup_#{question.id}"

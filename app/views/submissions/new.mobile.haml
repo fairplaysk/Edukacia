@@ -4,18 +4,15 @@
 		%li= link_to @quiz.categories.first.short_name, submissions_path(:category_id => @quiz.categories.first.id)
 		%li= link_to @quiz.name, new_submission_path(:quiz_id => @quiz.id)
 #form
-	%h2 1. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus?
-	%form{:action=>"test_submit", :method=>"get", "accept-charset"=>"utf-8"}
-		%ol{:type => 'A'}
-			%li
-				%input{:type=>'radio'}
-					%span.answer Vivamus semper interdum ante a lobortis.
-			%li
-				%input{:type=>'radio'}
-					%span.answer Vivamus semper interdum ante a lobortis.
-			%li
-				%input{:type=>'radio'}
-					%span.answer Vivamus semper interdum ante a lobortis.
-		#submit
-			%input{:type=>'submit', :value=>'Dalej', :class=>'next'}
-			%input{:type=>'submit', :value=>'Preskoc', :class=>'skip'}
+	= form_tag submissions_path(:quiz_id => @quiz.id, :page => params[:page]) do
+		- @questions.each do |question|
+			%h2= question.content
+			%ol{:type => 'A'}
+				- question.answers.each do |answer|
+					%li
+						= radio_button_tag "questions[#{question.id}][answer_ids]", answer.id
+						/ %input{:type=>'radio'}
+						%span.answer= answer.content
+			#submit
+				%input{:type=>'submit', :value=> @last_page ? t('.submit') : t('.next_question'), :class=>'next', :name => 'commit'}
+				%input{:type=>'submit', :value=> t('.skip'), :class=>'skip', :name => 'commit'}

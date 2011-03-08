@@ -5,4 +5,4 @@
 #menu_mobile
 	%ul
 		- @category.quizzes.each do |quiz|
-			%li= link_to "#{quiz.name}<div class='arrow''>></div>".html_safe, new_submission_path(:quiz_id => quiz.id)
+			%li= link_to "#{quiz.name}<div class='arrow''>></div>".html_safe, new_submission_path(:quiz_id => quiz.id, :page => 1)
