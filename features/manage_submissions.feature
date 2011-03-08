@@ -131,3 +131,17 @@ Feature: Manage submissions
     And I choose "answer 1"
     And I press "Submit"
     Then I should see "100%"
+    
+  Scenario: Show only first 7 most popular categories on homepage
+    Given 10 categories that have quizzes and submissions in ascending quantity
+    And I am on the homepage
+    And I should see "category 9"
+    And I should see "category 8"
+    And I should see "category 7"
+    And I should see "category 6"
+    And I should see "category 5"
+    And I should see "category 4"
+    And I should see "category 3"
+    And I should not see "category 2"
+    And I should not see "category 1"
+    And I should not see "category 0"

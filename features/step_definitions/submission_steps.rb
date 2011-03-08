@@ -23,6 +23,16 @@ Given /^I submitted a quiz with all the right answers and am now on the summary 
 	And %{I press "Submit"}
 end
 
+Given /^(\d+) categories that have quizzes and submissions in ascending quantity$/ do |categories_number|
+  categories_number.to_i.times do |category_index|
+    quiz = Factory(:quiz, :name => category_index, :categories => [Factory(:category, :name => "category #{category_index}", :short_name => "category #{category_index}")])
+    category_index.times do |submission_count|
+      Factory(:submission, :quiz => quiz)
+    end
+  end
+end
+
+
 When /^I submitted a quiz with all the wrong answers and am now on the summary page$/ do
   Factory(:quiz_with_questions, :name => 'Chalenging history questions', :questions_per_page => 1, :published_at => '2011-01-01', :is_active => true)
 	And %{I am on the submissions page}
