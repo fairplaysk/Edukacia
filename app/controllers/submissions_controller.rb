@@ -11,7 +11,7 @@ class SubmissionsController < ApplicationController
   def new
     if params[:quiz_id] == 'random'
       @quiz = Quiz.create(:is_generated => true, :questions_per_page => 1, :name => 'Random quiz', :categories => [Category.find_or_create_by_name_and_short_name('Random', 'Random')])
-      @quiz.questions.push_with_attributes(Question.order('rand()').limit(4), :is_generated => true)
+      @quiz.questions.push_with_attributes(Question.where(:random_enabled => true).order('rand()').limit(4), :is_generated => true)
       @quiz.save
     else
       @quiz = Quiz.find(params[:quiz_id])

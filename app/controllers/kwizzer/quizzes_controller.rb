@@ -3,7 +3,7 @@ module Kwizzer
     before_filter :add_remove_placement_comments, :only => [:create, :update]
     
     def index
-      @quizzes = Quiz.all
+      @quizzes = Quiz.where(:is_generated => false)
     end
 
     def show

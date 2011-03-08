@@ -3,6 +3,7 @@
 	= f.input :comment, :input_html => {:rows => 5, :disabled => @quiz.is_active}
 	= f.input :graphic, :as => :file
 	= f.input :position
+	= f.input :random_enabled
 	= f.input :_destroy, :as => :hidden
 	= f.commit_button '- Question', :button_html => {:name => 'remove_question', :class => 'remove'} if !@quiz.is_active
 .answer_details_container

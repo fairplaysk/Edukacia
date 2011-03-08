@@ -12,6 +12,7 @@ en:
         content: 'Placement comment'
       question:
         content: 'Question'
+        random_enabled: Can be used in a random quiz?
       answer:
         content: 'Answer'
         is_correct: 'Correct'  

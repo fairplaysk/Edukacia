@@ -19,6 +19,7 @@ sk:
       question:
         content: 'Otázka'
         comment: 'Komentár'
+        random_enabled: 'Otázka môže byť použitá v náhodnom kvíze.'
       answer:
         content: 'Odpoveď'
         is_correct: 'Správna'
