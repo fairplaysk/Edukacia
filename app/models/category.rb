@@ -9,6 +9,6 @@ class Category < ActiveRecord::Base
   end
   
   def self.order_by_popularity
-    where('categories.name != ?', 'Random').joins(:quizzes => :submissions).group('categories.id').order('count(submissions.quiz_id) desc')
+    where('categories.name != ? AND quizzes.is_active = ?', 'Random', true).joins(:quizzes => :submissions).group('categories.id').order('count(submissions.quiz_id) desc')
   end
 end
