@@ -16,7 +16,7 @@
 				%br
 				%span.true
 					= t('.correct_answers_by')
-					%span{:style => "color:#3C2415; font-weight:bold;"}= "83%"
+					%span{:style => "color:#3C2415; font-weight:bold;"}= number_to_percentage(@submission.quiz.submissions.where(:is_repeated => false).map{|s| s.answers.select{|a| a.is_correct? && a.question == question}}.flatten.count.to_f*100 / @submission.quiz.submissions.where(:is_repeated => false).count.to_f, :precision => 0)
 					= t('.people')
 				%br
 				= link_to t('.learn_more'), "#?w=700", :class => 'more_info poplight', :rel=>"question_popup_#{question.id}"
@@ -36,16 +36,17 @@
 				= t('.correct_answers_percentage')
 				%span.name= @submission.quiz.name
 		.container
-			.per= number_to_percentage(@submission.correct_submissions_percentage, :precision => 0)
+			.per= number_to_percentage(@average_submission_percentate, :precision => 0)
+			/ number_to_percentage(@submission.correct_submissions_percentage, :precision => 0)
 			.text 
-				ľudí zodpovedalo správne na všetky otázky v teste 
+				= t('.average_success')
 				%span.name= @submission.quiz.name
 	.evaluation
 		%p= @placement_comment.content if @placement_comment
 	.buttons
 		= link_to t('.retry_quiz'), new_submission_path(:quiz_id => @submission.quiz.id, :page => 1), :class => 'testes'
-		= link_to t('.hardest_test'), nil, :class => 'testes'
-		= link_to t('.easiest_test'), nil, :class => 'testes'
+		= link_to t('.hardest_test'), new_submission_path(:quiz_id => @hardest_quiz.id, :page => 1), :class => 'testes'
+		= link_to t('.easiest_test'), new_submission_path(:quiz_id => @easiest_quiz.id, :page => 1), :class => 'testes'
 		= link_to t('.random_test'), new_submission_path(:quiz_id => 'random', :page => 1), :class => 'testes'
 	.buttons_soc
 		= link_to t('.facebook_share'), nil, :class => 'facebook'

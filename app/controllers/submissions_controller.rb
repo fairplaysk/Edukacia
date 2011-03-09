@@ -42,7 +42,17 @@ class SubmissionsController < ApplicationController
   
   def show
     @submission = Submission.find(params[:id])
+    
     @correct_answers_percentage = (@submission.correct_answers_count.to_f*100) / @submission.quiz.questions.count.to_f if @submission.quiz.questions.count != 0
+    @average_submission_percentate = quiz_submission_percentage(@submission.quiz)
+    
+    @easiest_quiz, @hardest_quiz = @submission.quiz, @submission.quiz
+    
+    Quiz.all.each do |quiz|
+      @easiest_quiz = quiz if quiz_submission_percentage(quiz) < quiz_submission_percentage(@easiest_quiz)
+      @hardest_quiz = quiz if quiz_submission_percentage(quiz) > quiz_submission_percentage(@hardest_quiz)
+    end
+    
     if @correct_answers_percentage
       if @correct_answers_percentage == 100
         @placement_comment = @submission.quiz.placement_comments.last
@@ -50,5 +60,12 @@ class SubmissionsController < ApplicationController
         @placement_comment = @submission.quiz.placement_comments[@correct_answers_percentage / (100/@submission.quiz.placement_comments.count)]
       end
     end
+  end
+  
+  private
+  def quiz_submission_percentage(quiz)
+    quiz.first_submissions.inject(0.0) do |sum, submission|
+      sum + (submission.correct_answers_count.to_f*100) / submission.quiz.questions.count.to_f if submission.quiz.questions.count != 0
+    end / quiz.first_submissions.count
   end
 end

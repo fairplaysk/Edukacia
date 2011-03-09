@@ -16,6 +16,7 @@ class Quiz < ActiveRecord::Base
   has_many :categories, :through => :categorizations
   
   has_many :submissions
+  has_many :first_submissions, :class_name => 'Submission', :conditions => {:is_repeated => false}
   
   has_many :additional_questions
   accepts_nested_attributes_for :additional_questions, :reject_if => lambda { |aq| aq[:name].blank? }, :allow_destroy => true

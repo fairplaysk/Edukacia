@@ -75,6 +75,7 @@ sk:
       correct_answers_by: Na túto otázku správne odpovedalo
       people: ľudí
       correct_answer: "Správna odpoveď: %{answer}"
+      average_success: Priemerná úspešnosť v kvíze
   homepages:
     home:
       popup_title: Kvízy pre %{category}

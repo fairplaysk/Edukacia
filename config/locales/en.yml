@@ -57,6 +57,7 @@ en:
       correct_answers_by: Correct answers by
       people: people
       correct_answer: "Correct answer: %{answer}"
+      average_success: Average success rate at quiz
   homepages:
     home:
       popup_title: Quizzes for %{category}
