@@ -8,4 +8,12 @@ module ApplicationHelper
     end
     f.commit_button name, :button_html => {:name => "add_#{association.to_s.singularize}", :class => 'add_element', 'data-element' => "#{fields}", 'data-association' => association}
   end
+  
+  def facebook_link_to(submission)
+    "http://www.facebook.com/sharer.php?u=#{submission_url(submission)}&t=#{submission.quiz.name} @ kvizy.fair-play.sk"
+  end
+  
+  def twitter_link_to(submission)
+    "http://twitter.com/share?url=#{submission_url(submission)}&text=#{submission.quiz.name} @ kvizy.fair-play.sk"
+  end
 end

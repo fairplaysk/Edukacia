@@ -49,5 +49,5 @@
 		= link_to t('.easiest_test'), new_submission_path(:quiz_id => @easiest_quiz.id, :page => 1), :class => 'testes'
 		= link_to t('.random_test'), new_submission_path(:quiz_id => 'random', :page => 1), :class => 'testes'
 	.buttons_soc
-		= link_to t('.facebook_share'), nil, :class => 'facebook'
-		= link_to t('.twitter_share'), nil, :class => 'twitter'
+		= link_to t('.facebook_share'), facebook_link_to(@submission), :class => 'facebook'
+		= link_to t('.twitter_share'), twitter_link_to(@submission), :class => 'twitter'
