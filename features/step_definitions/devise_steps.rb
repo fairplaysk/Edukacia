@@ -13,6 +13,7 @@ Given /^I am a new, authenticated user$/ do
 
   Given %{I have one user "#{email}" with password "#{password}" and username "#{username}"}
   And %{I am not authenticated}
+  And %{I follow "English"}
   And %{I go to login}
   And %{I fill in "Username" with "#{username}"}
   And %{I fill in "Password" with "#{password}"}

@@ -3,6 +3,10 @@ Feature: Manage submissions
   A guest
   wants to fill out a quiz and see results
   
+  Background:
+    Given I am on the homepage
+    And I follow "English"
+  
   Scenario: Fill out a quiz
 		Given the following "quiz_with_questions" factory_girl models:
 		 | name                         | questions_per_page | published_at | is_active |

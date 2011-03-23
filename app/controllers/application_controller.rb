@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   
   private
   def set_locale
-    I18n.locale = session[:locale].to_sym unless session[:locale].blank?
+    session[:locale] = :sk if session[:locale].blank?
+    I18n.locale = session[:locale].to_sym 
   end
   
   def mobile_device?
