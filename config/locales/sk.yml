@@ -122,6 +122,8 @@ sk:
       question_fields:
         correct: 'Správna'
         funny: 'Vtipná'
+      answer_fields:
+        answer_length_hint: 'Odpovede môžu mať maximálne 1000 znakov.'
     categories:
       index:
         category_name: Názov

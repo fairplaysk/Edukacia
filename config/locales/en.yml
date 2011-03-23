@@ -104,6 +104,8 @@ en:
       question_fields:
         correct: 'Correct'
         funny: 'Funny'
+      answer_fields:
+        answer_length_hint: 'Answers can be at most 1000 characters long.'
     categories:
       index:
         category_name: Name

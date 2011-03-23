@@ -1,5 +1,5 @@
 .content
-	= f.input :content, :input_html => {:disabled => (quiz_active rescue false)}
+	= f.input :content, :required => true, :hint => t('.answer_length_hint'), :input_html => {:disabled => (quiz_active rescue false), :rows => 2, :style => 'width: 100%;'}
 .radio_group
 	= label_tag f.object_name.gsub(/\[(\d+|\w+)\]$/,'')+"[is_correct][#{$1}]", 'Correct', :style => 'display:none;'
 	= radio_button_tag f.object_name.gsub(/\[(\d+|\w+)\]$/,'')+'[is_correct]', (f.object_name.match(/\[(\d+|\w+)\]$/)[1] if f.object_name.match(/\[(\d+|\w+)\]$/)), f.object.is_correct?, :disabled => (quiz_active rescue false)
