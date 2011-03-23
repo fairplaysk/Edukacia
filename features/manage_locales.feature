@@ -99,3 +99,8 @@ Feature: Manage locales
 		And I should see image with "False" alt
 		And I should see "Správna odpoveď"
 		
+	Scenario: Click on locale change takes me back to where I was
+	  Given I am on login page
+	  And I follow "English"
+	  Then I should be on the login page
+		

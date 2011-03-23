@@ -1,6 +1,6 @@
 class LocalesController < ApplicationController
   def set_locale
     session[:locale] = params[:locale] if params[:locale]
-    redirect_to root_path
+    redirect_to :back
   end
 end
