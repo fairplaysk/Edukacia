@@ -6,14 +6,15 @@
 			.meter= "#{params[:page]} / #{@quiz.questions.length/@quiz.questions_per_page}"
 
 = form_tag submissions_path(:quiz_id => @quiz.id, :page => params[:page]) do
-	- @questions.each do |question|
-		#question= question.content
+	- @questions.each_with_index do |question, question_index|
+		#question= "#{(@quiz.questions_per_page*params[:page].to_i) + question_index}. #{question.content}"
 		#answers
 			%ol
-				- question.answers.each do |answer|
+				- question.answers.each_with_index do |answer, answer_index|
 					%li
 						%label
 							= radio_button_tag "questions[#{question.id}][answer_ids]", answer.id
+							= (('A'..'Z').to_a[answer_index] + ".") if answer_index < ('A'..'Z').to_a.count
 							= answer.content
 			#sub_area
 				= submit_tag t('.skip'), :class => 'skip_button'
