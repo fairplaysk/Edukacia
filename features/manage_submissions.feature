@@ -145,3 +145,16 @@ Feature: Manage submissions
     And I should not see "category 2"
     And I should not see "category 1"
     And I should not see "category 0"
+    
+  @javascript
+  Scenario: Do not show missing when there is no image in the more info for a quetion on the summary page
+    Given the following "quiz_with_questions" factory_girl models:
+		 | name                         | questions_per_page | published_at | is_active |
+		 | Chalenging history questions | 1                  | 2011-01-01   | true      |
+		And I am on the submissions page
+		When I follow "Chalenging history questions"
+		And I choose "answer 1"
+		And I press "Next question"
+		And I press "Skip"
+	  And I follow "learn more"
+	  Then I should not see image "Missing"

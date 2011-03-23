@@ -7,7 +7,7 @@
 				.popup_navigation
 					%h3= question.content
 					%p= question.comment
-					%p= image_tag question.graphic.url(:thumb)
+					%p= image_tag question.graphic.url(:thumb) if question.graphic.file?
 			%li
 				= question.content
 				= image_tag @submission.answers.include?(question.correct_answer) ? "frontend/true.png" : "frontend/false.png", :class => 'point'
