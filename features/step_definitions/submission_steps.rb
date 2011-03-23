@@ -25,7 +25,7 @@ end
 
 Given /^(\d+) categories that have quizzes and submissions in ascending quantity$/ do |categories_number|
   categories_number.to_i.times do |category_index|
-    quiz = Factory(:quiz, :name => category_index, :categories => [Factory(:category, :name => "category #{category_index}", :short_name => "category #{category_index}")])
+    quiz = Factory(:quiz, :published_at => Time.now, :is_active => true, :name => category_index, :categories => [Factory(:category, :name => "category #{category_index}", :short_name => "category #{category_index}")])
     category_index.times do |submission_count|
       Factory(:submission, :quiz => quiz)
     end
