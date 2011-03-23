@@ -88,6 +88,23 @@ Feature: Manage questions
 		And I press "Save"
 		Then I should see "Questions per page: 15"
 		
+	Scenario: Show comment in quiz summary page
+	  Given the following "quiz" factory_girl models:
+		 | name |
+		 | quiz |
+		And I am a new, authenticated user
+		And I am editing question for the first quiz
+		And I fill in "Question" with "question"
+		And I fill in "Comment" with "comment for question 1"
+		And I fill in "Answer" with "answer 1" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][1]"
+		And I fill in "Answer" with "answer 2" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][2]"
+		And I fill in "Answer" with "answer 3" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][3]"
+		And I fill in "Answer" with "answer 4" within "//fieldset[@class='question_container'][1]//fieldset[@class='answer_container'][4]"
+		And I choose "Correct"
+		And I select "15" from "Questions per page"
+		And I press "Save"
+		Then I should see "comment for question 1"
+		
 	Scenario: Each question name must be filled in
 	  Given the following "quiz" factory_girl models:
 		 | name |
