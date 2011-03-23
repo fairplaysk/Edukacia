@@ -18,6 +18,7 @@ Kwizzer::Application.routes.draw do
   
   match '/locale/:locale' => 'locales#set_locale', :as => 'set_locale'
   match '/about' => 'homepages#about', :as => 'about'
+  match '/contact' => 'homepages#contact', :as => 'contact'
   
   root :to => 'homepages#home'
 

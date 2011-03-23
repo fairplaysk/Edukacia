@@ -94,6 +94,7 @@ header {
 	@include column(21.26, true); margin:0px auto 0px auto; padding:20px 60px; 
 	background: url($frontend-image-url+"back_container.png");
 	color:#8B5E3C;
+	a{color:#8B5E3C;}
 	p {
 		margin: 1em 0;}
 	#center{
@@ -230,7 +231,8 @@ header {
 			@include opacity(0.5); @include border-radius(3px);}
 		a.twitter:hover {@include opacity(1.0);}
 	}
-	
+	/* CONTACT */
+	#contact {font-size:14px;}
 }
 #bottom {
 	@include column($blueprint-grid-columns, true); height:10px; margin:0px auto 10px auto; background:url($frontend-image-url+"bottom_container.png") repeat-x;
