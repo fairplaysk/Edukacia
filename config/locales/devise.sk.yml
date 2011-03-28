@@ -4,19 +4,27 @@ sk:
       not_found: "nebol nájdený"
       already_confirmed: "bol už potvrdený"
       not_locked: "bol zablokovaný"
-
+      
   devise:
     failure:
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
+      unauthenticated: 'Musíte sa prihlásiť predtým ako môžte pokračovať.'
+      unconfirmed: 'Musíte potvrdiť účet.'
+      locked: 'Vaše konto je zablokovane.'
+      invalid: 'Nesprávne meno alebo heslo.'
+      invalid_token: 'Nesprvávny autentikačný token.'
+      timeout: 'Boli ste automaticky odhlásený, prosím prihláste sa aby ste mohli pokračovať.'
+      inactive: 'Vaše konto nie je aktivované.'
     sessions:
       signed_in: 'Používateľ bol úspešne prihlásený.'
       signed_out: 'Používateľ bol úspešne odhlásený.'
+      new:
+        username: Login
+        password: Heslo
+        sign_in: Prihlásiť sa
+        remember: Zapamätať
+    shared:
+      links:
+        forgot_password: Zabudli ste svoje heslo?
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'

@@ -1,16 +1,16 @@
 #login
 	= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
 		%p
-			= f.label :username
+			= f.label :username, t('.username')
 			%br/
 			= f.text_field :username, :class => 'login_input'
 		%p
-			= f.label :password
+			= f.label :password, t('.password')
 			%br/
 			= f.password_field :password, :class => 'login_input'
 		- if devise_mapping.rememberable?
 			%p
 				= f.check_box :remember_me
-				= f.label :remember_me
-		%p= f.submit "Sign in", :class => 'login_input_submit'
+				= f.label :remember_me, t('.remember')
+		%p= f.submit t('.sign_in'), :class => 'login_input_submit'
 	= render :partial => "devise/shared/links"
