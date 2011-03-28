@@ -36,6 +36,8 @@ en:
         about: About
         contact: Contact
   submissions:
+    index:
+      last_submission: last submission
     new:
       submit: Submit
       next_question: Next question

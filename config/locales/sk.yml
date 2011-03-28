@@ -54,6 +54,8 @@ sk:
         contact: Kontakt
 
   submissions:
+    index:
+      last_submission: posledné odovzdanie
     new:
       submit: Odovzdať
       next_question: Ďalej
