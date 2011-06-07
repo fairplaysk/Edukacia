@@ -6,7 +6,7 @@
 #head
 	#logo
 		= link_to image_tag('frontend/logo.png'), root_path
-	#header_text Maecenas metus lorem, porta porttitor rutrum vel, euismod vitae risus. Integer molestie arcu sed eros iaculis faucibus vitae at dui. Duis pulvinar lectus nec libero rutrum viverra. Donec dictum pretium luctus. Fusce viverra suscipit nunc in viverra.
+	#header_text= @header_text
 	#menu
 		= link_to t('.homepage'), root_url
 		%span •

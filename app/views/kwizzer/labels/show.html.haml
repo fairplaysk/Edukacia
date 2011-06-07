@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Identifier:
+  = @label.identifier
+%p
+  %b Content:
+  = @label.content.html_safe
+%p
+  %b Language:
+  = @label.language
+
+= link_to 'Edit', edit_kwizzer_label_path(@label)
+\|
+= link_to 'Back', kwizzer_labels_path

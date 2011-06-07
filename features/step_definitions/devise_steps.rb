@@ -15,7 +15,7 @@ Given /^I am a new, authenticated user$/ do
   And %{I am not authenticated}
   And %{I follow "English"}
   And %{I go to login}
-  And %{I fill in "Username" with "#{username}"}
+  And %{I fill in "Login" with "#{username}"}
   And %{I fill in "Password" with "#{password}"}
   And %{I press "Sign in"}
 end

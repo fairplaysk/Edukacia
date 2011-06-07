@@ -216,5 +216,6 @@ DEPENDENCIES
   rails-erd
   rails_admin!
   rails_best_practices
+  rake (= 0.8.7)
   rspec-rails
   spork (>= 0.9.0.rc2)

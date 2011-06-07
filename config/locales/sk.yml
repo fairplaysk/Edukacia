@@ -41,6 +41,7 @@ sk:
       quizzes: 'Kvízy'
       users: 'Používatelia'
       categories: Kategórie
+      labels: Popisky
       header:
         signed_in: 'Prihlásený ako %{username}.'
         sign_in: 'Prihlásiť sa'
@@ -139,6 +140,10 @@ sk:
         new_category: Nová kategória
       edit:
         editing_category: Úprava kategórie
+        
+    labels:
+      index:
+        listing_labels: Zoznam Popiskov
   # Date
   date:
       formats:

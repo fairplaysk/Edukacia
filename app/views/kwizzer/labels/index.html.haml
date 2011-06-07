@@ -1,0 +1,24 @@
+%h1= t('.listing_labels')
+
+%table
+  %tr
+    %th Identifier
+    %th Content
+    %th Language
+    %th
+    %th
+    %th
+
+  - @labels.each do |label|
+    %tr
+      %td= label.identifier
+      %td= truncate(label.content, :length => 100)
+      %td= label.language
+      %td= link_to 'Show', kwizzer_label_path(label)
+      %td= link_to 'Edit', edit_kwizzer_label_path(label)
+      %td= link_to 'Destroy', kwizzer_label_path(label), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Label', new_kwizzer_label_path
+

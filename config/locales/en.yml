@@ -24,6 +24,7 @@ en:
       quizzes: 'Quizzes'
       users: 'Users'
       categories: Categories
+      labels: Labels
       header:
         signed_in: 'Signed in as %{username}. Not you?'
         sign_in: 'sign in'
@@ -121,6 +122,9 @@ en:
         new_category: New category
       edit:
         editing_category: Editing category
+    labels:
+      index:
+        listing_labels: Listing labels
         
   time:
       formats:

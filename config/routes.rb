@@ -14,6 +14,7 @@ Kwizzer::Application.routes.draw do
       end
     end
     resources :users
+    resources :labels
   end
   
   match '/locale/:locale' => 'locales#set_locale', :as => 'set_locale'

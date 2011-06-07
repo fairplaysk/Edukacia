@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323093610) do
+ActiveRecord::Schema.define(:version => 20110607190805) do
 
   create_table "additional_questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(:version => 20110323093610) do
   end
 
   add_index "histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
+
+  create_table "labels", :force => true do |t|
+    t.string   "identifier"
+    t.text     "content"
+    t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "labels", ["identifier"], :name => "index_labels_on_identifier"
+  add_index "labels", ["language"], :name => "index_labels_on_language"
 
   create_table "placement_comments", :force => true do |t|
     t.integer  "quiz_id"

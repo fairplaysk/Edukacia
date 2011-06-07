@@ -17,6 +17,7 @@ gem 'hpricot'
 gem 'html5-boilerplate'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'formtastic_datepicker_inputs'
+gem 'rake', '0.8.7'
 
 # pretty up the rails console
 gem 'awesome_print', :require => 'ap'

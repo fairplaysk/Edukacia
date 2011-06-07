@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_locale
   before_filter :prepare_for_mobile
+  before_filter :load_header_and_footer_text
   
   private
   def set_locale
@@ -24,5 +25,10 @@ class ApplicationController < ActionController::Base
   def prepare_for_mobile
     session[:mobile_param] = params[:mobile] if params[:mobile]
     request.format = :mobile if mobile_device?
+  end
+  
+  def load_header_and_footer_text
+    @header_text =  Label.find_by_identifier_and_language('header', session[:locale].to_s).try(:content)
+    @footer_text = Label.find_by_identifier_and_language('footer', session[:locale].to_s).try(:content)
   end
 end

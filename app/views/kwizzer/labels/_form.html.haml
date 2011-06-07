@@ -1,0 +1,12 @@
+= semantic_form_for [:kwizzer, @label] do |f|
+  -if @label.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@label.errors.count, "error")} prohibited this label from being saved:"
+      %ul
+        - @label.errors.full_messages.each do |msg|
+          %li= msg
+  
+  = f.inputs :identifier, :content, :language
+
+  .actions
+    = f.submit 'Save'
