@@ -45,8 +45,7 @@ class SubmissionsController < ApplicationController
   def show
     @submission = Submission.find(params[:id])
     
-    @can_rate = can_rate(@submission)
-    @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first.try(:rating) if @can_rate
+    @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first.try(:rating) if @can_rate = can_rate(@submission)
     @rating_count = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').count
     @average_rating = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
     
@@ -92,6 +91,6 @@ class SubmissionsController < ApplicationController
   end
   
   def can_rate(submission)
-    submission.user == current_user || submission.session_id == session[:session_id]
+    (current_user && submission.user == current_user) || submission.session_id == session[:session_id]
   end
 end

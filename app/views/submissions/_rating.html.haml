@@ -1,4 +1,4 @@
-- if @can_rate && @quiz_submission_rating
+- if @can_rate
 	= form_tag rate_submission_path, :remote => true, :class => 'rating_ballot' do
 		%ul
 			- 1.upto(5).each do |index|
