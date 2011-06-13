@@ -43,7 +43,7 @@
 				%span.name= @submission.quiz.name
 	.evaluation
 		%p= @placement_comment.content if @placement_comment
-	.rating= render :partial => 'rating'
+	.rating= render :partial => 'rating' unless @submission.quiz.is_generated?
 	.buttons
 		= link_to t('.retry_quiz'), new_submission_path(:quiz_id => @submission.quiz.id, :page => 1), :class => 'testes'
 		= link_to t('.hardest_test'), new_submission_path(:quiz_id => @hardest_quiz.id, :page => 1), :class => 'testes'

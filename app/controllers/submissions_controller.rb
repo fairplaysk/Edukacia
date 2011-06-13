@@ -70,16 +70,18 @@ class SubmissionsController < ApplicationController
   
   def rate
     @submission = Submission.find(params[:id])
-    @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first
-    if @quiz_submission_rating.try(:present?)
-      @quiz_submission_rating.update_attribute(:rating, params[:rating])
-      @can_rate = true
-    elsif @can_rate = can_rate(@submission)
-      @submission.update_attribute(:rating, params[:rating])
+    unless @submission.quiz.is_generated?
+      @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first
+      if @quiz_submission_rating.try(:present?)
+        @quiz_submission_rating.update_attribute(:rating, params[:rating])
+        @can_rate = true
+      elsif @can_rate = can_rate(@submission)
+        @submission.update_attribute(:rating, params[:rating])
+      end
+      @quiz_submission_rating = params[:rating].to_i
+      @average_rating = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
+      @rating_count = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').count
     end
-    @quiz_submission_rating = params[:rating].to_i
-    @average_rating = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
-    @rating_count = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').count
     render :partial => 'rating', :layout => false
   end
   
