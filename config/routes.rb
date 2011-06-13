@@ -1,7 +1,11 @@
 Kwizzer::Application.routes.draw do
   devise_for :users
 
-  resources :submissions
+  resources :submissions do
+    member do
+      post :rate
+    end
+  end
 
   namespace :kwizzer do
     resources :categories

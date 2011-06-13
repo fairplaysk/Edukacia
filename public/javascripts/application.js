@@ -57,7 +57,51 @@ $(function() {
 	    });
 	    return false;
 	});
+	
+	ajax_rating_combo();
 });
+
+function ajax_rating_combo() {
+	update_checked_rationgs();
+	rating_form_status();
+	submit_rating_form();
+	rating_form_hover();
+}
+
+function update_checked_rationgs(){
+	var checkedId = 'rating_' + $('form.rating_ballot input:checked').attr('value');
+	$("form.rating_ballot label[for="+checkedId+"]").parent().prevAll().andSelf().addClass('bright');
+}
+
+function rating_form_status() {
+	$('form.rating_ballot').ajaxSuccess(function(e, xhr, settings) {
+		$(this).parent().html(xhr.responseText);
+		$('.ajax_loader').addClass('hidden')
+		ajax_rating_combo();
+	});
+	$('form.rating_ballot').bind("ajax:failure", function(){
+	  alert('fail');
+	});
+}
+
+function submit_rating_form() {
+	$('form.rating_ballot li').click(function() {
+		$(this).children().last().attr('checked', true);
+  	$('form.rating_ballot').submit();
+		$('.ajax_loader').removeClass('hidden')
+  });
+}
+
+function rating_form_hover() {
+	$('form.rating_ballot li').hover( function() {    // mouseover
+		  $(this).siblings().andSelf().removeClass('bright');
+			$(this).prevAll().andSelf().addClass('bright');
+		}, function() {
+			$(this).siblings().andSelf().removeClass('bright');
+			update_checked_rationgs();
+		}
+	);
+}
 
 function cleanup_hashes() {
 	$('input.remove,input.add_element').each(function(index, domElem){

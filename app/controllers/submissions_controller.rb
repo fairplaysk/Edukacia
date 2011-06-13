@@ -29,6 +29,8 @@ class SubmissionsController < ApplicationController
         submission.answers << Answer.find(answer[:answer_ids])
       end unless params[:commit] == I18n.translate('submissions.new.skip')
       
+      submission.user = current_user unless submission.user.present?
+      
       submission.save
       if submission.quiz.questions_per_page*params[:page].to_i >= submission.quiz.questions.length
         redirect_to submission
@@ -42,6 +44,10 @@ class SubmissionsController < ApplicationController
   
   def show
     @submission = Submission.find(params[:id])
+    
+    @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first.try(:rating) if @can_rate = can_rate(@submission)
+    @rating_count = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').count
+    @average_rating = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
     
     @correct_answers_percentage = (@submission.correct_answers_count.to_f*100) / @submission.quiz.questions.count.to_f if @submission.quiz.questions.count != 0
     @average_submission_percentate = quiz_submission_percentage(@submission.quiz)
@@ -62,10 +68,29 @@ class SubmissionsController < ApplicationController
     end
   end
   
+  def rate
+    @submission = Submission.find(params[:id])
+    @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first
+    if @quiz_submission_rating.try(:present?)
+      @quiz_submission_rating.update_attribute(:rating, params[:rating])
+      @can_rate = true
+    elsif @can_rate = can_rate(@submission)
+      @submission.update_attribute(:rating, params[:rating])
+    end
+    @quiz_submission_rating = params[:rating].to_i
+    @average_rating = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
+    @rating_count = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').count
+    render :partial => 'rating', :layout => false
+  end
+  
   private
   def quiz_submission_percentage(quiz)
     quiz.first_submissions.inject(0.0) do |sum, submission|
       sum + (submission.correct_answers_count.to_f*100) / submission.quiz.questions.count.to_f if submission.quiz.questions.count != 0
     end / quiz.first_submissions.count
+  end
+  
+  def can_rate(submission)
+    @submission.user == current_user || @submission.session_id == session[:session_id]
   end
 end

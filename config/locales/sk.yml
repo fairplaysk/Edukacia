@@ -6,6 +6,9 @@ sk:
   quiz_saved: 'Kvíz bol úspešne uložený. Vyplnte prosím otázky a odpovede.'
   quiz_updated: 'Kvíz bol úspešne aktualizovaný. Vyplnte prosím otázky a odpovede.'
   
+  user: 'používateľom'
+  users: 'používateľmi'
+  
   formtastic:
     labels:
       quiz:
@@ -79,6 +82,10 @@ sk:
       people: ľudí
       correct_answer: "Správna odpoveď: %{answer}"
       average_success: Priemerná úspešnosť v kvíze
+      repeated_rating: 'Toto je opakované odovzdanie kvízu, hodnotiť môžete iba prvé odovzdanie kvízu'
+    rating:
+      average_rating: 'Priemerné hodnotenie:'
+      rating_count: 'Test bol hodnotený '
   homepages:
     home:
       popup_title: Kvízy pre %{category}

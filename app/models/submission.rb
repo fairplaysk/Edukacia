@@ -3,6 +3,7 @@ class Submission < ActiveRecord::Base
   has_many :answers, :through => :choises
   
   belongs_to :quiz
+  belongs_to :user
   
   default_scope order('updated_at desc')
   

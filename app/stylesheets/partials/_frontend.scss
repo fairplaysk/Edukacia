@@ -34,6 +34,8 @@ input:invalid, textarea:invalid {
 .no-boxshadow input:invalid,
 .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
+.hidden{ display:none; }
+
 
 //-----------------------------------
 // Add your own custom styles below
@@ -233,6 +235,25 @@ header {
 	}
 	/* CONTACT */
 	#contact {font-size:14px;}
+	
+	.rating{
+		display:block; overflow:hidden; margin:20px 0px 40px 0px; padding:0px 0px; border-top:px dashed #8C694C; border-bottom:px dashed #8C694C; color:#8B5E3C; font-size:10px; font-weight:normal;
+		ul {list-style:none; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; float:none; overflow:hidden;}
+		li {float:left; margin:0px 3px 0px 0px; padding:0px 0px 0px 0px;}
+	}
+	
+	form.rating_ballot li {cursor: pointer; }
+	.rating_ballot {
+		input.rating_button { display: none; }
+		input[type='submit'] { display: none; }
+		
+		li { 
+			display: block; height: 20px; width: 20px; float: left; 
+			background-image: url(../../images/frontend/star_empty.png);
+			span { display: none; }
+		}
+		li.bright { background-image: url(../../images/frontend/star_full.png); }
+	}
 }
 #bottom {
 	@include column($blueprint-grid-columns, true); height:10px; margin:0px auto 10px auto; background:url($frontend-image-url+"bottom_container.png") repeat-x;

@@ -1,0 +1,14 @@
+- if @can_rate
+	= form_tag rate_submission_path, :remote => true, :class => 'rating_ballot' do
+		%ul
+			- 1.upto(5).each do |index|
+				%li{:class => "#{'bright' if @quiz_submission_rating && @quiz_submission_rating >= index}"}
+					= label_tag("rating_#{index}", content_tag(:span, index), {:class=>"rating_label"})
+					= radio_button_tag("rating", index, @quiz_submission_rating == index, :class => 'rating_button')
+			= image_tag('frontend/ajax-loader.gif', :class => 'ajax_loader hidden')
+		= submit_tag "Ohodnotit"
+%br
+= t('.average_rating')
+= @average_rating || 'n\a'
+= t('.rating_count')
+= pluralize(@rating_count, t('user'), t('users'))

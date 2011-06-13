@@ -5,6 +5,9 @@ en:
   quiz_saved: 'Successfully saved quiz. Please fill out questions for the quiz next.'
   quiz_updated: 'Successfully updated quiz. Please fill out questions for the quiz next.'
   
+  user: user
+  users: users
+  
   formtastic:
     labels:
       quiz:
@@ -61,6 +64,10 @@ en:
       people: people
       correct_answer: "Correct answer: %{answer}"
       average_success: Average success rate at quiz
+      repeated_rating: 'This is a repeated submission, you can only rate the initial submission of a quiz'
+    rating:
+      average_rating: 'Average rating:'
+      rating_count: 'The test was rated by '
   homepages:
     home:
       popup_title: Quizzes for %{category}
