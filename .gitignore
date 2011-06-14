@@ -4,6 +4,7 @@ log/*.log
 tmp/**/*
 
 config/database.yml
+config/newrelic.yml
 public/system/*
 public/stylesheets/compiled/*
 .DS_Store
