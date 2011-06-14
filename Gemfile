@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -18,6 +18,7 @@ gem 'html5-boilerplate'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'formtastic_datepicker_inputs'
 gem 'rake', '0.8.7'
+gem 'newrelic_rpm'
 
 # pretty up the rails console
 gem 'awesome_print', :require => 'ap'
