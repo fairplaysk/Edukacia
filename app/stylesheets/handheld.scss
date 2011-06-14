@@ -14,7 +14,7 @@ h2 {font-family: Tahoma, Verdana, Geneva; font-size:16px; color:#000; text-align
 #navigation {font-family:'Yanone Kaffeesatz', arial, serif; text-align:center; margin:0px; padding:0px; color:#000;
 	ul {float:none; overflow:hidden; list-style:none; margin:0px; padding:0px; background:#6B4C3B; border-top:1px solid #F2CA5C;}
 	li {float:left; margin:0px; padding:0px; background:url($frontend-image-url+'forward_arrow.png') 100% 0% no-repeat;}
-	a {display:block; text-decoration:none; font-size:18px; color:#F2CA5C; display:block; text-align:center; padding:6px 25px 6px 20px; background:transparent;}
+	a {display:block; text-decoration:none; font-size:14px; color:#F2CA5C; display:block; text-align:center; padding:8px 15px 8px 10px; background:transparent;}
 }
 
 #menu_mobile {float:none; overflow:hidden; display:block; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; color:#3C2415;
@@ -33,4 +33,42 @@ h2 {font-family: Tahoma, Verdana, Geneva; font-size:16px; color:#000; text-align
 #submit {background:#F2CA5C; float:none; overflow:hidden;
 	.next {float:none; width:100%; border:none; padding:8px 20px; background:#333; color:#eee; font-size:20px; margin:10px 0px 15px 0px;}
 	.skip {float:none; width:100%; border:none; padding:8px 20px; background:#666; color:#eee; font-size:20px; margin:0px 0px 15px 0px;}
+}
+
+#vyhodnotenie {background:#FFF3D4; margin:0px; padding:10px 20px; font-size:14px;
+	h1 {font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:25px; color:#3C2415; text-align:center; font-weight:400; margin:10px 0px 15px 0px; padding:0px;}
+	h2 {font-family: Tahoma, Verdana, Geneva; font-weight:normal; font-size:14px; color:#000; text-align:center; margin:5px 0px 0px 0px;}
+	ol {margin:20px 0px 20px 30px; padding:0px;}
+	li {margin:0px 0px 15px 0px; color:#3C2415; font-size:15px;}
+	.true {padding:0px 5px; background:#C2C76C; color:#ffffff; font-size:11px;}
+	.false {padding:0px 5px; background:#F57336; color:#ffffff; font-size:11px;}
+	.answer {color:#8B5E3C; font-size:12px;}
+}
+
+#sumar {margin:0px 0px; padding:7px 0px; font-size:12px; text-align:center; background:#1CA099; -moz-border-radius:15px; border-radius:15px; color:#ffffff;}
+
+#zhrnutie {float:none; overflow:hidden;
+	.left {float:left; width:30%; background:#F2CA5C; padding:10%; text-align:center; font-size:11px; color:#ffffff; height:130px;}
+	.right {float:right; width:30%; background:#1CA099; padding:10%; text-align:center; font-size:11px; color:#ffffff; height:130px;}
+	.per {font-size:20px; font-weight:bold; display:block;}
+}
+
+#veticka {float:none; overflow:hidden; background:#FFF3D4; margin:0px; padding:20px 20px; font-size:11px;}
+
+#rating {float:none; overflow:hidden; margin:0px; padding:0px; font-size:11px; background:#3C2415;
+	ul {list-style:none; margin:0px; padding:0px; float: none; overflow: hidden;}
+	li {float:left; margin:0px; padding:20px 0px; overflow: hidden; text-align:center; width:20%;}
+	input{display:none;}
+}
+
+#next_steps {float:none; overflow:hidden; margin:0px; font-size:11px; background:#F2CA5C; padding:20px;
+	a {border:none; text-decoration:none;}
+	.button {float:left; overflow:hidden; width:96%; margin:8px 2%; padding:10px 0px; font-size:14px; background:#3C2415; color:#ffffff; text-align:center; color:#F2CA5C; -moz-border-radius:20px; border-radius:20px; color:#F2CA5C;}
+}
+
+
+#soc_net {float:none; overflow:hidden; margin:0px; padding:0px; font-size:11px;
+	a {border:none;}
+	.facebook {float:left; width:50%; background:#315b99; padding:10% 0px; text-align:center; font-size:11px; color:#ffffff;}
+	.twitter {float:right; width:50%; background:#5dd7fc; padding:10% 0px; text-align:center; font-size:11px; color:#ffffff;}
 }

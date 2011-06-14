@@ -83,6 +83,8 @@ sk:
       correct_answer: "Správna odpoveď: %{answer}"
       average_success: Priemerná úspešnosť v kvíze
       repeated_rating: 'Toto je opakované odovzdanie kvízu, hodnotiť môžete iba prvé odovzdanie kvízu'
+      correct: 'SPRÁVNE'
+      incorrect: 'NESPRÁVNE'
     rating:
       average_rating: 'Priemerné hodnotenie:'
       rating_count: 'Test bol hodnotený '

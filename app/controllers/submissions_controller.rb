@@ -86,7 +86,11 @@ class SubmissionsController < ApplicationController
       @average_rating = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
       @rating_count = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').count
     end
-    render :partial => 'rating', :layout => false
+    if mobile_device?
+      redirect_to @submission
+    else
+      render :partial => 'rating', :layout => false
+    end
   end
   
   private

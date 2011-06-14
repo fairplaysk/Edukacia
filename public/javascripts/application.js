@@ -59,6 +59,10 @@ $(function() {
 	});
 	
 	ajax_rating_combo();
+	$('form#rating img').click(function() {
+		$(this).next().attr('checked', true);
+  	$('form#rating').submit();
+  });
 });
 
 function ajax_rating_combo() {

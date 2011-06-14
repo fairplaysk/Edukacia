@@ -2,21 +2,53 @@
 	%ul
 		%li= link_to 'Home', root_path
 		%li= link_to @submission.quiz.categories.first.short_name, submissions_path(:category_id => @submission.quiz.categories.first.id)
-		%li= link_to @submission.quiz.name, new_submission_path(:quiz_id => @submission.quiz.id)
-#form
+		%li= link_to @submission.quiz.name, new_submission_path(:quiz_id => @submission.quiz.id, :page => 1)
+
+#vyhodnotenie
 	%h1= t('.header')
-	.test_name= "#{@submission.quiz.categories.first.name} | #{@submission.quiz.name}"
-	%ol
+	#sumar 
+		= t '.correct_answers_first'
+		%strong= @submission.correct_answers_count
+		= t '.correct_answers_second'
+		%strong= @submission.quiz.questions.count
+		= t '.correct_answers_third'
+	%ol{:type => '1'}
 		- @submission.quiz.questions.each do |question|
 			%li
+				%span{:class => @submission.answers.include?(question.correct_answer) ? "true" : "false"}= @submission.answers.include?(question.correct_answer) ? t('.correct') : t('.incorrect')
 				= question.content
-				= image_tag @submission.answers.include?(question.correct_answer) ? "frontend/true.png" : "frontend/false.png", :class => 'point'
 				%br
-				%span.true= t('.correct_answer', :answer => question.correct_answer.content)
-				%br
-				%span.true
+				%span.answer
+					= t('.correct_answer', :answer => '')
+					%strong= question.correct_answer.content
+					%br
 					= t('.correct_answers_by')
-					%span{:style => "color:#3C2415; font-weight:bold;"}= "83%"
+					%strong= number_to_percentage(@submission.quiz.submissions.where(:is_repeated => false).map{|s| s.answers.select{|a| a.is_correct? && a.question == question}}.flatten.count.to_f*100 / @submission.quiz.submissions.where(:is_repeated => false).count.to_f, :precision => 0)
 					= t('.people')
-				%br
-				= link_to t('.learn_more'), "#?w=700", :class => 'more_info poplight', :rel=>"question_popup_#{question.id}"
+#zhrnutie
+	.left
+		%span.per= number_to_percentage(@correct_answers_percentage, :precision => 0) if @correct_answers_percentage
+		%br
+		= t('.correct_answers_percentage')
+	.right
+		%span.per= number_to_percentage(@average_submission_percentate, :precision => 0)
+		%br
+		= t('.average_success')
+
+#veticka= @placement_comment.content if @placement_comment
+
+- if @can_rate
+	= form_tag rate_submission_path, :id => 'rating' do
+		%ul
+			- 1.upto(5).each do |index|
+				%li
+					= image_tag((@quiz_submission_rating && @quiz_submission_rating >=  index) ? 'frontend/star_full.png' : 'frontend/star_empty.png')
+					= radio_button_tag("rating", index, @quiz_submission_rating == index, :class => 'rating_button')
+#next_steps
+	= link_to t('.retry_quiz'), new_submission_path(:quiz_id => @submission.quiz.id, :page => 1), :class => 'button'
+	= link_to t('.hardest_test'), new_submission_path(:quiz_id => @hardest_quiz.id, :page => 1), :class => 'button'
+	= link_to t('.easiest_test'), new_submission_path(:quiz_id => @easiest_quiz.id, :page => 1), :class => 'button'
+	= link_to t('.random_test'), new_submission_path(:quiz_id => 'random', :page => 1), :class => 'button'
+#soc_net
+	= link_to image_tag('frontend/button_fb.png'), facebook_link_to(@submission), :class => 'facebook', :target => '_blank'
+	= link_to image_tag('frontend/button_twtr.png'), twitter_link_to(@submission), :class => 'twitter', :target => '_blank'
