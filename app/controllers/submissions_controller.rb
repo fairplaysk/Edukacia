@@ -9,6 +9,7 @@ class SubmissionsController < ApplicationController
   end
   
   def new
+    # FIXME: refactor
     if params[:quiz_id] == 'random'
       @quiz = Quiz.create(:is_generated => true, :questions_per_page => 1, :name => 'Random quiz', :categories => [Category.find_or_create_by_name_and_short_name('Random', 'Random')])
       @quiz.questions.push_with_attributes(Question.where(:random_enabled => true).order('rand()').limit(4), :is_generated => true)
@@ -21,6 +22,7 @@ class SubmissionsController < ApplicationController
   end
   
   def create
+    # FIXME: refactor
     if params[:questions] || params[:commit] == I18n.translate('submissions.new.skip')
       submission = Submission.find_or_initialize_by_session_id_and_quiz_id(session[:session_id], params[:quiz_id])
       submission = Submission.new(:session_id => session[:session_id], :quiz_id => params[:quiz_id], :is_repeated => true) if params[:page] == '1' && !submission.new_record?
@@ -43,6 +45,7 @@ class SubmissionsController < ApplicationController
   end
   
   def show
+    # FIXME: refactor
     @submission = Submission.find(params[:id])
     
     @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first.try(:rating) if @can_rate = can_rate(@submission)
@@ -69,6 +72,7 @@ class SubmissionsController < ApplicationController
   end
   
   def rate
+    # FIXME: refactor
     @submission = Submission.find(params[:id])
     unless @submission.quiz.is_generated?
       @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first
