@@ -64,9 +64,10 @@ class Choise < ActiveRecord::Base
         incorrect_answers_count = all_answers - correct_answers
       end
     end
-    
+    category_name = hardest_question.quiz.categories.first.name || 'n\a'
+    quiz_name = hardest_question.quiz.name || 'n\a'
     {
-    "text" => "#{hardest_question.content} <br> #{hardest_question.quiz.categories.first.name} | #{hardest_question.quiz.name}",
+    "text" => "#{hardest_question.content} <br> #{category_name} | #{quiz_name}",
   	"cols" =>
   	  [
   	    {"id" => "correctness", "label" => "Correctness", "type" => "string"},
