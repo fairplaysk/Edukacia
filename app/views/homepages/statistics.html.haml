@@ -1,0 +1,25 @@
+#statistics
+	.title_area
+		%h4= t('.submission_history_title')
+	#submission_history.visualization= image_tag 'frontend/ajax-loader.gif'
+	.container
+		.container_left
+			.title_area
+				%h4= t('.chart_correct_incorrect_title')
+			#chart_correct_incorrect.visualization.pie= image_tag 'frontend/ajax-loader.gif'
+		.container_right
+			.title_area
+				%h4= t('.chart_hardest_title')
+			.question &nbsp;
+			#chart_hardest.visualization.pie= image_tag 'frontend/ajax-loader.gif'
+	.container
+		.container_left
+			.title_area
+				%h4= t('.chart_easiest_title')
+			.question &nbsp;
+			#chart_easiest.visualization.pie= image_tag 'frontend/ajax-loader.gif'
+		.container_right
+			.title_area
+				%h4= t('.most_popular_quiz_title')
+			.question &nbsp;
+			#most_popular_quiz.visualization.pie= image_tag 'frontend/ajax-loader.gif'

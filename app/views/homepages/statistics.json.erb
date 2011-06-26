@@ -1,0 +1,41 @@
+<% if params[:which] == 'submission_history' %>
+	{
+	"cols":
+	    [
+	        {"id": "year", "label": "Rok", "type": "string"},
+	        {"id": "answered_questions", "label": "Zodpovedané otázky", "type": "number"}
+	    ],
+	"rows": 
+	    [
+					<%= start = 1.year.from_now  %>
+					<%= now = Time.now %>
+					<%= start.to_i < now.to_i %>
+					<% 
+						start = 1.year.from_now 
+						now = Time.now
+						while(start < now)
+					%>
+					{
+							"c":
+	                [
+	                    {"v": <%= start.month %>}, 
+	                    {"v": 1000} 
+	                ]						
+
+	        },
+					<%
+							start += 1.month
+						end
+					%>
+	
+	        {
+	            "c":
+	                [
+	                    {"v": "Februar"},
+	                    {"v": 1170} 
+	                ]
+	        }
+	    ]
+	}
+<% elsif params[:which] == 'correct_anwers' %>
+<% end %>

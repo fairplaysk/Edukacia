@@ -7,7 +7,7 @@
 #
 defaults: &defaults
   :google_account_id: ''
-  :google_api_key: ''
+  :google_api_key: 'ABQIAAAAW-ZqJLQM6uOw9PoYG-yywhTkGo-axo5uMJCp0HeV_8DJSqtt4hR4IMeUMt4Lb191UOiRYGAjWsDTig'
 
 :development:
   <<: *defaults

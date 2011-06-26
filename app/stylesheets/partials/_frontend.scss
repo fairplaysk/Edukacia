@@ -254,6 +254,18 @@ header {
 		}
 		li.bright { background-image: url(../../images/frontend/star_full.png); }
 	}
+	
+	/* STATISTICS */
+	#statistics {
+		h4 {font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; font-size:17px; color:#3C2415; text-align:center; width:auto; margin:0px; padding:5px 10px; background:#fdeecd; -moz-border-radius:20px; border-radius:20px; overflow:hidden; float:none;}
+		.title_area_1 {width:270px; float:none; overflow:hidden; -moz-border-radius:20px; border-radius:20px; border:1px dashed #3C2415; padding:2px; margin:20px auto;}
+		.title_area {width:340px; float:none; overflow:hidden; -moz-border-radius:20px; border-radius:20px; border:1px dashed #3C2415; padding:2px; margin:20px auto;}
+		.title_area_3 {width:160px; float:none; overflow:hidden; -moz-border-radius:20px; border-radius:20px; border:1px dashed #3C2415; padding:2px; margin:20px auto;}
+		.container {float:none; overflow:hidden; border-top:0px dashed #3C2415; }
+		.container_left {float:left; overflow:hidden; width:460px;}
+		.container_right {float:right; overflow:hidden; width:450px;}
+		.question {color:#3C2415; padding:0px 60px; text-align:center;}
+	}
 }
 #bottom {
 	@include column($blueprint-grid-columns, true); height:10px; margin:0px auto 10px auto; background:url($frontend-image-url+"bottom_container.png") repeat-x;

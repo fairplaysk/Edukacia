@@ -85,6 +85,8 @@ sk:
       repeated_rating: 'Toto je opakované odovzdanie kvízu, hodnotiť môžete iba prvé odovzdanie kvízu'
       correct: 'SPRÁVNE'
       incorrect: 'NESPRÁVNE'
+      chart_correct: 'Správne'
+      chart_incorrect: 'Nesprávne'
     rating:
       average_rating: 'Priemerné hodnotenie:'
       rating_count: 'Test bol hodnotený '
@@ -92,7 +94,13 @@ sk:
     home:
       popup_title: Kvízy pre %{category}
       random_quiz: Náhodný kvíz
-      
+    statistics:
+      submission_history_title: "Zodpovedané otázky v jednotlivých mesiacoch"
+      history_statistics: "Zodpovedané otázky"
+      chart_correct_incorrect_title: "Celkový počet správne a nesprávne zodpovedaných otázok"
+      chart_hardest_title: "Najťažšia otázka testov"
+      chart_easiest_title: "Najľahšia otázka testov"
+      most_popular_quiz_title: "Najlepšie hodnotený test"
   kwizzer:
     quizzes:
       index:
@@ -174,6 +182,7 @@ sk:
           short: "%d.%m. %H:%M"
           long: "%A %d. %B %Y %H:%M"
           date: "%B %d, %Y"
+          month: '%B'
       am: "dopoludnia"
       pm: "popoludní"
 

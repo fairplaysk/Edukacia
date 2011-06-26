@@ -67,6 +67,8 @@ en:
       repeated_rating: 'This is a repeated submission, you can only rate the initial submission of a quiz'
       correct: CORRECT
       incorrect: INCORRECT
+      chart_correct: Correct
+      chart_incorrect: Incorrect
     rating:
       average_rating: 'Average rating:'
       rating_count: 'The test was rated by '
@@ -75,6 +77,13 @@ en:
       popup_title: Quizzes for %{category}
       learn_more: learn more
       random_quiz: Random quiz
+    statistics:
+      submission_history_title: "Number of answers for questions by month"
+      history_statistics: "No. of answers"
+      chart_correct_incorrect_title: "All answers"
+      chart_hardest_title: "Hardest question"
+      chart_easiest_title: "Easiest question"
+      most_popular_quiz_title: "Most popular quiz"
   kwizzer:
     quizzes:
       index:
@@ -139,6 +148,7 @@ en:
       formats:
           default: "%a, %d %b %Y %H:%M:%S %z"
           date: "%B %d, %Y"
+          month: '%B'
 
       am: "am"
       pm: "pm"

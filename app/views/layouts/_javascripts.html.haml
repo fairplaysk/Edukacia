@@ -4,6 +4,7 @@
   = javascript_include_tag "//www.google.com/jsapi?key=#{google_api_key}"
   :javascript
     google.load("jquery", "1.4.4");
+    google.load("visualization", "1", {packages:["corechart"]});
 - else
   = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"
 

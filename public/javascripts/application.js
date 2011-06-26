@@ -63,7 +63,45 @@ $(function() {
 		$(this).next().attr('checked', true);
   	$('form#rating').submit();
   });
+
+	$('.visualization').each(function(index){
+		drawChart($(this).attr('id'), $(this).hasClass('pie'));
+	});
 });
+
+function drawChart(element_id, pie) {
+	$.getJSON('/statistics.json?which=' + element_id, function(data) {
+		$('#'+element_id).prev('.question').html(data.text);
+		var table = new google.visualization.DataTable(data);
+		if(pie) {
+			var chart = new google.visualization.PieChart(document.getElementById(element_id));
+			chart.draw(table, {
+ 				width: 450,
+ 				height: 300,
+ 				backgroundColor:'transparent',
+ 				colors:['#3C2415','#8B5E3C'],
+ 				chartArea:{left:120, top:30,},
+ 				legendTextStyle: {color:'#8B5E3C',},
+ 				pieResidueSliceColor:'#009900',
+ 				is3D:true,
+			});
+		} else {
+			var chart = new google.visualization.ColumnChart(document.getElementById(element_id));
+			chart.draw(table, {
+				width:920,
+				height:400,
+				colors:['#3C2415'],
+				fontSize:11,
+				backgroundColor:'transparent',
+				gridlineColor:'#c69c6d',
+				vAxis: {baselineColor:'#8B5E3C', textStyle:{color:'#8B5E3C',},},
+				hAxis: {textStyle:{color:'#8B5E3C',},},
+				chartArea: {top:20,},
+				legendTextStyle: {color:'#8B5E3C',},
+			});
+		}
+	});
+}
 
 function ajax_rating_combo() {
 	update_checked_rationgs();
@@ -80,7 +118,7 @@ function update_checked_rationgs(){
 function rating_form_status() {
 	$('form.rating_ballot').ajaxSuccess(function(e, xhr, settings) {
 		$(this).parent().html(xhr.responseText);
-		$('.ajax_loader').addClass('hidden')
+		$('.ajax_loader').addClass('hidden');
 		ajax_rating_combo();
 	});
 	$('form.rating_ballot').bind("ajax:failure", function(){
@@ -92,7 +130,7 @@ function submit_rating_form() {
 	$('form.rating_ballot li').click(function() {
 		$(this).children().last().attr('checked', true);
   	$('form.rating_ballot').submit();
-		$('.ajax_loader').removeClass('hidden')
+		$('.ajax_loader').removeClass('hidden');
   });
 }
 
