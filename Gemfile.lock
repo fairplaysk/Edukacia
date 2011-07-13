@@ -125,7 +125,6 @@ GEM
       activerecord
       activesupport
     polyglot (0.3.1)
-    progressbar (0.9.0)
     rack (1.2.3)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -143,13 +142,14 @@ GEM
       activerecord (~> 3.0)
       activesupport (~> 3.0)
       ruby-graphviz (~> 0.9.18)
-    rails_best_practices (0.5.3)
+    rails_best_practices (0.10.0)
       activesupport
-      colored (~> 1.2)
-      erubis (~> 2.6.6)
+      colored
+      erubis
+      haml
       i18n
-      progressbar (~> 0.9.0)
-      ruby_parser (~> 2.0.4)
+      ruby-progressbar
+      ruby_parser
     railties (3.0.7)
       actionpack (= 3.0.7)
       activesupport (= 3.0.7)
@@ -170,7 +170,8 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.4.0)
     ruby-graphviz (0.9.20)
-    ruby_parser (2.0.5)
+    ruby-progressbar (0.0.10)
+    ruby_parser (2.0.6)
       sexp_processor (~> 3.0)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.2)

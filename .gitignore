@@ -5,6 +5,7 @@ tmp/**/*
 
 config/database.yml
 config/newrelic.yml
+config/google.yml
 public/system/*
 public/stylesheets/compiled/*
 .DS_Store
