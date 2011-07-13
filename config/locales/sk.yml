@@ -62,7 +62,7 @@ sk:
       last_submission: posledné odovzdanie
     new:
       submit: Odovzdať
-      next_question: Ďalej
+      next_question: Odpovedať
       skip: Preskočiť
     show:
       header: Vyhodnotenie kvízu
