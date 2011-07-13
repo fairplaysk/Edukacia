@@ -4,7 +4,7 @@
 			%li.header= category.name
 			- category.active_quizzes.each do |quiz|
 				%li
-					= link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
+					= link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1), :class => 'hover_underline'
 					- if @submission = quiz.last_submission_for_session_id(@session_id)
 						|
-						= link_to t('.last_submission'), @submission 
+						= link_to t('.last_submission'), @submission, :class => 'hover_underline' 

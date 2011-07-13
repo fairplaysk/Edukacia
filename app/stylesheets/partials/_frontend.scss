@@ -97,6 +97,7 @@ header {
 	background: url($frontend-image-url+"back_container.png");
 	color:#8B5E3C;
 	a{color:#8B5E3C;}
+	a.hover_underline:hover{text-decoration:underline;}
 	p {
 		margin: 1em 0;}
 	#center{
