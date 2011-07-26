@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+# http://stackoverflow.com/questions/4980877/rails-error-couldnt-parse-yaml
+require 'yaml'
+YAML::ENGINE.yamler= 'syck'
+
 module Kwizzer
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
