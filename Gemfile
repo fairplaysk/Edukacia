@@ -5,10 +5,10 @@ gem 'rails', '3.0.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql2', "~> 0.2.0"
 
 gem 'jquery-rails'
-gem "formtastic", ">= 1.1.0.beta"
+gem "formtastic", "1.2.4"
 gem 'compass', ">= 0.10.4"
 gem 'haml-rails'
 gem 'paperclip'
@@ -17,8 +17,9 @@ gem 'hpricot'
 gem 'html5-boilerplate'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'formtastic_datepicker_inputs'
-gem 'rake', '0.8.7'
-gem 'newrelic_rpm'
+gem 'rake'
+gem 'newrelic_rpm', '>= 3.1.1.beta3'
+gem 'sass'
 
 # pretty up the rails console
 gem 'awesome_print', :require => 'ap'
@@ -46,8 +47,14 @@ gem 'awesome_print', :require => 'ap'
 #   gem 'webrat'
 # end
 
+# bundle with '--without macosx' if you are not not a good system :)
+group :developemnt, :macosx do
+  gem 'rb-fsevent', :require => false 
+  gem 'growl'
+end
+
 group :development do
-	gem 'bullet', '>= 2.0.0.rc3'
+	gem 'bullet'
 	gem 'rails_best_practices'
 	gem "rails-erd"
 end
@@ -56,9 +63,14 @@ group :development, :test do
 	gem 'cucumber-rails'
 	gem 'rspec-rails'
 	gem 'mocha'
-	gem 'capybara'
+	gem 'capybara', :git => 'https://github.com/jnicklas/capybara.git'
 	gem 'database_cleaner'
 	gem 'spork', '>= 0.9.0.rc2'
 	gem 'launchy'    # So you can do Then show me the page
-	gem 'factory_girl_rails', '>= 1.1.beta1'
+	gem 'factory_girl_rails'
+	
+	gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'guard-cucumber'
+  gem 'guard-spork'
 end

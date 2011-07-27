@@ -12,10 +12,10 @@ module NavigationHelpers
       '/'
     when /the new category page/
       new_kwizzer_category_path
-
+ 
     when /the new question page/
       new_kwizzer_question_path
-
+ 
     when /the new quiz page/
       new_kwizzer_quiz_path
       
@@ -27,7 +27,7 @@ module NavigationHelpers
     
     when /login/
       new_user_session_path
-
+    
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -3,6 +3,8 @@ Feature: Manage quizzes
   An administrator 
   wants to be able to login and manage quizzes
   
+  # FIXME: remove @javascript if/when they fix a bug with multiselect sending crap as category_ids "category_ids"=>["[\"1\"]"]
+  @javascript
   Scenario: Register new quiz
     And the following "category" factory_girl models:
 		 | name       |
@@ -22,7 +24,9 @@ Feature: Manage quizzes
     And I press "Save"
 		Then I should see "Successfully saved quiz. Please fill out questions for the quiz next."
 		And I should see "Question"
-		
+	
+  # FIXME: remove @javascript if/when they fix a bug with multiselect sending crap as category_ids "category_ids"=>["[\"1\"]"]
+  @javascript	
   Scenario: Edit a quiz should take me to questions edit page
 		Given the following "quiz" factory_girl models:
 		 | name  |
@@ -60,7 +64,9 @@ Feature: Manage quizzes
 		And I am on the new quiz page
 		When I press "-"
 		Then I should not see "-" within "//fieldset[@class='placement_comment_container']"
-	
+
+  # FIXME: remove @javascript if/when they fix a bug with multiselect sending crap as category_ids "category_ids"=>["[\"1\"]"]
+  @javascript
 	Scenario: Add additional placement comment while editing quiz
 		Given the following "quiz" factory_girl models:
 		 | name   |
@@ -72,7 +78,9 @@ Feature: Manage quizzes
 		And I fill in "Name" with ""
 		And I press "Save"
 		Then the "Placement comment" field within "//fieldset[@class='placement_comment_container'][5]" should contain "placement comment 5"
-		
+	
+  # FIXME: remove @javascript if/when they fix a bug with multiselect sending crap as category_ids "category_ids"=>["[\"1\"]"]
+  @javascript 
 	Scenario: Remove additional placement comments
 		Given the following "quiz" factory_girl models:
 		 | name   |
@@ -80,7 +88,10 @@ Feature: Manage quizzes
 		And I am a new, authenticated user
 		When I edit the 1st quiz
 		When I press "-"
-		Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
+		# FIXME: replace the last line with this one when removing @javascript
+    # Then the page should not contain xpath "//fieldset[@class='placement_comment_container'][4]"
+    Then the page should not contain xpath "//fieldset[@class='placement_comment_container' and @style='display:none;']"
+    # Then I should not see "Placement comment" within "//fieldset[@class='placement_comment_container'][4]"
 		
 	Scenario: Submit with validation failures should not disrupt placement comments
 		Given I am a new, authenticated user
@@ -109,6 +120,8 @@ Feature: Manage quizzes
 		And I press "Save"
 		Then I should see "Additional user questions successfully updated."
 		
+  # FIXME: remove @javascript if/when they fix a bug with multiselect sending crap as category_ids "category_ids"=>["[\"1\"]"]
+  @javascript	
 	Scenario: Add published at date to quiz
     Given the following "quiz" factory_girl models:
 		 | name   |
@@ -120,6 +133,8 @@ Feature: Manage quizzes
 		And I display the 1st quiz
 		Then I should see "Published at: February 28, 2010"
 	
+  # FIXME: remove @javascript if/when they fix a bug with multiselect sending crap as category_ids "category_ids"=>["[\"1\"]"]
+  @javascript
 	Scenario: An active quiz must contain a publish date
 	  Given the following "quiz" factory_girl models:
 		 | name   |
