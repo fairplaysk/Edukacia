@@ -57,6 +57,12 @@ GEM
     builder (2.1.2)
     bullet (2.0.1)
       uniform_notifier (~> 1.0.0)
+    capistrano (2.6.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     childprocess (0.2.0)
       ffi (~> 1.0.6)
     chunky_png (1.2.0)
@@ -127,6 +133,7 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    highline (1.6.2)
     hpricot (0.8.4)
     html5-boilerplate (1.0.0)
       compass (>= 0.11.1)
@@ -146,6 +153,13 @@ GEM
     mime-types (1.16)
     mocha (0.9.12)
     mysql2 (0.2.11)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.1.4)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     newrelic_rpm (3.1.1.beta3)
     nokogiri (1.5.0)
     orm_adapter (0.0.5)
@@ -233,6 +247,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bullet
+  capistrano
   capybara!
   compass (>= 0.10.4)
   cucumber-rails

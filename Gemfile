@@ -57,6 +57,7 @@ group :development do
 	gem 'bullet'
 	gem 'rails_best_practices'
 	gem "rails-erd"
+	gem 'capistrano'
 end
 
 group :development, :test do
