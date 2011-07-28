@@ -7,7 +7,7 @@ sk:
       
   devise:
     failure:
-      unauthenticated: 'Musíte sa prihlásiť predtým ako môžte pokračovať.'
+      unauthenticated: 'Aj keď ste administrátor, pokračovať môžete len po prihlásení.'
       unconfirmed: 'Musíte potvrdiť účet.'
       locked: 'Vaše konto je zablokovane.'
       invalid: 'Nesprávne meno alebo heslo.'
