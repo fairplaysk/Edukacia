@@ -1,27 +1,6 @@
 %h1= t('.header')
-#vyhodnotenie
-	.test_name= "#{@submission.quiz.categories.first.name} | #{@submission.quiz.name}"
-	%ol
-		- @submission.quiz.questions.each do |question|
-			.popup_block{:id => "question_popup_#{question.id}"}
-				.popup_navigation
-					%h3= question.content.html_safe
-					%p= question.comment
-					%p= image_tag question.graphic.url(:thumb) if question.graphic.file?
-			%li
-				= question.content.html_safe
-				= image_tag @submission.answers.include?(question.correct_answer) ? "frontend/true.png" : "frontend/false.png", :class => 'point'
-				%br
-				%span.true= t('.correct_answer', :answer => question.correct_answer.content)
-				%br
-				%span.true
-					= t('.correct_answers_by')
-					%span{:style => "color:#3C2415; font-weight:bold;"}= number_to_percentage(@submission.quiz.submissions.where(:is_repeated => false).map{|s| s.answers.select{|a| a.is_correct? && a.question == question}}.flatten.count.to_f*100 / @submission.quiz.submissions.where(:is_repeated => false).count.to_f, :precision => 0)
-					= t('.people')
-				%br
-				= link_to t('.learn_more'), "#?w=700", :class => 'more_info poplight', :rel=>"question_popup_#{question.id}"
-				
 #summary
+	.test_name= "#{@submission.quiz.categories.first.name} | #{@submission.quiz.name}"
 	%h2= t('.summary')
 	.container_main
 		.container
@@ -44,6 +23,28 @@
 	.evaluation
 		%p= @placement_comment.content if @placement_comment
 	.rating= render :partial => 'rating' unless @submission.quiz.is_generated?
+	
+#vyhodnotenie
+	%ol
+		- @submission.quiz.questions.each do |question|
+			.popup_block{:id => "question_popup_#{question.id}"}
+				.popup_navigation
+					%h3= question.content.html_safe
+					%p= question.comment
+					%p= image_tag question.graphic.url(:thumb) if question.graphic.file?
+			%li
+				= question.content.html_safe
+				= image_tag @submission.answers.include?(question.correct_answer) ? "frontend/true.png" : "frontend/false.png", :class => 'point'
+				%br
+				%span.true= t('.correct_answer', :answer => question.correct_answer.content)
+				%br
+				%span.true
+					= t('.correct_answers_by')
+					%span{:style => "color:#3C2415; font-weight:bold;"}= number_to_percentage(@submission.quiz.submissions.where(:is_repeated => false).map{|s| s.answers.select{|a| a.is_correct? && a.question == question}}.flatten.count.to_f*100 / @submission.quiz.submissions.where(:is_repeated => false).count.to_f, :precision => 0)
+					= t('.people')
+				%br
+				= link_to t('.learn_more'), "#?w=700", :class => 'more_info poplight', :rel=>"question_popup_#{question.id}"
+
 	.buttons
 		= link_to t('.retry_quiz'), new_submission_path(:quiz_id => @submission.quiz.id, :page => 1), :class => 'testes'
 		= link_to t('.hardest_test'), new_submission_path(:quiz_id => @hardest_quiz.id, :page => 1), :class => 'testes'

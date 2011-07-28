@@ -196,7 +196,7 @@ header {
 	}
 	
 	#vyhodnotenie {
-		font-size:18px; color:#3C2415; margin:10px 0px 0px 0px; overflow:hidden; float:none;
+		font-size:18px; color:#3C2415; padding:20px 10px; margin:20px 0px 0px 0px; overflow:hidden; float:none; border-top:1px dashed #8C694C;
 		ol{float:none; overflow:hidden; margin:0px; padding:0px 0px 0px 30px; color:#3C2415;}
 		li {margin:0px 0px 20px 0px; list-style:decimal;}
 		.true {font-size:14px; color:#8B5E3C;}
@@ -205,25 +205,9 @@ header {
 			font-size:11px; text-decoration:none;overflow:hidden; padding:3px 6px; color:#fcdd9a; background:#1CA099; @include opacity(0.7);float:none;
 			@include border-radius(3px); }
 		a.more_info:hover {@include opacity(1.0);}
-		.test_name {text-align:center; font-size:16px; color:#8B5E3C; margin:0px 0px 30px 0px;}
 		.point {float:right;}
-	}
-	
-	#summary {
-		display:block; border-top:1px dashed #8C694C; padding:20px 10px; margin:20px 0px 0px 0px; font-size:14px;
-		.container_main {float:none; overflow:hidden; margin:0px; padding:0px;}
-		.container {margin:0px 0px 20px 0px; float:none; overflow:hidden;}
-		.evaluation {float:none; overflow:hidden; padding:20px 0px 20px 0px;}
 		.buttons {margin:20px 0px 10px 0px; padding:10px 0px; text-align:left;}
 		.buttons_soc {margin:30px 0px 10px 0px; padding:10px 0px; text-align:left;}
-		.text {padding:30px 0px 0px 0px;}
-		.question_true {background:#C2C76C; color:#FCDD9A; font-weight:bold; font-size:20px;  width:80px; margin:0px 10px 0px 0px; padding:27px 0px; float:left; text-align:center;  
-			@include opacity(0.7); @include border-radius(50px);}
-		.question_false {background:#F57336; color:#FCDD9A; font-weight:bold; font-size:20px;  width:80px; margin:0px 10px 0px 0px; padding:27px 0px; float:left; text-align:center;  
-			@include opacity(0.7); @include border-radius(50px);}
-		.per {background:#FFB733; color:#FCDD9A; font-weight:bold; font-size:20px;  width:80px; margin:0px 10px 0px 0px; padding:27px 0px; float:left; text-align:center;  
-			@include opacity(0.7); @include border-radius(50px);}
-		.name {color:#3C2415; font-weight:bold; font-size:14px;}
 		a.testes {font-size:16px; text-decoration:none; overflow:hidden; margin:0px 10px 0px 0px; padding:20px 24px; color:#fcdd9a; background:#1CA099; 
 			@include opacity(0.5); @include border-radius(3px);}
 		a.testes:hover {@include opacity(1.0);}
@@ -233,6 +217,22 @@ header {
 		a.twitter {font-size:13px; text-decoration:none; overflow:hidden; margin:0px 10px 0px 0px; padding:6px 12px; color:#fcdd9a; background:#00ceff; 
 			@include opacity(0.5); @include border-radius(3px);}
 		a.twitter:hover {@include opacity(1.0);}
+	}
+	
+	#summary {
+		display:block; margin:10px 0px 0px 0px; font-size:14px;
+		.test_name {text-align:center; font-size:16px; color:#8B5E3C; margin:0px 0px 30px 0px;}
+		.container_main {float:none; overflow:hidden; margin:0px; padding:0px;}
+		.container {margin:0px 0px 20px 0px; float:none; overflow:hidden;}
+		.evaluation {float:none; overflow:hidden; padding:20px 0px 20px 0px;}
+		.text {padding:30px 0px 0px 0px;}
+		.question_true {background:#C2C76C; color:#FCDD9A; font-weight:bold; font-size:20px;  width:80px; margin:0px 10px 0px 0px; padding:27px 0px; float:left; text-align:center;  
+			@include opacity(0.7); @include border-radius(50px);}
+		.question_false {background:#F57336; color:#FCDD9A; font-weight:bold; font-size:20px;  width:80px; margin:0px 10px 0px 0px; padding:27px 0px; float:left; text-align:center;  
+			@include opacity(0.7); @include border-radius(50px);}
+		.per {background:#FFB733; color:#FCDD9A; font-weight:bold; font-size:20px;  width:80px; margin:0px 10px 0px 0px; padding:27px 0px; float:left; text-align:center;  
+			@include opacity(0.7); @include border-radius(50px);}
+		.name {color:#3C2415; font-weight:bold; font-size:14px;}
 	}
 	/* CONTACT */
 	#contact {font-size:14px;}
