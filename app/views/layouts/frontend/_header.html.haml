@@ -6,7 +6,7 @@
 #head
 	#logo
 		= link_to image_tag('frontend/logo.png'), root_path
-	#header_text= @header_text
+	#header_text=raw @header_text
 	#menu
 		= link_to t('.homepage'), root_url
 		%span •
