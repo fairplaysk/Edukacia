@@ -274,5 +274,5 @@ header {
 #footer { 
 	@include column(11.66,true);
 	margin:20px auto; padding: 0 270px;
-	text-align:center; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; color:#ffffff; font-size:13px; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); letter-spacing:1px;
+	text-align:center; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:400; color:#000; font-size:13px; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); letter-spacing:1px;
 }
