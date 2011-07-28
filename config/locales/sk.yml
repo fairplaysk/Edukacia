@@ -59,7 +59,7 @@ sk:
 
   submissions:
     index:
-      last_submission: posledné odovzdanie
+      last_submission: "Váš výsledok kvízu"
     new:
       submit: Odovzdať
       next_question: Odpovedať

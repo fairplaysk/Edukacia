@@ -41,7 +41,7 @@ en:
         contact: Contact
   submissions:
     index:
-      last_submission: last submission
+      last_submission: 'Your result'
     new:
       submit: Submit
       next_question: Next question

@@ -28,7 +28,7 @@ Feature: Manage submissions
 		And I choose "answer 6"
 		And I press "Submit"
 		And I go to the submissions page
-		And I follow "last submission"
+		And I follow "Your result"
 		Then there should be 1 submissions
 		Then I should see image with "True" alt
 		Then I should see image with "False" alt
