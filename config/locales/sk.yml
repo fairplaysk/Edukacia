@@ -61,7 +61,7 @@ sk:
     index:
       last_submission: "Váš výsledok kvízu"
     new:
-      submit: Odovzdať
+      submit: 'Vyhodnotiť kvíz'
       next_question: Odpovedať
       skip: Preskočiť
     show:

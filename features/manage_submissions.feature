@@ -15,7 +15,7 @@ Feature: Manage submissions
 		When I follow "Chalenging history questions"
 		And I choose "answer 1"
 		And I choose "answer 5"
-		And I press "Submit"
+		And I press "Evaluate quiz"
 		
 	Scenario: Show quiz summary page if a quiz was previously submitted
 		Given the following "quiz_with_questions" factory_girl models:
@@ -26,7 +26,7 @@ Feature: Manage submissions
 		When I follow "Chalenging history questions"
 		And I choose "answer 1"
 		And I choose "answer 6"
-		And I press "Submit"
+		And I press "Evaluate quiz"
 		And I go to the submissions page
 		And I follow "Your result"
 		Then there should be 1 submissions
@@ -42,7 +42,7 @@ Feature: Manage submissions
 		And I choose "answer 1"
 		And I press "Next question"
 		And I choose "answer 6"
-		And I press "Submit"
+		And I press "Evaluate quiz"
 		Then there should be 1 submissions
 		And I should see image with "True" alt
 		And I should see image with "False" alt
@@ -55,12 +55,12 @@ Feature: Manage submissions
 		When I follow "Chalenging history questions"
 		And I choose "answer 1"
 		And I choose "answer 6"
-		And I press "Submit"
+		And I press "Evaluate quiz"
 		And I am on the submissions page
 		And I follow "Chalenging history questions"
 		And I choose "answer 1"
 		And I choose "answer 6"
-		And I press "Submit"
+		And I press "Evaluate quiz"
 		Then there should be 2 submissions
 		
 	Scenario: I do not select any answers and submit
@@ -69,7 +69,7 @@ Feature: Manage submissions
 		 | Chalenging history questions | 2                  | 2011-01-01   | true      |
 		And I am on the submissions page
 		When I follow "Chalenging history questions"
-		And I press "Submit"
+		And I press "Evaluate quiz"
 		Then I should see "Please select an answer."
 	
 	Scenario: I press the skip button and get to the results page
@@ -133,7 +133,7 @@ Feature: Manage submissions
     When I go to the homepage
     And I follow "Random quiz"
     And I choose "answer 1"
-    And I press "Submit"
+    And I press "Evaluate quiz"
     Then I should see "100%"
     
   Scenario: Show only first 7 most popular categories on homepage

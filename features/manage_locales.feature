@@ -93,7 +93,7 @@ Feature: Manage locales
 		When I follow "Chalenging history questions"
 		And I press "Preskočiť"
 		And I choose "answer 5"
-		And I press "Odovzdať"
+		And I press "Vyhodnotiť kvíz"
 		Then I should see "Vyhodnotenie kvízu"
 		And I should see image with "True" alt
 		And I should see image with "False" alt

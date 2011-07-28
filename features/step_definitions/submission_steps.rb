@@ -20,7 +20,7 @@ Given /^I submitted a quiz with all the right answers and am now on the summary 
 	And %{I choose "answer 1"}
 	And %{I press "Next question"}
 	And %{I choose "answer 5"}
-	And %{I press "Submit"}
+	And %{I press "Evaluate quiz"}
 end
 
 Given /^(\d+) categories that have quizzes and submissions in ascending quantity$/ do |categories_number|
@@ -40,7 +40,7 @@ When /^I submitted a quiz with all the wrong answers and am now on the summary p
 	And %{I choose "answer 2"}
 	And %{I press "Next question"}
 	And %{I choose "answer 6"}
-	And %{I press "Submit"}
+	And %{I press "Evaluate quiz"}
 end
 
 

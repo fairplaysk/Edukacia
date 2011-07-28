@@ -43,7 +43,7 @@ en:
     index:
       last_submission: 'Your result'
     new:
-      submit: Submit
+      submit: 'Evaluate quiz'
       next_question: Next question
       skip: Skip
     show:
