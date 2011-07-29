@@ -35,8 +35,8 @@ class Choise < ActiveRecord::Base
   
   def self.chart_correct_incorrect
     #FIXME: refactor
-    correct_answers_count = correct_answers.count
-    incorrect_answers_count = incorrect_answers.count
+    correct_answers_count = correct_answers
+    incorrect_answers_count = incorrect_answers
     
     {
   	"cols" =>
@@ -136,10 +136,10 @@ class Choise < ActiveRecord::Base
   
   
   def self.correct_answers
-    Choise.includes(:submission, :answer).where(:submissions => {:is_repeated => false}, :answers => {:is_correct => true})
+    Choise.includes(:submission, :answer).where(:submissions => {:is_repeated => false}, :answers => {:is_correct => true}).count
   end
   
   def self.incorrect_answers
-    Choise.includes(:submission, :answer).where(:submissions => {:is_repeated => false}, :answers => {:is_correct => false})
+    Submission.joins(:quiz => :questions).count - correct_answers
   end
 end
