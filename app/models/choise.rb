@@ -137,10 +137,10 @@ class Choise < ActiveRecord::Base
   
   
   def self.correct_answers
-    Choise.includes({:submission => :quiz}, :answer).where(:submissions => {:is_repeated => false}, :answers => {:is_correct => true}).where('((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', 2.days.ago, true, true).count
+    Choise.includes({:submission => :quiz}, :answer).where(:submissions => {:is_repeated => false}, :answers => {:is_correct => true}).where('submissions.is_repeated = ? and ((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', false, 2.days.ago, true, true).count
   end
   
   def self.incorrect_answers
-    Submission.joins(:quiz => :questions).where('((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', 2.days.ago, true, true).count - correct_answers
+    Submission.joins(:quiz => :questions).where('submissions.is_repeated = ? and ((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', false, 2.days.ago, true, true).count - correct_answers
   end
 end
