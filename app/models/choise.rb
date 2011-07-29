@@ -6,7 +6,7 @@ class Choise < ActiveRecord::Base
   
   def self.submission_history_statistics
     #FIXME: refactor
-    submissions = Choise.select('count(id) as quantity, month(created_at) as month, year(created_at) as year').where('created_at > ?', 1.year.ago).group('MONTH(created_at)')
+    submissions = Submission.select('count(questions.id) as quantity, month(submissions.created_at) as month, year(submissions.created_at) as year').joins(:quiz => :questions).where('submissions.created_at > ?', 1.year.ago).group('month(submissions.created_at)')
     submissions_hash = {
   	"cols" =>
   	    [

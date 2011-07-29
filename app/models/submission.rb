@@ -5,7 +5,7 @@ class Submission < ActiveRecord::Base
   belongs_to :quiz
   belongs_to :user
   
-  default_scope order('updated_at desc')
+  default_scope order('submissions.updated_at desc')
   
   def correct_answers_count
     answers.where(:is_correct => true).count
