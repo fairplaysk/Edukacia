@@ -9,11 +9,11 @@ module ApplicationHelper
     f.commit_button name, :button_html => {:name => "add_#{association.to_s.singularize}", :class => 'add_element', 'data-element' => "#{fields}", 'data-association' => association}
   end
   
-  def facebook_link_to(submission)
-    "http://www.facebook.com/sharer.php?u=#{submission_url(submission)}&t=#{submission.quiz.name} @ kvizy.fair-play.sk"
+  def facebook_link_to(submission, correct_answers_percentage)
+    "http://www.facebook.com/sharer.php?u=#{root_url}&t=#{URI.escape t('global.facebook_summary', :quiz => submission.quiz.name, :percent => correct_answers_percentage)}"
   end
   
-  def twitter_link_to(submission)
-    "http://twitter.com/share?url=#{submission_url(submission)}&text=#{submission.quiz.name} @ kvizy.fair-play.sk"
+  def twitter_link_to(submission, correct_answers_percentage)
+    "http://twitter.com/share?url=#{root_url}&text=#{URI.escape t('global.twitter_summary', :quiz => submission.quiz.name, :percent => correct_answers_percentage)}"
   end
 end

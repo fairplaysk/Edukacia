@@ -9,6 +9,10 @@ sk:
   user: 'používateľom'
   users: 'používateľmi'
   
+  global:
+    facebook_summary: "Test %{quiz} bol zdolaný na %{percent}%."
+    twitter_summary: "Test %{quiz} bol zdolaný na %{percent}%."
+  
   formtastic:
     labels:
       quiz:

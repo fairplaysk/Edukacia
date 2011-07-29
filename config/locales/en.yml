@@ -8,6 +8,10 @@ en:
   user: user
   users: users
   
+  global:
+    facebook_summary: "Quiz %{quiz} was completed with %{percent}% correct answers."
+    twitter_summary: "Quiz %{quiz} was completed with %{percent}% correct answers."
+  
   formtastic:
     labels:
       quiz:
