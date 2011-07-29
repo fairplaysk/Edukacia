@@ -53,14 +53,15 @@ class Choise < ActiveRecord::Base
   
   def self.chart_hardest
     percentage, correct_answers_count, incorrect_answers_count, hardest_question = 1, 0, 0, Question.first
-    Question.includes(:answers => :submissions).where('submissions.is_repeated = ?', false).all.each do |question|
-      correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).count
-      all_answers = question.answers.map(&:choises).count
+    Question.includes({:answers => {:choises =>:submission}}, :quizzes).where('quizzes.is_active = ? and submissions.is_repeated = ?', true, false).each do |question|
+      correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).flatten.length
+      all_answers = question.answers.map(&:choises).flatten.length
       
       if (correct_answers.to_f / all_answers.to_f) < percentage
         percentage = correct_answers.to_f / all_answers.to_f
         correct_answers_count = correct_answers
         incorrect_answers_count = all_answers - correct_answers
+        hardest_question = question
       end
     end
     category_name = hardest_question.quiz ? hardest_question.quiz.categories.first.name : 'n\a'
@@ -83,9 +84,9 @@ class Choise < ActiveRecord::Base
   def self.chart_easiest
     #FIXME: refactor
     percentage, correct_answers_count, incorrect_answers_count, easiest_question = 0, 0, 0, Question.first
-    Question.includes(:answers => :submissions).where('submissions.is_repeated = 0').all.each do |question|
-      correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).count
-      all_answers = question.answers.map(&:choises).count
+    Question.includes({:answers => {:choises =>:submission}}, :quizzes).where('quizzes.is_active = ? and submissions.is_repeated = ?', true, false).all.each do |question|
+      correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).flatten.length
+      all_answers = question.answers.map(&:choises).flatten.length
       
       if (correct_answers.to_f / all_answers.to_f) > percentage
         percentage = correct_answers.to_f / all_answers.to_f
