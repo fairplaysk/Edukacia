@@ -17,6 +17,7 @@ set(:deploy_to) { "/var/rails/#{application}" }
 set :scm, :git
 set :repository, "git://github.com/fairplaysk/Edukacia.git"
 set :use_sudo, false
+set :keep_releases, 4
 
 set(:user) { Capistrano::CLI.ui.ask "user:" }
 server "195.210.29.138", :app, :web, :db, :primary => true

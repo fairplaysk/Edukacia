@@ -28,7 +28,6 @@ class Choise < ActiveRecord::Base
     	    "c" => [ {"v" => I18n.localize(index, :format => :month)}, {"v" => 0.00001} ]
     	  }
       end
-      puts index
       index += 1.month
 	  end
     submissions_hash
@@ -54,9 +53,9 @@ class Choise < ActiveRecord::Base
   
   def self.chart_hardest
     percentage, correct_answers_count, incorrect_answers_count, hardest_question = 1, 0, 0, Question.first
-    Question.includes(:answers => :submissions).all.each do |question|
-      correct_answers = question.answers.where(:is_correct => true).includes(:submissions).where('submissions.is_repeated = ?', false).map(&:choises).count
-      all_answers = question.answers.includes(:submissions).where('submissions.is_repeated = ?', false).map(&:choises).count
+    Question.includes(:answers => :submissions).where('submissions.is_repeated = ?', false).all.each do |question|
+      correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).count
+      all_answers = question.answers.map(&:choises).count
       
       if (correct_answers.to_f / all_answers.to_f) < percentage
         percentage = correct_answers.to_f / all_answers.to_f
@@ -84,9 +83,9 @@ class Choise < ActiveRecord::Base
   def self.chart_easiest
     #FIXME: refactor
     percentage, correct_answers_count, incorrect_answers_count, easiest_question = 0, 0, 0, Question.first
-    Question.includes(:answers => :submissions).all.each do |question|
-      correct_answers = question.answers.where(:is_correct => true).includes(:submissions).where('submissions.is_repeated = ?', false).map(&:choises).count
-      all_answers = question.answers.includes(:submissions).where('submissions.is_repeated = ?', false).map(&:choises).count
+    Question.includes(:answers => :submissions).where('submissions.is_repeated = 0').all.each do |question|
+      correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).count
+      all_answers = question.answers.map(&:choises).count
       
       if (correct_answers.to_f / all_answers.to_f) > percentage
         percentage = correct_answers.to_f / all_answers.to_f
@@ -112,12 +111,8 @@ class Choise < ActiveRecord::Base
   end
   
   def self.most_popular_quiz
-    #FIXME: refactor
-    best_rating, best_quiz = 0, Quiz.first
-    Quiz.all.each do |quiz|
-      current_rating = quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
-      best_rating = current_rating and best_quiz = quiz if current_rating && current_rating > best_rating
-    end
+    best_quiz = Quiz.select('quizzes.*, avg(submissions.rating) as average_rating').joins(:submissions).group('quizzes.id').order('avg(submissions.rating) desc').first
+    best_rating = best_quiz.average_rating
     
     ratings_hash = {
       "text" => "#{best_quiz.categories.first.name} | #{best_quiz.name}",
@@ -129,7 +124,7 @@ class Choise < ActiveRecord::Base
     	"rows" => []
     }
     1.upto(5) do |index|
-      count = best_quiz.submissions.where(:rating => index).count == 0 ? 0.0001 : best_quiz.submissions.where(:rating => index).count
+      count = Submission.where(:rating => index, :quiz_id => best_quiz).count == 0 ? 0.0001 : Submission.where(:rating => index, :quiz_id => best_quiz).count
       ratings_hash['rows'] << {
   	    "c" => [ {"v" => "#{index} star"}, {"v" => count} ]
   	  }
