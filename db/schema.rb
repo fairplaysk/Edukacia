@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110608141348) do
+ActiveRecord::Schema.define(:version => 20110729124355) do
 
   create_table "additional_questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(:version => 20110608141348) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "session_id"
-    t.integer  "rating"
+    t.integer  "rating",      :default => 0
   end
 
   create_table "users", :force => true do |t|

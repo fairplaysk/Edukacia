@@ -124,6 +124,7 @@ class Choise < ActiveRecord::Base
     	  ],
     	"rows" => []
     }
+    ratings_hash['rows'] << { "c" => [ {"v" => "no star"}, {"v" => Submission.where(:rating => 0, :quiz_id => best_quiz).count} ] }
     1.upto(5) do |index|
       count = Submission.where(:rating => index, :quiz_id => best_quiz).count == 0 ? 0.0001 : Submission.where(:rating => index, :quiz_id => best_quiz).count
       ratings_hash['rows'] << {
