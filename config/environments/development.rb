@@ -24,5 +24,15 @@ Kwizzer::Application.configure do
   
   # action_mailer config for devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  # bullet config
+  # config.after_initialize do
+  #   Bullet.enable = true
+  #   Bullet.alert = true
+  #   Bullet.bullet_logger = true
+  #   Bullet.console = true
+  #   Bullet.rails_logger = true
+  #   Bullet.disable_browser_cache = true
+  # end
 end
 
