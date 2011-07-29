@@ -6,7 +6,7 @@ class Choise < ActiveRecord::Base
   
   def self.submission_history_statistics
     #FIXME: refactor
-    submissions = Submission.select('count(questions.id) as quantity, month(submissions.created_at) as month, year(submissions.created_at) as year').joins(:quiz => :questions).where('submissions.created_at > ?', 1.year.ago).group('month(submissions.created_at)')
+    submissions = Submission.select('count(questions.id) as quantity, month(submissions.created_at) as month, year(submissions.created_at) as year').joins(:quiz => :questions).where('submissions.created_at > ? and submissions.is_repeated = ? and ((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', 1.year.ago, false, 2.days.ago, true, true).group('month(submissions.created_at)')
     submissions_hash = {
   	"cols" =>
   	    [
@@ -53,7 +53,7 @@ class Choise < ActiveRecord::Base
   
   def self.chart_hardest
     percentage, correct_answers_count, incorrect_answers_count, hardest_question = 1, 0, 0, Question.first
-    Question.includes({:answers => {:choises =>:submission}}, :quizzes).where('quizzes.is_active = ? and submissions.is_repeated = ?', true, false).each do |question|
+    Question.includes({:answers => {:choises =>:submission}}, :quizzes).where('quizzes.is_active = ? and submissions.is_repeated = ? and ((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', true, false, 2.days.ago, true, true).each do |question|
       correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).flatten.length
       all_answers = question.answers.map(&:choises).flatten.length
       
@@ -84,7 +84,7 @@ class Choise < ActiveRecord::Base
   def self.chart_easiest
     #FIXME: refactor
     percentage, correct_answers_count, incorrect_answers_count, easiest_question = 0, 0, 0, Question.first
-    Question.includes({:answers => {:choises =>:submission}}, :quizzes).where('quizzes.is_active = ? and submissions.is_repeated = ?', true, false).all.each do |question|
+    Question.includes({:answers => {:choises =>:submission}}, :quizzes).where('quizzes.is_active = ? and submissions.is_repeated = ? and ((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', true, false, 2.days.ago, true, true).each do |question|
       correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).flatten.length
       all_answers = question.answers.map(&:choises).flatten.length
       
@@ -112,7 +112,7 @@ class Choise < ActiveRecord::Base
   end
   
   def self.most_popular_quiz
-    best_quiz = Quiz.select('quizzes.*, avg(submissions.rating) as average_rating').joins(:submissions).group('quizzes.id').order('avg(submissions.rating) desc').first
+    best_quiz = Quiz.select('quizzes.*, avg(submissions.rating) as average_rating').joins(:submissions).where('((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', 2.days.ago, true, true).group('quizzes.id').order('avg(submissions.rating) desc').first
     best_rating = best_quiz.average_rating
     
     ratings_hash = {
@@ -137,10 +137,10 @@ class Choise < ActiveRecord::Base
   
   
   def self.correct_answers
-    Choise.includes(:submission, :answer).where(:submissions => {:is_repeated => false}, :answers => {:is_correct => true}).count
+    Choise.includes({:submission => :quiz}, :answer).where(:submissions => {:is_repeated => false}, :answers => {:is_correct => true}).where('((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', 2.days.ago, true, true).count
   end
   
   def self.incorrect_answers
-    Submission.joins(:quiz => :questions).count - correct_answers
+    Submission.joins(:quiz => :questions).where('((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', 2.days.ago, true, true).count - correct_answers
   end
 end
