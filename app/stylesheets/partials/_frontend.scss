@@ -58,6 +58,24 @@ body { background: url($frontend-image-url+"back.png");
 	.login_input_submit {padding:5px 15px; background:#3C2415; border:none; -moz-border-radius:3px; border-radius:3px; font-size:18px; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300; color:#F2CA5C;}
 }
 
+#icon_facebook{
+	float: right;
+	a {
+		background: url($frontend-image-url + "icon_facebook.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer; display: block; height: 20px; width: 20px; opacity: 0.5;
+		&:hover{opacity: 1;}
+	}
+}
+#icon_twitter {
+	float: right;
+	a {
+		background: url($frontend-image-url + "icon_twitter.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer; display: block; height: 20px; width: 20px; opacity: 0.5;
+		margin-left: 5px;
+		&:hover{opacity: 1;}
+	}
+}
+
 #container { @include container;}
 
 header { 
