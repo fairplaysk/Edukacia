@@ -10,6 +10,8 @@
         = render :partial => 'layouts/flashes'
         #center
           = yield
+        #fb_like
+          = yield :fb_like
         #icon_twitter
           = link_to '', 'http://twitter.com/#!/alianciaFP', :alt => 'Facebook', :title => 'Facebook', :target => '_blank'
         #icon_facebook

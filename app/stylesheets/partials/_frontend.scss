@@ -65,6 +65,9 @@ body { background: url($frontend-image-url+"back.png");
 		width: 450px;
 	}
 }
+#fb_like {
+	float: left;
+}
 #icon_facebook{
 	float: right;
 	a {
@@ -127,7 +130,7 @@ header {
 		margin: 1em 0;}
 	#center{
 		border-bottom:1px solid #8C694C;
-		margin:0px 0px 10px 0px; padding:0px 0px 30px 0px;
+		margin:0px 0px 10px 0px; padding:0px 0px 20px 0px;
 		#icon_navigation {
 			background:url($frontend-image-url+"web_sketch_v3.png") no-repeat; height:525px; font-family: 'Yanone Kaffeesatz', arial, serif;
 
