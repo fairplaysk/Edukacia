@@ -31,3 +31,5 @@
 						%ul
 							- category.active_quizzes.each do |quiz|
 								%li=link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1)
+= content_for :fb_like do								
+	<div id="fb-root"></div><script src="http://connect.facebook.net/sk_SK/all.js#appId=238509656171132&amp;xfbml=1"></script><fb:like href="http://kvizy.sk" send="false" layout="button_count" width="450" show_faces="true" font=""></fb:like>
