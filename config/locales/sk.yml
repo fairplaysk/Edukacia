@@ -68,6 +68,7 @@ sk:
       submit: 'Vyhodnotiť kvíz'
       next_question: Odpovedať
       skip: Preskočiť
+      answer_required: 'Prosím zvoľte odpoveď, alebo kliknite na "Preskočiť"'
     show:
       header: Vyhodnotenie kvízu
       learn_more: Dozvedieť sa viac

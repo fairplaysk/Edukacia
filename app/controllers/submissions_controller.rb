@@ -40,7 +40,7 @@ class SubmissionsController < ApplicationController
         redirect_to new_submission_path(:quiz_id => params[:quiz_id], :page => params[:page].to_i+1)
       end
     else
-      redirect_to new_submission_path(:quiz_id => params[:quiz_id], :page => params[:page]), :notice => 'Please select an answer.'
+      redirect_to new_submission_path(:quiz_id => params[:quiz_id], :page => params[:page]), :alert => I18n.translate('submissions.new.answer_required')
     end
   end
   

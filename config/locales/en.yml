@@ -50,6 +50,7 @@ en:
       submit: 'Evaluate quiz'
       next_question: Next question
       skip: Skip
+      answer_required: 'Please select an answer or click on "Skip"'
     show:
       header: Quiz Evaluation
       learn_more: learn more
