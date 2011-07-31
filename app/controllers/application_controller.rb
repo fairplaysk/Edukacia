@@ -30,5 +30,6 @@ class ApplicationController < ActionController::Base
   def load_header_and_footer_text
     @header_text =  Label.find_by_identifier_and_language('header', session[:locale].to_s).try(:content)
     @footer_text = Label.find_by_identifier_and_language('footer', session[:locale].to_s).try(:content)
+    @meta_text = Label.find_by_identifier_and_language('meta', session[:locale].to_s).try(:content)
   end
 end
