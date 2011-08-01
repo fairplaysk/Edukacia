@@ -10,9 +10,12 @@ class SubmissionsController < ApplicationController
   
   def new
     # FIXME: refactor
-    if params[:quiz_id] == 'random'
+    if params[:quiz_id] == 'random' || params[:quiz_id] == 'random_hard' || params[:quiz_id] == 'random_easy'
       @quiz = Quiz.create(:is_generated => true, :questions_per_page => 1, :name => 'Random quiz', :categories => [Category.find_or_create_by_name_and_short_name('Random', 'Random')])
-      @quiz.questions.push_with_attributes(Question.where(:random_enabled => true).order('rand()').limit(5), :is_generated => true)
+      questions = Question.where(:random_enabled => true).order('rand()').limit(5) if params[:quiz_id] == 'random'
+      questions = Question.where(:random_enabled => true).order('average_percentage asc').limit(10) if params[:quiz_id] == 'random_hard'
+      questions = Question.where(:random_enabled => true).order('average_percentage desc').limit(10) if params[:quiz_id] == 'random_easy'
+      @quiz.questions.push_with_attributes(questions, :is_generated => true)
       @quiz.save
     else
       @quiz = Quiz.find(params[:quiz_id])

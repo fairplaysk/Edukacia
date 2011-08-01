@@ -1,10 +1,17 @@
 #list_test
 	- @categories.each do |category|
-		%ul
-			%li.header= category.name
-			- category.active_quizzes.each do |quiz|
-				%li
-					= link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1), :class => 'hover_underline'
-					- if @submission = quiz.last_submission_for_session_id(@session_id)
-						|
-						= link_to t('.last_submission'), @submission, :class => 'hover_underline' 
+		- if category.name == 'Random'
+			%ul
+				%li.header= t('global.random_quizzes')
+				%li=link_to t('global.random_quiz'), new_submission_path(:quiz_id => 'random', :page => 1), :class => 'hover_underline'
+				%li=link_to t('global.hard_random_quiz'), new_submission_path(:quiz_id => 'random_hard', :page => 1), :class => 'hover_underline'
+				%li=link_to t('global.easy_random_quiz'), new_submission_path(:quiz_id => 'random_easy', :page => 1), :class => 'hover_underline'
+		- else
+			%ul
+				%li.header= category.name
+				- category.active_quizzes.each do |quiz|
+					%li
+						= link_to quiz.name, new_submission_path(:quiz_id => quiz.id, :page => 1), :class => 'hover_underline'
+						- if @submission = quiz.last_submission_for_session_id(@session_id)
+							|
+							= link_to t('.last_submission'), @submission, :class => 'hover_underline' 

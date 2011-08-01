@@ -20,7 +20,14 @@
 			=image_tag 'frontend/kolecko_04.png'
 	#right_icon_navigation
 		.navigation{:class=>"navigation5"}
-			= link_to t('.random_quiz'), new_submission_path(:quiz_id => 'random', :page => 1)
+			= link_to t('global.random_quizzes'), submissions_path(:w => '500'), :rel=>"quiz_popup_random", :class => 'poplight'
+		.popup_block{:id => "quiz_popup_random"}
+			.popup_navigation
+				%h3= t('.popup_title', :category => 'random')
+				%ul
+					%li=link_to t('global.random_quiz'), new_submission_path(:quiz_id => 'random', :page => 1)
+					%li=link_to t('global.hard_random_quiz'), new_submission_path(:quiz_id => 'random_hard', :page => 1)
+					%li=link_to t('global.easy_random_quiz'), new_submission_path(:quiz_id => 'random_easy', :page => 1)
 		- if @categories[4..7]
 			- @categories[4..6].each_with_index do |category, category_index|
 				.navigation{:class=>"navigation#{category_index+6}"}

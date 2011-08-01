@@ -12,7 +12,11 @@ sk:
   global:
     facebook_summary: "Test %{quiz} bol zdolaný na %{percent}%."
     twitter_summary: "Test %{quiz} bol zdolaný na %{percent}%."
-  
+    random_quizzes: "Náhodné kvízy"
+    random_quiz: "Náhodný kvíz"
+    hard_random_quiz: "Kvíz z najťažsích otázok"
+    easy_random_quiz: "Kvíz z najľahších otázok"
+      
   formtastic:
     labels:
       quiz:

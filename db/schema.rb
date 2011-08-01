@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801090928) do
+ActiveRecord::Schema.define(:version => 20110801104600) do
 
   create_table "additional_questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20110801090928) do
     t.datetime "graphic_updated_at"
     t.integer  "position",             :default => 99
     t.boolean  "random_enabled"
+    t.float    "average_percentage"
   end
 
   create_table "quizzes", :force => true do |t|

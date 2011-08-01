@@ -39,7 +39,7 @@
 				%br
 				%span.true
 					= t('.correct_answers_by')
-					%span{:style => "color:#3C2415; font-weight:bold;"}= number_to_percentage(question.answers.select{|a| a.is_correct? }.map{|a| a.submissions}.flatten.select{|s| !s.is_repeated?}.flatten.length.to_f*100 / question.quizzes.map{|q| q.submissions }.flatten.select{|s| !s.is_repeated?}.length.to_f, :precision => 0)
+					%span{:style => "color:#3C2415; font-weight:bold;"}= number_to_percentage(question.average_submission_percentage, :precision => 0)
 					= t('.people')
 				%br
 				= link_to t('.learn_more'), "#?w=700", :class => 'more_info poplight', :rel=>"question_popup_#{question.id}"

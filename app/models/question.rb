@@ -20,4 +20,11 @@ class Question < ActiveRecord::Base
   def correct_answer
     answers.where(:is_correct => true).first
   end
+  
+  def average_submission_percentage
+    all_question_submissions = quizzes.map{|q| q.submissions }.flatten.select{|s| !s.is_repeated?}.length.to_f
+    percentage = all_question_submissions > 0 ? (answers.select{|a| a.is_correct? }.map{|a| a.submissions}.flatten.select{|s| !s.is_repeated?}.flatten.length.to_f*100 / all_question_submissions) : 0 
+    update_attribute(:average_percentage, percentage)
+    percentage
+  end
 end

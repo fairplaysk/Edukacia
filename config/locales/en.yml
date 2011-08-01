@@ -11,6 +11,10 @@ en:
   global:
     facebook_summary: "Quiz %{quiz} was completed with %{percent}% correct answers."
     twitter_summary: "Quiz %{quiz} was completed with %{percent}% correct answers."
+    random_quizzes: "Random quizzes"
+    random_quiz: "Random quiz"
+    hard_random_quiz: "Quiz with easy questions"
+    easy_random_quiz: "Quiz with hard questions"
   
   formtastic:
     labels:
