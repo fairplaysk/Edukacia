@@ -52,18 +52,10 @@ class Choise < ActiveRecord::Base
   end
   
   def self.chart_hardest
-    percentage, correct_answers_count, incorrect_answers_count, hardest_question = 1, 0, 0, Question.first
-    Question.includes({:answers => {:choises =>:submission}}, :quizzes).where('quizzes.is_active = ? and submissions.is_repeated = ? and ((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', true, false, 2.days.ago, true, true).each do |question|
-      correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).flatten.length
-      all_answers = question.answers.map(&:choises).flatten.length
-      
-      if (correct_answers.to_f / all_answers.to_f) < percentage
-        percentage = correct_answers.to_f / all_answers.to_f
-        correct_answers_count = correct_answers
-        incorrect_answers_count = all_answers - correct_answers
-        hardest_question = question
-      end
-    end
+    hardest_question = Question.joins(:answers => :choises).where('choises.id is not null').order(:average_percentage).first
+    correct_answers_count = hardest_question.answers.select{|a| a.is_correct? }.map(&:choises).flatten.length
+    incorrect_answers_count = hardest_question.answers.map(&:choises).flatten.length - correct_answers_count
+    
     category_name = hardest_question.quiz ? hardest_question.quiz.categories.first.name : 'n\a'
     quiz_name = hardest_question.quiz ? hardest_question.quiz.name : 'n\a'
     {
@@ -83,19 +75,9 @@ class Choise < ActiveRecord::Base
   
   def self.chart_easiest
     #FIXME: refactor
-    percentage, correct_answers_count, incorrect_answers_count, easiest_question = 0, 0, 0, Question.first
-    Question.includes({:answers => {:choises =>:submission}}, :quizzes).where('quizzes.is_active = ? and submissions.is_repeated = ? and ((quizzes.published_at < ? and quizzes.is_active = ?) or quizzes.is_generated = ?)', true, false, 2.days.ago, true, true).each do |question|
-      correct_answers = question.answers.select{|a| a.is_correct? }.map(&:choises).flatten.length
-      all_answers = question.answers.map(&:choises).flatten.length
-      
-      if (correct_answers.to_f / all_answers.to_f) > percentage
-        percentage = correct_answers.to_f / all_answers.to_f
-        correct_answers_count = correct_answers
-        incorrect_answers_count = all_answers - correct_answers
-        easiest_question = question
-      end
-    end
-    
+    easiest_question = Question.order(:average_percentage).last
+    correct_answers_count = easiest_question.answers.select{|a| a.is_correct? }.map(&:choises).flatten.length
+    incorrect_answers_count = easiest_question.answers.map(&:choises).flatten.length - correct_answers_count
     {
     "text" => "#{easiest_question.content} <br> #{easiest_question.quiz.categories.first.name} | #{easiest_question.quiz.name}",
   	"cols" =>
