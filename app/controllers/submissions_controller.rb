@@ -95,8 +95,8 @@ class SubmissionsController < ApplicationController
   
   private
   def quiz_submission_percentage(quiz)
-    quiz.first_submissions.inject(0.0) do |sum, submission|
-      sum + (submission.correct_answers_count.to_f*100) / submission.quiz.questions.count.to_f if submission.quiz.questions.count != 0
+    quiz.first_submissions.includes({:quiz => :questions}, :answers).inject(0.0) do |sum, submission|
+      sum + (submission.answers.select{|a| a.is_correct? }.flatten.length.to_f*100) / submission.quiz.questions.length.to_f if submission.quiz.questions.length != 0
     end / quiz.first_submissions.count
   end
   
