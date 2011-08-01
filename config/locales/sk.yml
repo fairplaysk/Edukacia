@@ -53,6 +53,7 @@ sk:
       users: 'Používatelia'
       categories: Kategórie
       labels: Popisky
+      statistics: "Štatistiky"
       header:
         signed_in: 'Prihlásený ako %{username}.'
         sign_in: 'Prihlásiť sa'

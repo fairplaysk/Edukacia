@@ -15,6 +15,7 @@
             - if current_user.super?
               %li= link_to t('.users'), kwizzer_users_path
               %li= link_to t('.labels'), kwizzer_labels_path
+              %li= link_to t('.statistics'), kwizzer_statistics_path
               %li= link_to 'Rails admin', rails_admin_dashboard_path
       #main
         = render :partial => 'layouts/flashes'

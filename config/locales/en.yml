@@ -36,6 +36,7 @@ en:
       users: 'Users'
       categories: Categories
       labels: Labels
+      statistics: Statistics
       header:
         signed_in: 'Signed in as %{username}. Not you?'
         sign_in: 'sign in'

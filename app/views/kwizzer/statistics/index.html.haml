@@ -1,0 +1,39 @@
+%h1= t('.statistics')
+= link_to 'quizzes.csv', download_kwizzer_statistics_path(:content => 'quizzes')
+= link_to 'questions.csv', download_kwizzer_statistics_path(:content => 'questions')
+%br
+%br
+%table
+  %tr
+    %th= t('.title')
+    %th= t('.submitted')
+    %th= t('.average_rating')
+    %th= t('.average_percentage')
+
+  - @quizzes.each do |quiz|
+    %tr
+      %td= quiz.name
+      %td= quiz.submissions.size
+      %td= quiz.submissions.average(:rating)
+      %td= quiz.average_percentage
+      
+%br
+
+%table
+  %tr
+    %th= t('.title')
+    %th= t('.all')
+    %th= t('.correct')
+    %th= t('.incorrect')
+    %th= t('.skipped')
+
+  - @questions.each do |question|
+    %tr
+      - all_count = Submission.where(:quiz_id => question.quizzes, :is_repeated => false).count
+      - correct_count = question.answers.select{|a| a.is_correct? }.map{|a| a.submissions.group('submissions.id')}.flatten.select{|s| !s.is_repeated?}.flatten.length
+      %td= question.content
+      %td= all_count
+      %td= correct_count
+      %td= all_count - correct_count
+      %td= all_count - question.answers.map{|a| a.submissions.group('submissions.id')}.flatten.select{|s| !s.is_repeated?}.flatten.length
+%br

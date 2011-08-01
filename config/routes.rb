@@ -19,6 +19,9 @@ Kwizzer::Application.routes.draw do
     end
     resources :users
     resources :labels
+    resources :statistics, :only => [:index] do
+      get :download, :on => :collection
+    end
   end
   
   match '/locale/:locale' => 'locales#set_locale', :as => 'set_locale'
