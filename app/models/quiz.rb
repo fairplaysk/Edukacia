@@ -55,4 +55,10 @@ class Quiz < ActiveRecord::Base
       raise ActiveRecord::RecordNotFound
     end
   end
+  
+  def quiz_submission_percentage
+    correct_answers_count = questions.map{|q| q.answers }.flatten.select{|a| a.is_correct? }.map{|a| a.submissions}.flatten.select{|s| !s.is_repeated?}.length.to_f
+    all_answers_count = questions.map{|q| q.quizzes.includes(:submissions) }.flatten.map{|q| q.submissions }.flatten.select{|s| !s.is_repeated? }.length.to_f
+    all_answers_count > 0 ? correct_answers_count*100 / all_answers_count : 0
+  end
 end

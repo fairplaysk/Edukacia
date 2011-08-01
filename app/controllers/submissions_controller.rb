@@ -12,7 +12,7 @@ class SubmissionsController < ApplicationController
     # FIXME: refactor
     if params[:quiz_id] == 'random'
       @quiz = Quiz.create(:is_generated => true, :questions_per_page => 1, :name => 'Random quiz', :categories => [Category.find_or_create_by_name_and_short_name('Random', 'Random')])
-      @quiz.questions.push_with_attributes(Question.where(:random_enabled => true).order('rand()').limit(4), :is_generated => true)
+      @quiz.questions.push_with_attributes(Question.where(:random_enabled => true).order('rand()').limit(5), :is_generated => true)
       @quiz.save
     else
       @quiz = Quiz.find(params[:quiz_id])
@@ -53,14 +53,12 @@ class SubmissionsController < ApplicationController
     @average_rating = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
     
     @correct_answers_percentage = (@submission.correct_answers_count.to_f*100) / @submission.quiz.questions.count.to_f if @submission.quiz.questions.count != 0
-    @average_submission_percentate = quiz_submission_percentage(@submission.quiz)
+
+    @average_submission_percentate = @submission.quiz.quiz_submission_percentage
+    @submission.quiz.update_attribute(:average_percentage, @average_submission_percentate)
     
-    @easiest_quiz, @hardest_quiz = @submission.quiz, @submission.quiz
-    
-    Quiz.all.each do |quiz|
-      @easiest_quiz = quiz if quiz_submission_percentage(quiz) < quiz_submission_percentage(@easiest_quiz)
-      @hardest_quiz = quiz if quiz_submission_percentage(quiz) > quiz_submission_percentage(@hardest_quiz)
-    end
+    @easiest_quiz = Quiz.where(:is_generated => false).order(:average_percentage).last
+    @hardest_quiz = Quiz.where(:is_generated => false).order(:average_percentage).first
     
     if @correct_answers_percentage
       if @correct_answers_percentage == 100
@@ -94,12 +92,6 @@ class SubmissionsController < ApplicationController
   end
   
   private
-  def quiz_submission_percentage(quiz)
-    quiz.first_submissions.includes({:quiz => :questions}, :answers).inject(0.0) do |sum, submission|
-      sum + (submission.answers.select{|a| a.is_correct? }.flatten.length.to_f*100) / submission.quiz.questions.length.to_f if submission.quiz.questions.length != 0
-    end / quiz.first_submissions.count
-  end
-  
   def can_rate(submission)
     (current_user && submission.user == current_user) || submission.session_id == session[:session_id]
   end
