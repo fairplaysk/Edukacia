@@ -70,7 +70,7 @@ Feature: Manage submissions
 		And I am on the submissions page
 		When I follow "Chalenging history questions"
 		And I press "Evaluate quiz"
-		Then I should see "Please select an answer."
+		Then I should see "Please select an answer or click on \"Skip\""
 	
 	Scenario: I press the skip button and get to the results page
     Given the following "quiz_with_questions" factory_girl models:

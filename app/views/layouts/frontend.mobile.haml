@@ -14,6 +14,6 @@
 			= yield(:navigation)
 		= yield
 		%div{:style=>"margin:20px auto; text-align:center; font-family: 'Yanone Kaffeesatz', arial, serif; font-weight:300; color:#ffffff; font-size:13px; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); letter-spacing:1px; padding:0px 15px;"}
-			%p= @footer_text
+			%p=raw @footer_text
 			= image_tag 'frontend/logo_AFP_biele.png'
 		= render :partial => 'layouts/javascripts'
