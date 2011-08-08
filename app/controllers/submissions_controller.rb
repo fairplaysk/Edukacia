@@ -4,7 +4,7 @@ class SubmissionsController < ApplicationController
       @category = Category.find(params[:category_id])
     else
       @categories = Category.includes(:quizzes => :submissions)
-      @session_id = session[:session_id]
+      @session_id = get_submission_token
     end
   end
   
@@ -27,8 +27,8 @@ class SubmissionsController < ApplicationController
   def create
     # FIXME: refactor
     if params[:questions] || params[:commit] == I18n.translate('submissions.new.skip')
-      submission = Submission.find_or_initialize_by_session_id_and_quiz_id(session[:session_id], params[:quiz_id])
-      submission = Submission.new(:session_id => session[:session_id], :quiz_id => params[:quiz_id], :is_repeated => true) if params[:page] == '1' && !submission.new_record?
+      submission = Submission.find_or_initialize_by_session_id_and_quiz_id(get_submission_token, params[:quiz_id])
+      submission = Submission.new(:session_id => get_submission_token, :quiz_id => params[:quiz_id], :is_repeated => true) if params[:page] == '1' && !submission.new_record?
       
       params[:questions].each do |question_id, answer|
         submission.answers << Answer.find(answer[:answer_ids])
@@ -51,7 +51,7 @@ class SubmissionsController < ApplicationController
     # FIXME: refactor
     @submission = Submission.find(params[:id])
     
-    @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first.try(:rating) if @can_rate = can_rate(@submission)
+    @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', get_submission_token, current_user).first.try(:rating) if @can_rate = can_rate(@submission)
     @rating_count = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').count
     @average_rating = @submission.quiz.submissions.where('submissions.rating IS NOT NULL').average(:rating)
     
@@ -60,8 +60,8 @@ class SubmissionsController < ApplicationController
     @average_submission_percentate = @submission.quiz.quiz_submission_percentage
     @submission.quiz.update_attribute(:average_percentage, @average_submission_percentate)
     
-    @easiest_quiz = Quiz.where(:is_generated => false).order(:average_percentage).last
-    @hardest_quiz = Quiz.where(:is_generated => false).order(:average_percentage).first
+    @easiest_quiz = Quiz.where(:is_generated => false).order(:average_percentage).last || Quiz.first
+    @hardest_quiz = Quiz.where(:is_generated => false).order(:average_percentage).first || Quiz.last
     
     if @correct_answers_percentage
       if @correct_answers_percentage == 100
@@ -76,7 +76,7 @@ class SubmissionsController < ApplicationController
     # FIXME: refactor
     @submission = Submission.find(params[:id])
     unless @submission.quiz.is_generated?
-      @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', session[:session_id], current_user).first
+      @quiz_submission_rating = @submission.quiz.submissions.where('(submissions.session_id = ? OR submissions.user_id = ?) AND submissions.rating IS NOT NULL', get_submission_token, current_user).first
       if @quiz_submission_rating.try(:present?)
         @quiz_submission_rating.update_attribute(:rating, params[:rating])
         @can_rate = true
@@ -96,6 +96,9 @@ class SubmissionsController < ApplicationController
   
   private
   def can_rate(submission)
-    (current_user && submission.user == current_user) || submission.session_id == session[:session_id]
+    (current_user && submission.user == current_user) || submission.session_id == get_submission_token
+  end
+  def get_submission_token
+    cookies.permanent[:submission_token] = cookies[:submission_token].present? ? cookies[:submission_token] : Submission.generate_token
   end
 end

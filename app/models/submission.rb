@@ -18,4 +18,12 @@ class Submission < ActiveRecord::Base
     end.count
     first_submissions.count == 0 ? 0 : correct_submissions_count.to_f*100 / first_submissions.count
   end
+  
+  def self.generate_token
+    token = SecureRandom.urlsafe_base64
+    begin
+      token = SecureRandom.urlsafe_base64
+    end while Submission.exists?(:session_id => token)
+    token
+  end
 end
