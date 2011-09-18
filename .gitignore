@@ -8,6 +8,7 @@ data/*
 config/database.yml
 config/newrelic.yml
 config/google.yml
+config/initializers/secret_token.rb
 public/system/*
 public/stylesheets/compiled/*
 .DS_Store

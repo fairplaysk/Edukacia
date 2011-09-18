@@ -34,6 +34,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml"
     run "ln -nfs #{shared_path}/config/google.yml #{release_path}/config/google.yml"
+    run "ln -nfs #{shared_path}/config/initializers/secret_token.rb #{release_path}/initializers/secret_token.rb"
     run "ln -nfs #{shared_path}/public/system #{release_path}/public/system"
   end
   
