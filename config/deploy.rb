@@ -1,18 +1,14 @@
 # -*- encoding : utf-8 -*-
-# Add RVM's lib directory to the load path.
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
-# Load RVM's capistrano plugin.    
-require "rvm/capistrano"
+set :default_environment, { 'PATH' => "/usr/local/bin:/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH" }
 
 require 'bundler/capistrano'
-
-set :rvm_ruby_string, '1.9.2'
 
 set :stages, %w(staging production)
 set :application, "kwizzer"
 
-set(:deploy_to) { "/var/rails/#{application}" }
+# set(:deploy_to) { "/var/rails/#{application}" }
+set(:deploy_to) { "/home/kvizy/rails/#{application}" }
 
 set :scm, :git
 set :repository, "git://github.com/fairplaysk/Edukacia.git"
@@ -20,7 +16,7 @@ set :use_sudo, false
 set :keep_releases, 4
 
 set(:user) { Capistrano::CLI.ui.ask "user:" }
-server "195.210.29.138", :app, :web, :db, :primary => true
+server "46.231.96.101", :app, :web, :db, :primary => true
 
 namespace :deploy do
   task :start do ; end
